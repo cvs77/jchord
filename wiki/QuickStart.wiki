@@ -49,8 +49,13 @@
   Every non-absolute file location used in the value of any system property defined in the above file is taken to be relative to the directory specified by system property `chord.work.dir`.
 
   The user guide presents an exhaustive listing of system properties recognized by Chord. Briefly:
+
     * `chord.main.class` specifies the main class of the program to be analyzed.
+
     * `chord.class.path` specifies the application classpath of the program to be analyzed (as opposed to the JDK library classpath which consists of jar files such as `rt.jar` which are implicitly appended to the program's application classpath to yield the complete program classpath).
+
     * `chord.out` and `chord.err` specify the files (typically one and the same) to which the standard output and standard error streams, respectively, must be redirected while running Chord.
+
     * `chord.serial.file` specifies the file from (resp. to) which the serialized form of the intermediate representation of the program to be analyzed must be loaded (resp. stored). This option is provided because loading the serialized form is much faster than constructing the intermediate representation of the program each time.
+
     * `chord.analysis.class` specifies the fully-qualified name of the class defining the analysis to be run.
