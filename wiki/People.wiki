@@ -1,0 +1,6 @@
+Chord is developed and maintained primarily by [http://berkeley.intel-research.net/mnaik/ Mayur Naik] who is currently a researcher at Intel Research, Berkeley.  Additionally, the following people have contributed to the project:
+
+  * [http://www.cs.stanford.edu/~aiken/ Alex Aiken], Stanford University
+  * [http://berkeley.intel-research.net/dgay/ David Gay], Intel Research, Berkeley
+  * Chang-Seo Park, UC Berkeley
+  * [http://www.cs.berkeley.edu/~ksen/ Koushik Sen], UC Berkeley
