@@ -1,3 +1,3 @@
-  * Mayur Naik, Chang-Seo Park, Koushik Sen, and David Gay. [deadlock Effective Static Deadlock Detection]. Manuscript, September 2008.
-  * Mayur Naik and Alex Aiken. [POPL07 Conditional Must Not Aliasing for Static Race Detection]. In Proceedings of the 34th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL'07), Nice, France, January 2007.
-  * Mayur Naik, Alex Aiken, and John Whaley. [PLDI06 Effective Static Race Detection for Java]. In Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI'06), Ottawa, Canada, June 2006.
+  * Mayur Naik, Chang-Seo Park, Koushik Sen, and David Gay. [http://chord.stanford.edu/pubs/staticdeadlock.pdf Effective Static Deadlock Detection]. Manuscript, September 2008.
+  * Mayur Naik and Alex Aiken. [http://chord.stanford.edu/pubs/popl07.pdf Conditional Must Not Aliasing for Static Race Detection]. In Proceedings of the 34th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL'07), Nice, France, January 2007.
+  * Mayur Naik, Alex Aiken, and John Whaley. [http://chord.stanford.edu/pubs/pldi06.pdf Effective Static Race Detection for Java]. In Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI'06), Ottawa, Canada, June 2006.
