@@ -1,5 +1,5 @@
   * [http://chord.stanford.edu/pubs/chord.slides.ppt Effective Static Race Detection for Java]
-    * [http://video.google.com/videoplay?docid=3755219183038784412 video] of talk by Alex Aiken at Google, Mountain View, CA in June 2007.
-    * [http://www.researchchannel.org/prog/displayevent.aspx?rID=11263 video] of talk by Mayur Naik at Microsoft Research, Redmond, WA in April 2007.
+    * [http://video.google.com/videoplay?docid=3755219183038784412 video] of talk by Alex Aiken at Google, Mountain View, CA in June 2007
+    * [http://www.researchchannel.org/prog/displayevent.aspx?rID=11263 video] of talk by Mayur Naik at Microsoft Research, Redmond, WA in April 2007
   * [http://chord.stanford.edu/pubs/popl07.slides.ppt Conditional Must Not Aliasing for Static Race Detection], Mayur Naik, POPL 2007
   * [http://chord.stanford.edu/pubs/pldi06.slides.ppt Effective Static Race Detection for Java], Mayur Naik, PLDI 2006
