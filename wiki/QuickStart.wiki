@@ -1,3 +1,4 @@
+#labels Phase-Deploy,Featured
   * Download the latest version of Chord (say `chord-x.y.tar.gz`) from [http://code.google.com/p/jchord/downloads/list here] and uncompress it in a suitable directory by running the following command:
 {{{
     tar xvzf chord-x.y.tar.gz
