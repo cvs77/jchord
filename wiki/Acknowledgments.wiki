@@ -1,0 +1,5 @@
+Chord is built on top of the following open-source software:
+  * [http://www.sable.mcgill.ca/soot/ Soot]
+  * [http://bddbddb.sourceforge.net/ bddbddb]
+
+The Chord project was supported in part by grants from the National Science Foundation, an equipment grant from Intel, and a Microsoft fellowship during 2005-2007.
