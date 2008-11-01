@@ -5,7 +5,7 @@ Download the latest version of Chord (say `chord-x.y.tar.gz`) from [http://code.
 }}}
 This will create a directory structure with root directory `chord-x.y`.
 
-Ensure that you have installed [http://www.ibm.com/developerworks/java/jdk/ JDK 5 or higher] and [http://ant.apache.org/ Apache Ant].  Software used by Chord is known to have problems with Sun JVMs and 64-bit JVMs; so a 32-bit IBM JVM is recommended even on a 64-bit machine.
+Ensure that you have installed [http://www.ibm.com/developerworks/java/jdk/ JDK 5 or higher] and [http://ant.apache.org/ Apache Ant].
 
 Compile Chord by running the following command in Chord's root directory `chord-x.y/`:
 {{{
