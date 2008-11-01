@@ -5,7 +5,7 @@ Download the latest version of Chord (say `chord-x.y.tar.gz`) from [http://code.
 }}}
 This will create a directory structure with root directory `chord-x.y`.
 
-Ensure that you have installed [http://www.ibm.com/developerworks/java/jdk/ JDK 5 or higher] and [http://ant.apache.org/ Apache Ant].
+Ensure that you have installed JDK 5 or higher (from [http://java.sun.com/javase/downloads/index.jsp Sun] or [http://www.ibm.com/developerworks/java/jdk/ IBM]) and [http://ant.apache.org/ Apache Ant].
 
 Compile Chord by running the following command in Chord's root directory `chord-x.y/`:
 {{{
