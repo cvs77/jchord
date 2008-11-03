@@ -1,11 +1,11 @@
 #labels Featured
-Chord has been tested on both 32- and 64-bit Linux machines using both Sun and IBM JVMs.
+Chord has been tested on Linux machines using (1) both Sun and IBM JVMs and (2) both 32-bit and 64-bit JVMs.
 
-It should also be possible to run Chord on 32-bit Windows and MacOS machines but not on their 64-bit counterparts.
+It should also be possible to run Chord on Windows and MacOS machines with 32-bit JVMs but not with 64-bit ones.
 
 Chord itself is written entirely in Java and hence is portable to all architectures.  The above caveats are because Chord uses a native BDD library (buddy) and the current Chord distribution provides pre-compiled versions of this library for only the above architectures.  Support for other architectures will be provided in future.
 
-Chord determines whether the machine is 32- or 64-bit by checking the value of system property sun.arch.data.model.  If you use a JVM that does not set this property appropriately, you will need to modify file build.xml located in the root directory of the distribution.
+Chord determines whether the JVM is 32-bit or 64-bit by checking the value of system property sun.arch.data.model.  If you use a JVM that does not set this property, you will need to set it to "32" or "64" on the command line while running build.xml located in the root directory of the distribution.
 
 The best way to figure out if Chord is compatible with your machine is to install and run it on one of the example programs and see if it exits by logging an exception with the following message in the file you have specified via system property chord.err: 
 
