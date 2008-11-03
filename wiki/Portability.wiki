@@ -11,4 +11,4 @@ The best way to figure out if Chord is compatible with your machine is to instal
 
 FATAL: Could not load BDD package buddy: /.../chord/libbuddy.so
 
-[In versions prior to 0.4, this message was more cryptic, and contained the message "User called break".]
+In versions prior to 0.4, this message was more cryptic, and contained the message "User called break".
