@@ -1,3 +1,4 @@
+#labels Featured
 Chord has been tested on both 32- and 64-bit Linux machines using both Sun and IBM JVMs.
 
 It should also be possible to run Chord on 32-bit Windows and MacOS machines but not on their 64-bit counterparts.
