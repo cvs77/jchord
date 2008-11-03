@@ -1,7 +1,7 @@
 #labels Featured
 Chord has been tested on Linux machines using (1) both Sun and IBM JVMs and (2) both 32-bit and 64-bit JVMs.
 
-It should also be possible to run Chord on Windows and MacOS machines with 32-bit JVMs but not with 64-bit ones.
+It should also be possible to run Chord on Windows and MacOS machines with 32-bit JVMs but not with 64-bit JVMs.
 
 Chord itself is written entirely in Java and hence is portable to all architectures.  The above caveats are because Chord uses a native BDD library (buddy) and the current Chord distribution provides pre-compiled versions of this library for only the above architectures.  Support for other architectures will be provided in future.
 
