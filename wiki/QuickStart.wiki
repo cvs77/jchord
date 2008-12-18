@@ -13,7 +13,7 @@ Compile Chord by running the following command in Chord's root directory `chord-
 }}}
 Suppose the program to be analyzed has the following directory structure:
 {{{
-    foo/
+    example/
         src/
             foo/
                 Main.java
@@ -31,13 +31,13 @@ Suppose the program to be analyzed has the following directory structure:
         chord/
             chord.properties
 }}}
-The above structure is typical: the program's Java source files are located under `foo/src/`, its class files are located under `foo/classes/`, the source and jar files of the libraries used by the program are under `foo/lib/src/` and `foo/lib/jars/`, respectively, and finally `foo/chord/` is the directory to which Chord will output its intermediate and final results.
+The above structure is typical: the program's Java source files are under `example/src/`, its class files are under `example/classes/`, the source and jar files of the libraries used by the program are under `example/lib/src/` and `example/lib/jars/`, respectively, and finally `example/chord/` is the directory to which Chord will output its intermediate and final results.
 
 Execute Chord on the above program by running the following command in Chord's root directory `chord-x.y/`:
 {{{
-    ant -Dchord.work.dir=.../foo/chord/ run
+    ant -Dchord.work.dir=.../example/chord/ run
 }}}
-where "..." denotes either the absolute path, or the path relative to Chord's root directory, of the parent of directory `foo/`. Chord will read the system properties specified in the file named `chord.properties` that it presumes exists in the directory specified by system property `chord.work.dir` which in the above case is directory `foo/chord/`. A sample such file for the above program is as follows:
+where "..." denotes either the absolute path, or the path relative to Chord's root directory, of the parent of directory `example/`. Chord will read the system properties specified in the file named `chord.properties` that it presumes exists in the directory specified by system property `chord.work.dir` which in the above case is directory `example/chord/`. A sample such file for the above program is as follows:
 {{{
     chord.main.class=foo.Main
     chord.class.path=../classes/:../lib/jars/taz.jar
