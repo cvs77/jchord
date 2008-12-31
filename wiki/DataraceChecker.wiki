@@ -1,1 +1,5 @@
-See the example in directory `chord/examples/datarace_test/` of the Chord distribution. The `README` file in that directory explains how to run the datarace checker on the example. The datarace checker upon successful completion should produce files [http://chord.stanford.edu/examples/datarace_test/dataraces_by_fld.html dataraces_by_fld.html] and [http://chord.stanford.edu/examples/datarace_test/dataraces_by_obj.html dataraces_by_obj.html].
+See the example in directory `chord/examples/datarace_test/` of the Chord distribution. The `README` file in that directory explains how to run the datarace checker on the example. The datarace checker upon successful completion should produce files [http://chord.stanford.edu/examples/datarace_test/k.1/dataraces_by_fld.html dataraces_by_fld.html] and
+[http://chord.stanford.edu/examples/datarace_test/k.1/dataraces_by_obj.html dataraces_by_obj.html]
+using 1-object-sensitive alias analysis and
+[http://chord.stanford.edu/examples/datarace_test/k.2/dataraces_by_fld.html dataraces_by_fld.html] and
+[http://chord.stanford.edu/examples/datarace_test/k.2/dataraces_by_obj.html dataraces_by_obj.html] using 2-object-sensitive alias analysis.
