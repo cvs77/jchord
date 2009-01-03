@@ -2,14 +2,16 @@
 Chord has been tested on the following architectures:
 
 || *OS* || *JVM* ||
-|| 32-bit Linux || Sun Java 1.6 ||
-||      "       || Sun Java 1.6 ||
+|| 32-bit Linux || Sun 32-bit Java 1.6 ||
+||      "       || Sun 32-bit Java 1.6 ||
 || 64-bit Linux || Sun 32-bit Java 1.6 ||
 ||      "       || IBM 32-bit Java 1.6 ||
 ||      "       || Sun 64-bit Java 1.6 ||
 ||      "       || IBM 64-bit Java 1.6 ||
-|| 32-bit Windows with Cygwin || Sun Java 1.6 ||
+|| 32-bit Windows with Cygwin || Sun 32-bit Java 1.6 ||
 || 32-bit Mac OS X (Darwin) || SoyLatte Java 1.6 ||
+
+The Sun JVMs are available from [http://java.sun.com/javase/downloads/index.jsp here] and the IBM JVMs are available from [http://www.ibm.com/developerworks/java/jdk/ here].
 
 Let me know if you have:
   * problems running Chord on any of the above architectures, or
