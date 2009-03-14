@@ -5,4 +5,4 @@ See the example in directory `chord/examples/deadlock_test/` of the Chord distri
 
 === Case Studies ===
 
-The experimental results from [http://berkeley.intel-research.net/mnaik/pubs/icse09/paper.pdf our ICSE'09 paper] are available [http://berkeley.intel-research.net/mnaik/pubs/icse09/results.html here].
+Details of the experimental results reported in [http://berkeley.intel-research.net/mnaik/pubs/icse09/paper.pdf our ICSE'09 paper] are available [http://berkeley.intel-research.net/mnaik/pubs/icse09/results.html here].
