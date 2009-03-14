@@ -6,4 +6,6 @@ using 1-object-sensitive alias analysis and files
 [http://chord.stanford.edu/examples/datarace_test/k.2/dataraces_by_fld.html dataraces_by_fld.html] and
 [http://chord.stanford.edu/examples/datarace_test/k.2/dataraces_by_obj.html dataraces_by_obj.html] using 2-object-sensitive alias analysis.
 
-=== [http://berkeley.intel-research.net/mnaik/pubs/pldi06/results.html Experimental results from PLDI'06 paper] ===
+=== Case Studies ===
+
+The experimental results from [http://berkeley.intel-research.net/mnaik/pubs/pldi06/paper.pdf our PLDI'06 paper] are available [http://berkeley.intel-research.net/mnaik/pubs/pldi06/results.html here].
