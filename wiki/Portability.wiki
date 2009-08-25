@@ -1,4 +1,3 @@
-#labels Featured
 Chord has been tested on the following architectures:
 
 || *OS* || *JVM* ||
