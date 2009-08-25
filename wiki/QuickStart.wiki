@@ -1,5 +1,7 @@
 #labels Featured
-=Download and Installation=
+=NOTE: These instructions are valid for Chord 2.0 and above=
+
+==Download and Installation==
 
 Before installing Chord ensure that the following software is installed on your machine:
 
@@ -13,7 +15,7 @@ Download the latest version of Chord (say `chord-x.y.tar.gz`) from [http://code.
 }}}
 This will create a directory structure with root directory `chord-x.y/`.
 
-=Building Chord=
+==Building Chord==
 
 The root directory `chord-x.y/` contains a `build.xml` file which is interpreted by
 Apache Ant (a Java build tool).  To see the various targets available run the following command in the root directory:
@@ -28,7 +30,7 @@ root directory:
 This will compile the Chord\ `.java` source files and store the `.class` files
 under the `classes/` sub-directory of the root directory.
 
-=Running Chord=
+==Running Chord==
 
 Suppose the program to be analyzed has the following directory structure:
 {{{
