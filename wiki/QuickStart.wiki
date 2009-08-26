@@ -20,15 +20,14 @@ This will create a directory structure with root directory `chord-x.y/`.
 The root directory `chord-x.y/` contains a `build.xml` file which is interpreted by
 Apache Ant (a Java build tool).  To see the various targets available run the following command in the root directory:
 {{{
-    ant -p
-}}}
-The default target `compile` compiles Chord.  So simply run the following command in the
-root directory:
-{{{
     ant
 }}}
-This will compile the Chord\ `.java` source files and store the `.class` files
-under the `classes/` sub-directory of the root directory.
+The target `compile` compiles Chord.  So running the following command in the
+root directory will compile the Chord\ `.java` source files and store the `.class` files
+under the `classes/` sub-directory of the root directory:
+{{{
+    ant compile
+}}}
 
 ==Running Chord==
 
