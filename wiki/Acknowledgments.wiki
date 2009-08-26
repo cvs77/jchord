@@ -1,6 +1,13 @@
 #labels Featured
 Chord is built on top of the following open-source software:
-  * [http://www.sable.mcgill.ca/soot/ Soot]
-  * [http://bddbddb.sourceforge.net/ bddbddb]
+  * [http://joeq.sourceforge.net/ Joeq] (a Java compiler framework)
+  * [http://bddbddb.sourceforge.net/ bddbddb] (a BDD-based solver for Datalog)
+  * [http://www.csg.is.titech.ac.jp/~chiba/javassist/ Javassist] (a Java bytecode manipulation tool)
+
+Chord also uses the following open-source tools and libraries:
+  * [http://ant-contrib.sourceforge.net/ Ant-Contrib] (collection of useful Ant tasks)  
+  * [http://trove4j.sourceforge.net/ GNU Trove] (primitive collections for Java)
+  * [http://saxon.sourceforge.net/ Saxon] (XSLT processor)
+  * [http://www.java2html.com/ Java2HTML] and [http://www.java2html.de/ Java2Html] (Java to HTML tools)
 
 The Chord project was supported in part by grants from the National Science Foundation, an equipment grant from Intel, and a Microsoft fellowship during 2005-2007.
