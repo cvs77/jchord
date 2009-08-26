@@ -1,10 +1,10 @@
 #labels Featured
-Chord is built on top of the following open-source software:
+Chord would not be possible without the following open-source software:
   * [http://joeq.sourceforge.net/ Joeq] (a Java compiler framework)
   * [http://bddbddb.sourceforge.net/ bddbddb] (a BDD-based solver for Datalog)
   * [http://www.csg.is.titech.ac.jp/~chiba/javassist/ Javassist] (a Java bytecode manipulation tool)
 
-Chord also uses the following open-source tools and libraries:
+Chord additionally uses the following open-source tools and libraries:
   * [http://ant-contrib.sourceforge.net/ Ant-Contrib] (collection of useful Ant tasks)  
   * [http://trove4j.sourceforge.net/ GNU Trove] (primitive collections for Java)
   * [http://saxon.sourceforge.net/ Saxon] (XSLT processor)
