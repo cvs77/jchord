@@ -18,13 +18,13 @@ This will create a directory structure with root directory `chord-x.y/`.
 ==Building Chord==
 
 The root directory `chord-x.y/` contains a `build.xml` file which is interpreted by
-Apache Ant (a Java build tool).  To see the various targets available run the following command in the root directory:
+Apache Ant (a Java build tool).
+
+To peruse targets, run the following command in the root directory:
 {{{
     ant
 }}}
-The target `compile` compiles Chord.  So running the following command in the
-root directory will compile the Chord\ `.java` source files and store the `.class` files
-under the `classes/` sub-directory of the root directory:
+To compile Chord, run the following command in the root directory:
 {{{
     ant compile
 }}}
@@ -48,42 +48,20 @@ Suppose the program to be analyzed has the following directory structure:
                     ...
             jars/
                 taz.jar
-        chord/
-            chord.properties
+        chord.properties
 }}}
-The above structure is typical: the program's Java source files are under `example/src/`, its class files are under `example/classes/`, the source and jar files of the libraries used by the program are under `example/lib/src/` and `example/lib/jars/`, respectively, and finally `example/chord/` is the directory to which Chord will output its intermediate and final results.
+The above structure is typical: the program's Java source files are under `example/src/`, its class files are under `example/classes/`, the source and jar files of the libraries used by the program are under `example/lib/src/` and `example/lib/jars/`, respectively.
 
 Execute Chord on the above program by running the following command in Chord's root directory `chord-x.y/`:
 {{{
     ant -Dchord.work.dir=.../example/chord/ run
 }}}
-where "..." denotes either the absolute path, or the path relative to Chord's root directory, of the parent of directory `example/`. Chord will read the system properties specified in the file named `chord.properties` that it presumes exists in the directory specified by system property `chord.work.dir` which in the above case is directory `example/chord/`. A sample such file for the above program is as follows:
+where "..." denotes either the absolute path, or the path relative to Chord's root directory, of the parent of directory `example/`. Chord will read the system properties specified in the file named `chord.properties` that it presumes exists in the directory specified by system property `chord.work.dir` which in the above case is directory `example/`. A sample such file for the above program is as follows:
 {{{
     chord.main.class=foo.Main
     chord.class.path=../classes:../lib/classes/taz.jar
     chord.src.path=../src:../lib/src
-    chord.out=log.txt
-    chord.err=log.txt
-    chord.serial.file=program.ser
-    chord.java.analysis.path=${chord.home.dir}/classes/main:
-        ${chord.home.dir}/classes/downcast:${chord.home.dir}/src/dlog/monosite
-    chord.dlog.analysis.path=${chord.home.dir}/src/dlog/main:
-        ${chord.home.dir}/src/dlog/downcast:${chord.home.dir}/src/dlog/monosite
-    chord.analysis.list=downcast-java,monosite-java
 }}}
-System property `chord.home.dir` specifies Chord's root directory `chord-x.y/`.
 Every non-absolute file location used in the value of any system property defined in the above file is taken to be relative to the directory specified by system property `chord.work.dir`.
 
-The user guide presents an exhaustive listing of system properties recognized by Chord. Briefly:
-
-  * `chord.main.class` specifies the main class of the program to be analyzed.
-
-  * `chord.class.path` specifies the application classpath of the program to be analyzed (as opposed to the JDK library classpath which consists of jar files such as `rt.jar` which are implicitly appended to the program's application classpath to yield the complete program classpath).
-
-  * `chord.out` and `chord.err` specify the files (typically one and the same) to which the standard output and standard error streams, respectively, must be redirected while running Chord.
-
-  * `chord.serial.file` specifies the file from (resp. to) which the serialized form of the intermediate representation of the program to be analyzed must be loaded (resp. stored). This option is provided because loading the serialized form is much faster than constructing the intermediate representation of the program each time.
-
-  * `chord.java.analysis.path` and `chord.dlog.analysis.path` specify all program domains, program relations, and program analyses to be included in the project and the dependencies between them.  In the above case, they specify certain program domains, program relations, and program analyses pre-defined in Chord, in particular, all those in (1) Chord's standard library, (2) Chord's downcast safety analysis, and (3) Chord's monomorphic call site analysis.  Users can also define their own program domains, program relations, and program analyses and include them in the project.
-
-  * `chord.analysis.list` is a space- or comma-separated list of the names of program domains, program relations, and program analyses that must be run in that order.  In the above case, these are downcast safety analysis, denoted `downcast-java`, and monomorphic call site analysis, denoted `monosite-java`.  Both are program analyses pre-defined in Chord but users can also include the names of program domains, program relations, and program analyses they have defined and wish to run.
+The user guide presents an exhaustive listing of system properties recognized by Chord.
