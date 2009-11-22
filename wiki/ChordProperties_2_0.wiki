@@ -1,4 +1,4 @@
-The following system properties are recognized by Chord 2.0:
+The following system properties are recognized by Chord 2.0.  The separator for list-valued properties is `' |,|:|;'`.
 
 || *Property name*     || *Description* || *Default value (if any)* ||
 || *_Chord boot properties* || || ||
@@ -18,20 +18,20 @@ The following system properties are recognized by Chord 2.0:
 || chord.src.path     || Java source path of program to be analyzed || ||
 || *_Program scope properties_* || || ||
 || chord.scope.kind   || Algorithm to compute program scope; possible values are "rta" and "dynamic" || "rta" ||
-|| chord.reuse.scope  || Use program scope specified by ${chord.boot.classes.file}, ${chord.classes.file}, and ${chord.methods.file} || "false" ||
+|| chord.reuse.scope  || Use program scope specified by ${chord.classes.file} and ${chord.methods.file} || "false" ||
 || chord.classes.file || Location of file from/to which list of classes deemed reachable is read/written || "${chord.out.dir}/classes.txt" ||
 || chord.methods.file || Location of file from/to which list of methods deemed reachable is read/written || "${chord.out.dir}/methods.txt" ||
 || *_Program analysis properties_* || || ||
 || chord.java.analysis.path || Classpath containing program analyses in Java (i.e. `@Chord`-annotated classes) || "${chord.home.dir}/classes/main" ||
 || chord.dlog.analysis.path || Path of dirs containing program analyses in Datalog (i.e. .datalog and .dlog files) || "${chord.home.dir}/src/main/dlog" ||
-|| chord.analyses || List of names of program analyses to be run in order; separator = `' |,|:|;'` || "" ||
+|| chord.analyses || List of names of program analyses to be run in order || "" ||
 || *_BDD-based Datalog solver properties_* || || ||
 || chord.bddbddb.work.dir || || ||
 || chord.bddbddb.max.heap || || ||
 || chord.bddbddb.noisy || || || 
 || *_Program instrumentation properties_* || || ||
-|| chord.instr.exclude || List of prefixes of names of classes and packages to exclude from instrumentation; separator = `' |,|:|;'` || "java.,sun.,com." ||
-|| chord.run.ids || List of IDs to identify program runs; separator = `' |,|:|;'` || "0" ||
+|| chord.instr.exclude || List of prefixes of names of classes and packages to exclude from instrumentation; || "java.,sun.,com." ||
+|| chord.run.ids || List of IDs to identify program runs || "0" ||
 || chord.args.XXX || Command line arguments to be passed to run having ID XXX || "" ||
 || chord.boot.classes.dir || || ||
 || chord.user.classes.dir || || || 
