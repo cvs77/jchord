@@ -6,6 +6,10 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || *_Chord boot properties_* || Set by build.xml; must be set manually if running "java chord.project.Main" directly || ||
 || chord.home.dir     || Location of root directory of Chord's installation (i.e. basedir of build.xml) || *cannot override* ||
 || chord.props.file   || Location of Chord properties file loaded by build.xml || "${chord.work.dir}/chord.properties" ||
+|| chord.main.class.path || || ||
+|| chord.bddbddb.class.path || || ||
+|| chord.bdd.lib.dir || || ||
+|| chord.instr.agent.file || || ||
 || chord.max.heap     || Maximum memory size of JVM running Chord || "2048m" ||
 || chord.max.stack    || Maximum thread stack size of JVM running Chord || "32m" ||
 || chord.jvmargs      || Arguments passed to JVM running Chord || "-showversion -ea -Xmx${chord.max.heap} -Xss${chord.max.stack}" ||
@@ -27,23 +31,22 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || chord.dlog.analysis.path || Path of directories containing program analyses in Datalog (i.e. .datalog and .dlog files) || "${chord.home.dir}/src/main/dlog" ||
 || chord.analyses || List of names of program analyses to be run in order || "" ||
 || *_BDD-based Datalog solver properties_* || || ||
-|| chord.bddbddb.work.dir || || ||
-|| chord.bddbddb.max.heap || || ||
-|| chord.bddbddb.noisy || || || 
+|| chord.bddbddb.work.dir || || "${chord.out.dir}" ||
+|| chord.bddbddb.max.heap || || "1024m" ||
+|| chord.bddbddb.noisy || ["true"|"false"] || "false" ||
+|| chord.save.maps || ["true"|"false"] || "true" || 
 || *_Program instrumentation properties_* || || ||
 || chord.instr.exclude || List of prefixes of names of classes and packages to exclude from instrumentation || "java.,sun.,com." ||
 || chord.run.ids || List of IDs to identify program runs || "0" ||
 || chord.args.XXX || Command line arguments to be passed to run having ID XXX || "" ||
-|| chord.boot.classes.dir || || ||
-|| chord.user.classes.dir || || || 
-|| chord.runtime.max.heap || || ||
-|| chord.instr.scheme.file || || ||
-|| chord.crude.trace.file || || ||
-|| chord.final.trace.file || || ||
-|| chord.trace.block.size || || ||
+|| chord.runtime.jvmargs || || "-ea -Xmx1024m" ||
+|| chord.boot.classes.dir || || "${chord.out.dir}/boot_classes" ||
+|| chord.user.classes.dir || || "${chord.out.dir}/user_classes" || 
+|| chord.instr.scheme.file || || "${chord.out.dir}/scheme.ser" ||
+|| chord.crude.trace.file || || "${chord.out.dir}/crude_trace.txt" ||
+|| chord.final.trace.file || || "${chord.out.dir}/final_trace.txt" ||
+|| chord.trace.pipe || ["true"|"false"] || "true" ||
+|| chord.trace.block.size || || "4096" ||
+|| chord.runtime.class || || "chord.project.BufferedRuntime" ||
 || *_Program transformation properties_* || || ||
 || chord.ssa || Do SSA transformation for all methods deemed reachable ["true"|"false"] || "true" ||
-|| *_Chord resource properties_* || || ||
-|| chord.main.class.path || || ||
-|| chord.bddbddb.class.path || || ||
-|| chord.instr.agent.file || || ||
