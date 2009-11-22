@@ -1,4 +1,4 @@
-==Note: These instructions are valid for Chord 2.0 and above==
+==Note: These instructions are valid for Chord 2.0==
 
 ==Download and Installation==
 
