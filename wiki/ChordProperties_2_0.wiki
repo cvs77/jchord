@@ -4,8 +4,8 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || *_Mandatory properties_* || || ||
 || chord.work.dir     || Location of working directory during Chord's execution || ||
 || *_Chord boot properties_* || Set by build.xml; must be set manually if running "java chord.project.Main" directly || ||
-|| chord.home.dir     || Location of root directory of Chord's installation (basedir of build.xml) || *cannot override* ||
-|| chord.props.file   || Location of Chord properties file || ${chord.work.dir}/chord.properties ||
+|| chord.home.dir     || Location of root directory of Chord's installation (i.e. basedir of build.xml) || *cannot override* ||
+|| chord.props.file   || Location of Chord properties file loaded by build.xml || "${chord.work.dir}/chord.properties" ||
 || chord.max.heap     || Maximum memory size of JVM running Chord || "2048m" ||
 || chord.max.stack    || Maximum thread stack size of JVM running Chord || "32m" ||
 || chord.jvmargs      || Arguments passed to JVM running Chord || "-showversion -ea -Xmx${chord.max.heap} -Xss${chord.max.stack}" ||
@@ -19,7 +19,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || chord.src.path     || Java source path of program to be analyzed || ||
 || *_Program scope properties_* || || ||
 || chord.scope.kind   || Algorithm to compute program scope ["rta"|"dynamic"] || "rta" ||
-|| chord.reuse.scope  || Use program scope specified by ${chord.classes.file} and ${chord.methods.file} || "false" ||
+|| chord.reuse.scope  || Use program scope specified by ${chord.classes.file} and ${chord.methods.file} ["true"|"false"]; ${chord.scope.kind} is ignored if "true" || "false" ||
 || chord.classes.file || Location of file from/to which list of classes deemed reachable is read/written || "${chord.out.dir}/classes.txt" ||
 || chord.methods.file || Location of file from/to which list of methods deemed reachable is read/written || "${chord.out.dir}/methods.txt" ||
 || *_Program analysis properties_* || || ||
