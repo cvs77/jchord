@@ -31,22 +31,22 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || chord.dlog.analysis.path || Path of directories containing program analyses in Datalog (i.e. .datalog and .dlog files) || "${chord.home.dir}/src/main/dlog" ||
 || chord.analyses || List of names of program analyses to be run in order || "" ||
 || *_bddbddb properties_* || || ||
-|| chord.bddbddb.work.dir || || "${chord.out.dir}" ||
-|| chord.bddbddb.max.heap || || "1024m" ||
-|| chord.bddbddb.noisy || ["true"|"false"] || "false" ||
-|| chord.save.maps || ["true"|"false"] || "true" || 
+|| chord.bddbddb.work.dir || Directory used by bddbddb as its input/output directory || "${chord.out.dir}" ||
+|| chord.bddbddb.max.heap || Maximum memory size of JVM running bddbddb || "1024m" ||
+|| chord.bddbddb.noisy || Make bddbddb output debug info when solving Datalog programs ["true"|"false"] || "false" ||
+|| chord.save.maps || Write *.map files to ${chord.out.dir} when saving program domains (useful for debugging Datalog programs using debug target of build.xml) ["true"|"false"] || "true" || 
 || *_Program instrumentation properties_* || || ||
 || chord.instr.exclude || List of prefixes of names of classes and packages to exclude from instrumentation || "java.,sun.,com." ||
-|| chord.run.ids || List of IDs to identify program runs || "0" ||
-|| chord.args.XXX || Command line arguments to be passed to run having ID XXX || "" ||
-|| chord.runtime.jvmargs || || "-ea -Xmx1024m" ||
-|| chord.boot.classes.dir || || "${chord.out.dir}/boot_classes" ||
-|| chord.user.classes.dir || || "${chord.out.dir}/user_classes" || 
-|| chord.instr.scheme.file || || "${chord.out.dir}/scheme.ser" ||
-|| chord.crude.trace.file || || "${chord.out.dir}/crude_trace.txt" ||
-|| chord.final.trace.file || || "${chord.out.dir}/final_trace.txt" ||
-|| chord.trace.pipe || ["true"|"false"] || "true" ||
-|| chord.trace.block.size || || "4096" ||
-|| chord.runtime.class || || "chord.project.BufferedRuntime" ||
+|| chord.run.ids || List of IDs to identify runs of given program || "0" ||
+|| chord.args.XXX || Command line arguments to be passed to run having ID XXX of given program || "" ||
+|| chord.runtime.jvmargs || Arguments to JVM running given program || "-ea -Xmx1024m" ||
+|| chord.boot.classes.dir || Directory containing instrumented JDK classes used by given program || "${chord.out.dir}/boot_classes" ||
+|| chord.user.classes.dir || Directory containing instrumented non-JDK classes of given program || "${chord.out.dir}/user_classes" || 
+|| chord.instr.scheme.file || File specifying format of trace file || "${chord.out.dir}/scheme.ser" ||
+|| chord.crude.trace.file || Crude trace file || "${chord.out.dir}/crude_trace.txt" ||
+|| chord.final.trace.file || Final trace file || "${chord.out.dir}/final_trace.txt" ||
+|| chord.trace.pipe || Implement the trace file as a pipe instead of a regular file ["true"|"false"] || "true" ||
+|| chord.trace.block.size || Number of bytes to read/write in a single operation from/to the trace file || "4096" ||
+|| chord.runtime.class || Class implementing code to be executed at runtime for instrumented events || "chord.project.BufferedRuntime" ||
 || *_Program transformation properties_* || || ||
 || chord.ssa || Do SSA transformation for all methods deemed reachable ["true"|"false"] || "true" ||
