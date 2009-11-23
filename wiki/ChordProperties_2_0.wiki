@@ -23,14 +23,14 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || chord.src.path     || Java source path of program to be analyzed || ||
 || *_Program scope properties_* || || ||
 || chord.scope.kind   || Algorithm to compute program scope ["rta"|"dynamic"] || "rta" ||
-|| chord.reuse.scope  || Use program scope specified by ${chord.classes.file} and ${chord.methods.file} ["true"|"false"]; ${chord.scope.kind} is ignored if "true" || "false" ||
+|| chord.reuse.scope  || Use program scope specified by ${chord.classes.file} and ${chord.methods.file} ["true"|"false"]; ${chord.scope.kind} is ignored if this property is "true" || "false" ||
 || chord.classes.file || File from/to which list of classes deemed reachable is read/written || "${chord.out.dir}/classes.txt" ||
 || chord.methods.file || File from/to which list of methods deemed reachable is read/written || "${chord.out.dir}/methods.txt" ||
 || *_Program analysis properties_* || || ||
 || chord.java.analysis.path || Classpath containing program analyses in Java (i.e. @Chord-annotated classes) || "${chord.home.dir}/classes/main" ||
 || chord.dlog.analysis.path || Path of directories containing program analyses in Datalog (i.e. .datalog and .dlog files) || "${chord.home.dir}/src/main/dlog" ||
 || chord.analyses || List of names of program analyses to be run in order || "" ||
-|| *bddbddb properties_* || || ||
+|| *_bddbddb properties_* || || ||
 || chord.bddbddb.work.dir || || "${chord.out.dir}" ||
 || chord.bddbddb.max.heap || || "1024m" ||
 || chord.bddbddb.noisy || ["true"|"false"] || "false" ||
