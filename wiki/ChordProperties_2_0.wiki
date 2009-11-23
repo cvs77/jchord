@@ -1,36 +1,36 @@
-The following system properties are recognized by Chord 2.0.  The separator for list-valued properties is `' |,|:|;'`.
+The following system properties are recognized by Chord 2.0.  The separator for list-valued properties can be either a blank space, a comma, a colon, or a semi-colon.
 
 || *Property name*     || *Description* || *Default value (if any)* ||
 || *_Mandatory properties_* || || ||
-|| chord.work.dir     || Location of working directory during Chord's execution || ||
+|| chord.work.dir     || Working directory during Chord's execution || ||
 || *_Chord boot properties_* || Set by build.xml; must be set manually if running "java chord.project.Main" directly || ||
-|| chord.home.dir     || Location of root directory of Chord's installation (i.e. basedir of build.xml) || *cannot override* ||
-|| chord.props.file   || Location of Chord properties file loaded by build.xml || "${chord.work.dir}/chord.properties" ||
-|| chord.main.class.path || || ||
-|| chord.bddbddb.class.path || || ||
-|| chord.bdd.lib.dir || || ||
-|| chord.instr.agent.file || || ||
+|| chord.home.dir     || Root directory of Chord's installation (i.e. basedir of build.xml) || *cannot override* ||
+|| chord.props.file   || Chord properties file loaded by build.xml || "${chord.work.dir}/chord.properties" ||
+|| chord.main.class.path || Classpath of Chord || *cannot override* ||
+|| chord.bddbddb.class.path || Classpath of bddbddb || *cannot override* ||
+|| chord.bdd.lib.dir || Directory containing BDD library needed by bddbddb || *cannot override* ||
+|| chord.instr.agent.file || Chord agent file || *cannot override* ||
 || chord.max.heap     || Maximum memory size of JVM running Chord || "2048m" ||
 || chord.max.stack    || Maximum thread stack size of JVM running Chord || "32m" ||
 || chord.jvmargs      || Arguments passed to JVM running Chord || "-showversion -ea -Xmx${chord.max.heap} -Xss${chord.max.stack}" ||
 || *_Chord I/O properties_* || || ||
-|| chord.out.dir      || Location of directory to which Chord dumps all files || "${chord.work.dir}/chord_output" ||
-|| chord.out.file     || Location of file to redirect standard output stream during Chord's execution || "${chord.out.dir}/log.txt" ||
-|| chord.err.file     || Location of file to redirect standard error stream during Chord's execution || "${chord.out.dir}/log.txt" ||
+|| chord.out.dir      || Directory to which Chord dumps all files || "${chord.work.dir}/chord_output" ||
+|| chord.out.file     || File to redirect standard output stream during Chord's execution || "${chord.out.dir}/log.txt" ||
+|| chord.err.file     || File to redirect standard error stream during Chord's execution || "${chord.out.dir}/log.txt" ||
 || *_Program properties_* || || ||
 || chord.main.class   || Fully-qualified name of main class of program to be analyzed (e.g. "com.example.Main") || ||
-|| chord.class.path   || Class path of program to be analyzed (${sun.boot.class.path} is implicitly appended) || ||
+|| chord.class.path   || Classpath of program to be analyzed (${sun.boot.class.path} is implicitly appended) || ||
 || chord.src.path     || Java source path of program to be analyzed || ||
 || *_Program scope properties_* || || ||
 || chord.scope.kind   || Algorithm to compute program scope ["rta"|"dynamic"] || "rta" ||
 || chord.reuse.scope  || Use program scope specified by ${chord.classes.file} and ${chord.methods.file} ["true"|"false"]; ${chord.scope.kind} is ignored if "true" || "false" ||
-|| chord.classes.file || Location of file from/to which list of classes deemed reachable is read/written || "${chord.out.dir}/classes.txt" ||
-|| chord.methods.file || Location of file from/to which list of methods deemed reachable is read/written || "${chord.out.dir}/methods.txt" ||
+|| chord.classes.file || File from/to which list of classes deemed reachable is read/written || "${chord.out.dir}/classes.txt" ||
+|| chord.methods.file || File from/to which list of methods deemed reachable is read/written || "${chord.out.dir}/methods.txt" ||
 || *_Program analysis properties_* || || ||
 || chord.java.analysis.path || Classpath containing program analyses in Java (i.e. @Chord-annotated classes) || "${chord.home.dir}/classes/main" ||
 || chord.dlog.analysis.path || Path of directories containing program analyses in Datalog (i.e. .datalog and .dlog files) || "${chord.home.dir}/src/main/dlog" ||
 || chord.analyses || List of names of program analyses to be run in order || "" ||
-|| *_BDD-based Datalog solver properties_* || || ||
+|| *bddbddb properties_* || || ||
 || chord.bddbddb.work.dir || || "${chord.out.dir}" ||
 || chord.bddbddb.max.heap || || "1024m" ||
 || chord.bddbddb.noisy || ["true"|"false"] || "false" ||
