@@ -1,3 +1,5 @@
+#summary System properties recognized by Chord 2.0
+
 The following system properties are recognized by Chord 2.0.  The separator for list-valued properties can be either a blank space, a comma, a colon, or a semi-colon.
 
 || *Property name*     || *Description* || *Default value (if any)* ||
