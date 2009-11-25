@@ -1,0 +1,18 @@
+#summary Roadmap for Chord
+
+== Chord 2.0 ==
+
+  * Test suite
+  * Features
+    * allow domains and relations to be loaded from disk instead of re-running analyses every time to construct them afresh (requires joeq.`*` to be serializable)
+    * make Chord scope construction deterministic
+  * Bug fixes
+    * bddbddb constructs a wrong stratification for certain Datalog programs with mutually recursive rules
+  * Documentation
+    * How to write a program analysis in Chord (domains, relations, static analysis in Datalog, static analysis in Java, dynamic analysis)
+    * How to fix performance problems in analyses written in Datalog and solved using bddbddb
+    * Javadoc
+
+== Chord 3.0 ==
+
+  * Use a declarative language like Concurrent Collections to allow users to rapidly prototype new program analyses by combining existing analyses in complex ways.
