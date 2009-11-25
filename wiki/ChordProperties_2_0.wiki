@@ -36,7 +36,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || chord.bddbddb.max.heap || Maximum memory size of JVM running bddbddb || "1024m" ||
 || chord.bddbddb.noisy || Make bddbddb output debug info when solving Datalog programs ["true"|"false"] || "false" ||
 || chord.dom.map || Write .map files to ${chord.bddbddb.work.dir} when saving program domains (useful for debugging Datalog programs using debug target of build.xml) ["true"|"false"] || "true" || 
-|| chord.dom.ser || Write .ser files to ${chord.bddbddb.work.dir} when saving program domains ["true"|"false" || "false" || 
+|| chord.dom.ser || Write .ser files to ${chord.bddbddb.work.dir} when saving program domains ["true"|"false"] || "false" || 
 || *_Program instrumentation properties_* || || ||
 || chord.instr.exclude || List of prefixes of names of classes and packages to exclude from instrumentation || "java.,sun.,com." ||
 || chord.run.ids || List of IDs to identify runs of given program || "0" ||
