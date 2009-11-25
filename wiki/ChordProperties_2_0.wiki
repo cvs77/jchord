@@ -30,12 +30,13 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || chord.java.analysis.path || Classpath containing program analyses in Java (i.e. @Chord-annotated classes) || "${chord.home.dir}/classes/main" ||
 || chord.dlog.analysis.path || Path of directories containing program analyses in Datalog (i.e. .datalog and .dlog files) || "${chord.home.dir}/src/main/dlog" ||
 || chord.analyses || List of names of program analyses to be run in order || "" ||
+|| chord.reuse.rels || ["true"|"false"] || "false" ||
 || *_bddbddb properties_* || || ||
 || chord.bddbddb.work.dir || Directory used by bddbddb as its input/output directory || "${chord.out.dir}" ||
 || chord.bddbddb.max.heap || Maximum memory size of JVM running bddbddb || "1024m" ||
 || chord.bddbddb.noisy || Make bddbddb output debug info when solving Datalog programs ["true"|"false"] || "false" ||
-|| chord.save.dom.map || Write .map files to ${chord.out.dir} when saving program domains (useful for debugging Datalog programs using debug target of build.xml) ["true"|"false"] || "true" || 
-|| chord.save.dom.ser || Write .ser files to ${chord.out.dir} when saving program domains ["true"|"false" || "false" || 
+|| chord.dom.map || Write .map files to ${chord.out.dir} when saving program domains (useful for debugging Datalog programs using debug target of build.xml) ["true"|"false"] || "true" || 
+|| chord.dom.ser || Write .ser files to ${chord.out.dir} when saving program domains ["true"|"false" || "false" || 
 || *_Program instrumentation properties_* || || ||
 || chord.instr.exclude || List of prefixes of names of classes and packages to exclude from instrumentation || "java.,sun.,com." ||
 || chord.run.ids || List of IDs to identify runs of given program || "0" ||
