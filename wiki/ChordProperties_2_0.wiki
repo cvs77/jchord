@@ -45,11 +45,11 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || chord.runtime.jvmargs || Arguments to JVM running given program || "-ea -Xmx1024m" ||
 || chord.boot.classes.dir || Directory containing instrumented JDK classes used by given program || "${chord.out.dir}/boot_classes" ||
 || chord.user.classes.dir || Directory containing instrumented non-JDK classes of given program || "${chord.out.dir}/user_classes" || 
-|| chord.instr.scheme.file || File specifying format of trace file || "${chord.out.dir}/scheme.ser" ||
+|| chord.instr.scheme.file || File specifying kind and format of events in trace file || "${chord.out.dir}/scheme.ser" ||
 || chord.crude.trace.file || Crude trace file || "${chord.out.dir}/crude_trace.txt" ||
 || chord.final.trace.file || Final trace file || "${chord.out.dir}/final_trace.txt" ||
-|| chord.trace.pipe || Implement the trace file as a pipe instead of a regular file ["true"|"false"] || "true" ||
+|| chord.trace.pipe || Implement the trace file as a POSIX pipe instead of a regular file ["true"|"false"] || "true" ||
 || chord.trace.block.size || Number of bytes to read/write in a single operation from/to the trace file || "4096" ||
-|| chord.runtime.class || Class implementing code to be executed at runtime for instrumented events || "chord.project.BufferedRuntime" ||
+|| chord.runtime.class || Subclass of chord.project.Runtime used by dynamic program analyses to handle events generated during an instrumented program's execution || "chord.project.BufferedRuntime" ||
 || *_Program transformation properties_* || || ||
 || chord.ssa || Do SSA transformation for all methods deemed reachable ["true"|"false"] || "true" ||
