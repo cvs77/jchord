@@ -5,13 +5,13 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 || *Property name*     || *Description* || *Default value (if any)* ||
 || *_Mandatory properties_* || || ||
 || chord.work.dir     || Working directory during Chord's execution || ||
-|| *_Chord boot properties_* || Set by build.xml; must be set manually if running "java chord.project.Main" directly || ||
-|| chord.home.dir     || Root directory of Chord's installation (i.e. basedir of build.xml) || *cannot override* ||
+|| *_Chord boot properties_* || || ||
+|| chord.home.dir     || Root directory of Chord's installation || ||
 || chord.props.file   || Chord properties file loaded by build.xml || "${chord.work.dir}/chord.properties" ||
-|| chord.main.class.path || Classpath of Chord || *cannot override* ||
-|| chord.bddbddb.class.path || Classpath of bddbddb || *cannot override* ||
-|| chord.bdd.lib.dir || Directory containing BDD library needed by bddbddb || *cannot override* ||
-|| chord.instr.agent.file || Chord agent file || *cannot override* ||
+|| chord.main.class.path || Classpath of Chord || ... ||
+|| chord.bddbddb.class.path || Classpath of bddbddb || ... ||
+|| chord.bdd.lib.dir || Directory containing BDD library needed by bddbddb || "${chord.home.dir}/lib" ||
+|| chord.instr.agent.file || Chord agent file || "${chord.home.dir}/lib/libchord_instr_agent.so" ||
 || chord.max.heap     || Maximum memory size of JVM running Chord || "2048m" ||
 || chord.max.stack    || Maximum thread stack size of JVM running Chord || "32m" ||
 || chord.jvmargs      || Arguments passed to JVM running Chord || "-showversion -ea -Xmx${chord.max.heap} -Xss${chord.max.stack}" ||
