@@ -1,4 +1,5 @@
-==Note: These instructions are valid for Chord 1.0==
+#summary =Quick Start Instructions for Chord 1.0 and below
+==Note: These instructions are valid for Chord 1.0 and below==
 
 ==Download and Installation==
 
