@@ -1,7 +1,5 @@
 #summary Quick Start Instructions for Chord 1.0 and below
 
-==Note: These instructions are valid for Chord 1.0 and below==
-
 ==Download and Installation==
 
 Before installing Chord ensure that the following software is installed on your machine:
