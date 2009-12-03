@@ -1,5 +1,5 @@
+#summary Quick Start Instructions for Chord 2.0
 #labels Featured
-==Note: These instructions are valid for Chord 2.0==
 
 ==Download and Installation==
 
