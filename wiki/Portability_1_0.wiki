@@ -1,4 +1,4 @@
-==Note: These instructions are valid for Chord 1.0 and below==
+#summary Portability Notes for Chord 1.0 and below
 
 Chord has been tested on the following architectures:
 
