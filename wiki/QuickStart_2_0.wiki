@@ -54,9 +54,9 @@ The above structure is typical: the program's Java source files are under `examp
 
 Execute Chord on the above program by running the following command in Chord's root directory `chord-x.y/`:
 {{{
-    ant -Dchord.work.dir=.../example/chord/ run
+    ant -Dchord.work.dir=<...>/example/ run
 }}}
-where "..." denotes either the absolute path, or the path relative to Chord's root directory, of the parent of directory `example/`. Chord will read the system properties specified in the file named `chord.properties` that it presumes exists in the directory specified by system property `chord.work.dir` which in the above case is directory `example/`. A sample such file for the above program is as follows:
+where "<...>" denotes either the absolute path, or the path relative to Chord's root directory, of the parent of directory `example/`. Chord will read the system properties specified in the file named `chord.properties` that it presumes exists in the directory specified by system property `chord.work.dir` which in the above case is directory `example/`. A sample such file for the above program is as follows:
 {{{
     chord.main.class=foo.Main
     chord.class.path=../classes:../lib/classes/taz.jar
@@ -64,4 +64,4 @@ where "..." denotes either the absolute path, or the path relative to Chord's ro
 }}}
 Every non-absolute file location used in the value of any system property defined in the above file is taken to be relative to the directory specified by system property `chord.work.dir`.
 
-The user guide presents an exhaustive listing of system properties recognized by Chord.
+An exhaustive listing of system properties recognized by Chord is at [ChordProperties_2_0].
