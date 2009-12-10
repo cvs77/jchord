@@ -1,4 +1,5 @@
 #summary Targets defined in Chord 2.0
+#labels Featured
 
 Here is a list of targets available in Chord 2.0:
 
