@@ -1,0 +1,5 @@
+#summary Targets defined in Chord 2.0
+
+Here is a list of targets available in Chord 2.0:
+
+  * [http://chord.stanford.edu/lib/main/targets_sortby_name.html main]
