@@ -3,4 +3,7 @@
 
 Here is a list of targets available in Chord 2.0:
 
-  * [http://chord.stanford.edu/lib/main/targets_sortby_name.html main]
+  * [http://chord.stanford.edu/lib/main/targets_sortby_name.html Basic program domains and relations]
+  * May alias analyses and call graph analyses
+    * [http://chord.stanford.edu/lib/cia/targets_sortby_name.html Context-insensitive]
+    * [http://chord.stanford.edu/lib/csa/targets_sortby_name.html Context-sensitive] 
