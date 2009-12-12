@@ -7,7 +7,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <tr><td>*Property name*<td>*Type*<td>*Description*<td>*Default value (if any)*
 <tr><td colspan="4">*_Chord boot properties_*
 <tr><td>chord.work.dir<td>*location*<td>Working directory during Chord's execution<td>current working directory
-<tr><td>chord.props.file<td>*location*<td>Chord properties file loaded by `build.xml`<td>`${chord.work.dir}/chord.properties`
+<tr><td>chord.props.file<td>*location*<td>Chord properties file loaded by `build.xml`.  Any of the below properties, as well as other user-defined properties to be passed to Chord (e.g. for user-defined analyses), may be set in this file.  Each relative (instead of absolute) path element in the value of any property named `chord.<...>.path` set in this file is converted to an absolute path element w.r.t. `${chord.work.dir}`.<td>`${chord.work.dir}/chord.properties`
 <tr><td>chord.max.heap<td>*string*<td>Maximum memory size of JVM running Chord<td>`1024m`
 <tr><td>chord.max.stack<td>*string*<td>Maximum thread stack size of JVM running Chord<td>`32m`
 <tr><td>chord.jvmargs<td>*string*<td>Arguments passed to JVM running Chord<td>`"-showversion -ea -Xmx${chord.max.heap} -Xss${chord.max.stack}"`
