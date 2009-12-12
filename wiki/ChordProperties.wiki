@@ -23,7 +23,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <tr><td>chord.src.path<td>*path*<td>Java source path of program to be analyzed.<td>`""`
 <tr><td>chord.run.ids<td>*string list*<td>List of IDs to identify runs of given program.<td>`0`
 <tr><td>chord.args.XXX<td>*string*<td>Command line arguments to be passed to run having ID XXX of given program.<td>`""`
-<tr><td>chord.runtime.jvmargs<td>*string*<td>Arguments to JVM when running given program.  It is used when the program is executed to compute its scope (i.e. when `${chord.scope.kind}` is set to `dynamic`) as well as when the instrumented program is executed on behalf of a dynamic analysis.<td>`"-ea -Xmx1024m"`
+<tr><td>chord.runtime.jvmargs<td>*string*<td>Arguments to JVM when running given program.  It is used when the program is executed to compute its scope (i.e. when `${chord.scope.kind}` is set to `dynamic`) as well as when the instrumented program is executed for dynamic analyses.<td>`"-ea -Xmx1024m"`
 <tr><td colspan="4">*_Program scope properties_*
 <tr><td>chord.scope.kind<td>[`rta`|`dynamic`]<td>Algorithm to compute program scope.  Current choices include `rta` (Rapid Type Analysis) and `dynamic` (dynamic analysis).<td>`rta`
 <tr><td>chord.reuse.scope<td>*bool*<td>Use program scope specified by `${chord.classes.file}` and `${chord.methods.file}`. `${chord.scope.kind}` is ignored if this property is set to `true`.<td>`false`
@@ -62,4 +62,4 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <tr><td>chord.main.class.path<td>*path*<td>Classpath of Chord.  It includes `${chord.java.analysis.path}` to allow running user-defined program analyses.<td>see `build.xml`
 <tr><td>chord.bddbddb.class.path<td>*path*<td>Classpath of bddbddb.<td>see `build.xml`
 <tr><td>chord.instr.agent.file<td>*location*<td>Chord agent file.<td>`${chord.home.dir}/lib/libchord_instr_agent.so`
-<tr><td>chord.javadoc.url<td>*string*<td>URL of the Javadoc location of program analyses.  It is used when publishing targets (see `${chord.publish.targets}`).<td>`http://chord.stanford.edu/javadoc_2_0/`
+<tr><td>chord.javadoc.url<td>*string*<td>URL of the Javadoc location of program analyses.  It is used when publishing targets (i.e. when `${chord.publish.targets}` is set to `true`).<td>`http://chord.stanford.edu/javadoc_2_0/`
