@@ -1,0 +1,66 @@
+#summary Quick Start Instructions for Chord 2.0
+
+==Download and Installation==
+
+Before installing Chord ensure that the following software is installed on your machine:
+
+  * JDK 5 or higher (e.g., from [http://java.sun.com/javase/downloads/index.jsp Sun] or [http://www.ibm.com/developerworks/java/jdk/ IBM])
+
+  * [http://ant.apache.org/ Apache Ant] (a Java build tool)
+
+Download the latest version of Chord (say `chord-x.y.tar.gz`) from [http://code.google.com/p/jchord/downloads/list here] and uncompress it in a suitable directory by running the following command:
+{{{
+    tar xvzf chord-x.y.tar.gz
+}}}
+This will create a directory structure with root directory `chord-x.y/`.
+
+==Building Chord==
+
+The root directory `chord-x.y/` contains a `build.xml` file which is interpreted by
+Apache Ant (a Java build tool).
+
+To peruse targets, run the following command in the root directory:
+{{{
+    ant
+}}}
+To compile Chord, run the following command in the root directory:
+{{{
+    ant compile
+}}}
+
+==Running Chord==
+
+Suppose the program to be analyzed has the following directory structure:
+{{{
+    example/
+        src/
+            foo/
+                Main.java
+                ...
+        classes/
+            foo/
+                Main.class
+                ...
+        lib/
+            src/
+                taz/
+                    ...
+            jars/
+                taz.jar
+        chord.properties
+}}}
+The above structure is typical: the program's Java source files are under `example/src/`, its class files are under `example/classes/`, the source and jar files of the libraries used by the program are under `example/lib/src/` and `example/lib/jars/`, respectively.
+
+Execute Chord on the above program by running the following command in Chord's root directory `chord-x.y/`:
+{{{
+    ant -Dchord.work.dir=<...>/example/ run
+}}}
+where "<...>" denotes either the absolute path, or the path relative to Chord's root directory, of the parent of directory `example/`. Chord will read the system properties specified in the file named `chord.properties` that it presumes exists in the directory specified by system property `chord.work.dir` which in the above case is directory `example/`. A sample such file for the above program is as follows:
+{{{
+    chord.main.class=foo.Main
+    chord.class.path=../classes:../lib/classes/taz.jar
+    chord.src.path=../src:../lib/src
+}}}
+Every non-absolute file location used in the value of any system property defined in the above file is taken to be relative to the directory specified by system property `chord.work.dir`.
+
+An exhaustive listing of system properties recognized by Chord is at [ChordProperties].
