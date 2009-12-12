@@ -13,7 +13,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <tr><td>chord.jvmargs<td>*string*<td>Arguments passed to JVM running Chord<td>`"-showversion -ea -Xmx${chord.max.heap} -Xss${chord.max.stack}"`
 <tr><td>chord.bddbddb.max.heap<td>*string*<td>Maximum memory size of JVM running bddbddb<td>`1024m`
 <tr><td colspan="4">*_Chord task properties_*
-<tr><td>chord.build.scope<td>*bool*<td>Compute program scope (i.e. reachable classes and methods) using properties ${chord.scope.kind} and ${chord.reuse.scope}; program scope is computed regardless of the value of this property if another task (e.g. a program analysis to be run) needs it<td>`false`
+<tr><td>chord.build.scope<td>*bool*<td>Compute program scope (i.e. reachable classes and methods) using properties `${chord.scope.kind}` and `${chord.reuse.scope}`; program scope is computed regardless of the value of this property if another task (e.g. a program analysis to be run) needs it<td>`false`
 <tr><td>chord.run.analyses<td>*string list*<td>List of names of program analyses to be run in order<td>`""`
 <tr><td>chord.print.rels<td>*string list*<td>List of names of program relations whose contents must be printed to files `${chord.out.dir}/<...>.txt` where `<...>` denotes the relation name<td>`""`
 <tr><td>chord.publish.targets<td>*bool*<td>Publish all targets defined by program analyses in paths specified by `${chord.java.analysis.path}` and `${chord.dlog.analysis.path}`<td>`false`
