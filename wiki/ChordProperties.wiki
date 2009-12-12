@@ -45,7 +45,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <tr><td>chord.bddbddb.noisy<td>*bool*<td>Make bddbddb output debug info when solving Datalog programs<td>`false`
 <tr><td>chord.save.maps<td>*bool*<td>Write to file `${chord.bddbddb.work.dir}/<...>.map` when saving program domain named `<...>` (useful for debugging Datalog programs using `debug` target of `build.xml`)<td>`true`
 <tr><td colspan="4">*_Program instrumentation properties_*
-<tr><td>chord.instr.exclude<td>*string list*<td>List of prefixes of names of classes and packages to exclude from instrumentation<td>`java.,sun.,com.`
+<tr><td>chord.instr.exclude<td>*string list*<td>List of prefixes of names of classes and packages to exclude from instrumentation<td>`"java.,sun.,com.sun.,com.ibm.,org.apache.harmony.,joeq.,jwutil."`
 <tr><td>chord.run.ids<td>*string list*<td>List of IDs to identify runs of given program<td>`0`
 <tr><td>chord.args.XXX<td>*string*<td>Command line arguments to be passed to run having ID XXX of given program<td>`""`
 <tr><td>chord.runtime.jvmargs<td>*string*<td>Arguments to JVM running given program<td>`"-ea -Xmx1024m"`
