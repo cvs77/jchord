@@ -3,6 +3,8 @@
 TODO:
   * Features
     * make Chord scope construction deterministic
+    * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers
+    * tune bddvarorders to make race and deadlock checkers faster
   * Documentation
     * How to write a program analysis in Chord (domains, relations, static analysis in Datalog, static analysis in Java, dynamic analysis)
     * How to fix performance problems in analyses written in Datalog and solved using bddbddb
