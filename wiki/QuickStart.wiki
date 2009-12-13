@@ -64,4 +64,4 @@ where "<...>" denotes either the absolute path, or the path relative to Chord's 
 }}}
 Every non-absolute file location used in the value of any system property defined in the above file is taken to be relative to the directory specified by system property `chord.work.dir`.
 
-An exhaustive listing of system properties recognized by Chord is at [ChordProperties].
+An exhaustive listing of system properties recognized by Chord is [ChordProperties here].
