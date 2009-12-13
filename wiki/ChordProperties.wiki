@@ -5,6 +5,13 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 
 <table border=1>
 <tr><td>*Property name*<td>*Type*<td>*Description*<td>*Default value (if any)*
+<tr><td colspan="4">*_Chord resource properties_*
+<tr><td>chord.home.dir<td>*location*<td>Root directory of Chord's installation<td>
+<tr><td>chord.lib.dir<td>*location*<td>Directory containing libraries needed by Chord.<td>`${chord.home.dir}/lib`
+<tr><td>chord.main.class.path<td>*path*<td>Classpath of Chord.  It includes `${chord.java.analysis.path}` to allow running user-defined program analyses.<td>see `build.xml`
+<tr><td>chord.bddbddb.class.path<td>*path*<td>Classpath of bddbddb.<td>see `build.xml`
+<tr><td>chord.instr.agent.file<td>*location*<td>Chord agent file.<td>`${chord.home.dir}/lib/libchord_instr_agent.so`
+<tr><td>chord.javadoc.url<td>*string*<td>URL of the Javadoc location of program analyses.  It is used when publishing targets (i.e. when `${chord.publish.targets}` is set to `true`).<td>`http://chord.stanford.edu/javadoc_2_0/`
 <tr><td colspan="4">*_Chord boot properties_*
 <tr><td>chord.work.dir<td>*location*<td>Working directory during Chord's execution.<td>current working directory
 <tr><td>chord.props.file<td>*location*<td>Chord properties file loaded by `build.xml`.  Any of the below properties, as well as other user-defined properties to be passed to Chord (e.g. for user-defined analyses), may be set in this file.  Each relative (instead of absolute) path element in the value of any property named `chord.<...>.path` set in this file is converted to an absolute path element w.r.t. `${chord.work.dir}`.<td>`${chord.work.dir}/chord.properties`
@@ -56,10 +63,3 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <tr><td>chord.instr.scheme.file<td>*location*<td>File specifying kind and format of events in trace file.<td>`${chord.out.dir}/scheme.ser`
 <tr><td>chord.crude.trace.file<td>*location*<td>Crude trace file.<td>`${chord.out.dir}/crude_trace.txt`
 <tr><td>chord.final.trace.file<td>*location*<td>Final trace file.<td>`${chord.out.dir}/final_trace.txt`
-<tr><td colspan="4">*_Chord resource properties_*
-<tr><td>chord.home.dir<td>*location*<td>Root directory of Chord's installation<td>
-<tr><td>chord.lib.dir<td>*location*<td>Directory containing libraries needed by Chord.<td>`${chord.home.dir}/lib`
-<tr><td>chord.main.class.path<td>*path*<td>Classpath of Chord.  It includes `${chord.java.analysis.path}` to allow running user-defined program analyses.<td>see `build.xml`
-<tr><td>chord.bddbddb.class.path<td>*path*<td>Classpath of bddbddb.<td>see `build.xml`
-<tr><td>chord.instr.agent.file<td>*location*<td>Chord agent file.<td>`${chord.home.dir}/lib/libchord_instr_agent.so`
-<tr><td>chord.javadoc.url<td>*string*<td>URL of the Javadoc location of program analyses.  It is used when publishing targets (i.e. when `${chord.publish.targets}` is set to `true`).<td>`http://chord.stanford.edu/javadoc_2_0/`
