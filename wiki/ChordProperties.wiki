@@ -34,7 +34,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <tr><td colspan="4">*_Program scope properties_*
 <tr><td>chord.scope.kind<td>[`rta`|`dynamic`]<td>Algorithm to compute program scope.  Current choices include `rta` (Rapid Type Analysis) and `dynamic` (dynamic analysis).<td>`rta`
 <tr><td>chord.reuse.scope<td>*bool*<td>Use program scope specified by `${chord.classes.file}` and `${chord.methods.file}`. `${chord.scope.kind}` is ignored if this property is set to `true`.<td>`false`
-<tr><td>chord.scope.exclude<td>*string list*<td>List of prefixes of names of classes and packages to be excluded while computing program scope (i.e. reachable classes and methods).<td>`"java.,sun.,com.sun.,com.ibm.,org.apache.harmony.,joeq.,jwutil."`
+<tr><td>chord.scope.exclude<td>*string list*<td>List of prefixes of names of classes and packages to be excluded while computing program scope (i.e. reachable classes and methods).<td>`""`
 <tr><td>chord.check.exclude<td>*string list*<td>List of prefixes of names of classes and packages to be excluded by program analyses.<td>`"java.,sun.,com.sun.,com.ibm.,org.apache.harmony.,joeq.,jwutil."`
 <tr><td>chord.instr.exclude<td>*string list*<td>List of prefixes of names of classes and packages to be excluded from being instrumented.  Classes in package `java.lang.ref` are not instrumented regardless of the value of this property.<td>`"java.,sun.,com.sun.,com.ibm.,org.apache.harmony.,joeq.,jwutil."`
 <tr><td colspan="4">*_Program analysis properties_*
