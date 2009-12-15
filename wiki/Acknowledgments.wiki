@@ -1,4 +1,6 @@
+#summary Acknowledgments
 #labels Featured
+
 Chord would not be possible without the following open-source software:
   * [http://joeq.sourceforge.net/ Joeq] (a Java compiler framework)
   * [http://bddbddb.sourceforge.net/ bddbddb] (a BDD-based solver for Datalog)
