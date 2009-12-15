@@ -5,7 +5,7 @@
 
 Determine the instrumentation scheme required by your dynamic analysis, that is, the kind and format of events to be generated during an instrumented program's execution.  See class [http://chord.stanford.edu/javadoc/chord/instr/InstrScheme.html chord.instr.InstrScheme] for the kinds of supported events and their formats.
 
-== Step 2: Implementing the Dynamic Analysis ==
+== Step 2: Implementing the Analysis ==
 
 Create a class extending [http://chord.stanford.edu/javadoc/chord/project/DynamicAnalysis.html chord.project.DynamicAnalysis] and overriding the appropriate methods in it.
 
