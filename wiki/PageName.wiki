@@ -69,7 +69,7 @@ A sample such class called `MyDynamicAnalysis` is shown below:
 
 = Step 3 =
 
-Determine the runtime event handler for your dynamic analysis.  There are two kinds of runtime event handlers, offline and online.  See package [http://chord.stanford.edu/javadoc/chord/runtime/package-summary.html chord.runtime] for more details.  For most dynamic analyses, an offline event hander suffices, in which case you don't need to do anything in this step.  Otherwise, you need to create a class extending class [http://chord.stanford.edu/javadoc/chord/runtime/Runtime.html chord.runtime.Runtime] and override the appropriate methods in it, and provide the fully-qualified name of the created class as the value of system property `chord.runtime.class`.
+Determine the runtime event handler for your dynamic analysis.  There are two kinds of runtime event handlers, offline and online.  See package [http://chord.stanford.edu/javadoc/chord/runtime/package-summary.html chord.runtime] for more details.  For most dynamic analyses, an offline event hander suffices, in which case you don't need to do anything in this step (except that you may want to change the default values of properties `chord.trace.pipe` and `chord.trace.block.size` for performance; see [ChordProperties] for the meaning of these properties).  Otherwise, you need to create a class extending class [http://chord.stanford.edu/javadoc/chord/runtime/Runtime.html chord.runtime.Runtime] and override the appropriate methods in it, and provide the fully-qualified name of the created class as the value of system property `chord.runtime.class` (whose default value is the class [http://chord.stanford.edu/javadoc/chord/runtime/BufferedRuntime.html chord.runtime.BufferedRuntime]).
 
 = Step 4 =
 
