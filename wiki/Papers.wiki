@@ -1,4 +1,6 @@
+#summary Technical Papers on Chord
 #labels Featured
+
   * Mayur Naik, Chang-Seo Park, Koushik Sen, and David Gay. [http://berkeley.intel-research.net/mnaik/pubs/icse09/paper.pdf Effective Static Deadlock Detection]. In Proceedings of the 31st International Conference on Software Engineering (ICSE'09), Vancouver, Canada, May 2009.
   * Mayur Naik and Alex Aiken. [http://berkeley.intel-research.net/mnaik/pubs/popl07/paper.pdf Conditional Must Not Aliasing for Static Race Detection]. In Proceedings of the 34th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL'07), Nice, France, January 2007.
   * Mayur Naik, Alex Aiken, and John Whaley. [http://berkeley.intel-research.net/mnaik/pubs/pldi06/paper.pdf Effective Static Race Detection for Java]. In Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI'06), Ottawa, Canada, June 2006.
