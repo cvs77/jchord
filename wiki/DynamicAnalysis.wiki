@@ -57,13 +57,11 @@ A sample such class called `MyDynamicAnalysis` is shown below:
         // User-defined event handlers for this dynamic analysis.
         // No-ops if not overridden.
         public void process<event1'>(<args1'>) {
-            // ***TODO***: User code for handling events of kind
-            // <event1'> with format <args1'>.
+            // ***TODO***: User code for handling events of kind <event1'> with format <args1'>.
         }
         ...
         public void process<eventM'>(<args<M'>) {
-            // ***TODO***: User code for handling events of kind
-            // <eventM'> with format <argsM'>.
+            // ***TODO***: User code for handling events of kind <eventM'> with format <argsM'>.
         }
     }
 }}}
