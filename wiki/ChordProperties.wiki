@@ -6,7 +6,7 @@ The following system properties are recognized by Chord 2.0.  The separator for 
 <table border=1>
 <tr><td>*Property name*<td>*Type*<td>*Description*<td>*Default value (if any)*
 <tr><td colspan="4">*_Chord resource properties_*
-<tr><td>chord.home.dir<td>*location*<td>Root directory of Chord's installation<td>
+<tr><td>chord.main.dir<td>*location*<td>Main directory of Chord's installation<td>
 <tr><td>chord.lib.dir<td>*location*<td>Directory containing libraries needed by Chord.<td>`${chord.home.dir}/lib`
 <tr><td>chord.main.class.path<td>*path*<td>Classpath of Chord.  It includes `${chord.java.analysis.path}` to allow running user-defined program analyses.<td>see `build.xml`
 <tr><td>chord.bddbddb.class.path<td>*path*<td>Classpath of bddbddb.<td>see `build.xml`
