@@ -1,8 +1,0 @@
-#summary Commonly-used Analysis Targets defined in Chord 2.0
-#labels Featured
-
-Here is a list of commonly-used analysis targets defined in Chord 2.0:
-
-  * [http://chord.stanford.edu/lib/main/targets_sortby_name.html Basic program domains and relations]
-  *  [http://chord.stanford.edu/lib/cia/targets_sortby_name.html May alias and call graph analyses: Context-insensitive (0-CFA)]
-  * [http://chord.stanford.edu/lib/csa/targets_sortby_name.html May alias and call graph analyses: Context-sensitive (k-CFA and k-object-sensitive)]
