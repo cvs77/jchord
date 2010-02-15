@@ -2,7 +2,8 @@
 
 TODO:
   * Features
-    * make Chord scope construction deterministic
+    * Separate the RHS algorithm implementation from full-thresc-java analysis
+    * Separate path program analysis implementation from path-thresc-java analysis  
     * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers
     * tune bddvarorders to make race and deadlock checkers faster
   * Documentation
@@ -10,9 +11,14 @@ TODO:
     * How to fix performance problems in analyses written in Datalog and solved using bddbddb
 
 DONE:
+  * Features
+    * make Chord scope construction deterministic
+      * ACTION: added getSortedMembers() method to joeq.Class.jq_Class, which makes the order of all members in a class (and thereby all methods in domain M) deterministic; the original order was different in the initial Chord run and the subsequent run that used classes.txt and methods.txt, because the two runs load classes in different orders.  Also, fixed method buildTypes() in chord.program.Program to consider the set of all types (domain T) as the set of prepared classes, instead of the set of all types recorded by joeq.Class.PrimordialClassLoader.
   * Test suite
-    * allow domains and relations to be loaded from disk instead of re-running analyses every time to construct them afresh (requires joeq.`*` to be serializable) (ALLOWED ONLY RELATIONS TO BE LOADED FROM DISK; SERIALIZING JOEQ IS TOO COMPLICATED)
+    * allow domains and relations to be loaded from disk instead of re-running analyses every time to construct them afresh (requires joeq.`*` to be serializable)
+      * ACTION: allowed only relations to be loaded from disk; serializing joeq.`*` is too complicated
   * Bug fixes
-    * bddbddb constructs a wrong stratification for certain Datalog programs with mutually recursive rules (FILED A BUG)
+    * bddbddb constructs a wrong stratification for certain Datalog programs with mutually recursive rules
+      * ACTION: filed a bug and reverted to an older version of bddbddb that does not exhibit this bug
   * Documentation
     * Javadoc
