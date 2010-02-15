@@ -4,6 +4,7 @@ TODO:
   * Features
     * Separate the RHS algorithm implementation from full-thresc-java analysis
     * Separate path program analysis implementation from path-thresc-java analysis  
+    * enable instrumenting only initial k iterations of loops, as a way to reduce run-time overhead of dynamic analyses
     * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers
     * tune bddvarorders to make race and deadlock checkers faster
   * Documentation
