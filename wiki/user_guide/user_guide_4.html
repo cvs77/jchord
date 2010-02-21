@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- XML file produced from file: user_guide.tex
+     using Hyperlatex v 2.9-in-waiting-rk (oct06) (c) Otfried Cheong
+     on Emacs 21.3.1, Fri Feb 19 10:13:19 2010 -->
+<head>
+<title>User Guide -- Building Program Scope</title>
+
+<style type="text/css">
+.maketitle { align : center }
+div.abstract { margin-left: 20%; margin-right: 10%; }
+h3.abstract  { align : center }
+div.verse, div.quote, div.quotation {
+  margin-left : 10%; 
+  margin-right : 10%;
+}
+dt {font-weight: bold}
+</style>
+</p>
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="user_guide_5.html"><img border="0" alt="Running Program Analyses" src="next.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide_3.html"><img border="0" alt="Running Chord" src="previous.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Building Program Scope</b></td></tr></table>
+<h1>Building Program Scope</h1>
+<p>Chord computes program scope (i.e. reachable classes and methods of a given Java program) if property
+<code>chord.build.scope</code> is set to <code>true</code>.
+The algorithm used to compute program scope is specified by 
+properties <code>chord.scope.kind</code> and <code>chord.reuse.scope</code>.
+</p>
+<ul><li>If property <code>chord.reuse.scope</code> is set to <code>true</code> and the files specified by
+properties <code>chord.classes.file</code> and <code>chord.methods.file</code> exist,
+then Chord regards those files as specifying the classes and methods, respectively,
+to be regarded as reachable.  The format
+of the classes file is a class name per line (e.g. <code>foo.Main</code>).  The format
+of the methods file is an entry of the form <code>&lt;method name&gt;:&lt;method descriptor&gt;@&lt;class name&gt;</code> per line,
+specifying the method's name, the method's descriptor, and the method's declaring class
+(e.g. <code>main:([Ljava/lang/String;)V@foo.Main</code>).
+Chord throws a runtime exception if the declaring class of a method in the methods file is not
+specified in the classes file.
+</li><li>If property <code>chord.reuse.scope</code> is set to <code>false</code> or the file specified by
+property <code>chord.classes.file</code> or <code>chord.methods.file</code> does not exist,
+then Chord computes program scope
+using the algorithm specified by property <code>chord.scope.kind</code> and then
+writes the classes and methods deemed reachable by that algorithm to those files.
+<p>The possible legal values of property <code>chord.scope.kind</code> are <code>rta</code> and <code>dynamic</code>.
+In both cases, Chord expects properties <code>chord.main.class</code> and <code>chord.class.path</code>
+to be set.
+</p>
+<ul><li>The <code>rta</code> value instructs Chord to compute the program scope statically using Rapid Type Analysis.
+</li><li>The <code>dynamic</code> value instructs Chord to compute the program scope dynamically, by running the program
+and observing using JVMTI the classes that are loaded at run-time.
+The number of times the program is run and the command-line arguments to be supplied to
+the program in each run is specified by properties <code>chord.run.ids</code> and
+<code>chord.args.XXX</code> for each run ID <code>XXX</code>.  By default, the program is run only once, using run ID <code>0</code>,
+and without any command-line arguments.
+Only classes loaded in some run are regarded as reachable but <i>all</i> methods of each loaded class are regarded
+as reachable regardless of whether they were invoked in the run.
+The rationale behind this decision is to both reduce run-time overhead of JVMTI and to increase the
+predictive power of program analyses performed using the computed program scope.
+</li></ul>
+</li></ul>
+<p>The default value of property <code>chord.reuse.scope</code> is <code>false</code> and that of
+property <code>chord.scope.kind</code> is <code>rta</code>.
+The default values of properties <code>chord.classes.file</code> and <code>chord.methods.file</code> are
+<code>${chord.out.dir}/classes.txt</code> and <code>${chord.out.dir}/methods.txt</code>, respectively,
+where property <code>chord.out.dir</code> defaults to <code>${chord.work.dir}/chord_output/</code>,
+and property <code>chord.work.dir</code> defaults to the current working directory.
+</p>
+<hr /><address><p>mayur.naik@gmail.com, February 19, 2010</address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="user_guide_5.html"><img border="0" alt="Running Program Analyses" src="next.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide_3.html"><img border="0" alt="Running Chord" src="previous.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Building Program Scope</b></td></tr></table></body></html>

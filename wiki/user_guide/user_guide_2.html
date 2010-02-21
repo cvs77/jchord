@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- XML file produced from file: user_guide.tex
+     using Hyperlatex v 2.9-in-waiting-rk (oct06) (c) Otfried Cheong
+     on Emacs 21.3.1, Fri Feb 19 10:13:19 2010 -->
+<head>
+<title>User Guide -- Download and Installation</title>
+
+<style type="text/css">
+.maketitle { align : center }
+div.abstract { margin-left: 20%; margin-right: 10%; }
+h3.abstract  { align : center }
+div.verse, div.quote, div.quotation {
+  margin-left : 10%; 
+  margin-right : 10%;
+}
+dt {font-weight: bold}
+</style>
+</p>
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="user_guide_3.html"><img border="0" alt="Running Chord" src="next.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide_1.html"><img border="0" alt="Introduction" src="previous.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Download and Installation</b></td></tr></table>
+<h1>Download and Installation</h1>
+<p>Ensure that the following software is installed on your machine:
+</p>
+<ul><li>JDK 5 or higher, e.g. from <a href="http://www.ibm.com/developerworks/java/jdk/">IBM</a> or <a href="http://java.sun.com/javase/downloads/index.jsp">Sun</a>
+</li><li><a href="http://ant.apache.org/">Apache Ant</a>, a Java-based build tool
+</li><li>a C++ compiler, e.g. <a href="http://gcc.gnu.org/">GCC</a>
+</li><li>a Make utility, e.g. <a href="http://www.gnu.org/software/make/">GNU Make</a>
+</li><li><a href="http://www.cygwin.com/">Cygwin</a>, if it is Windows machine
+</li></ul>
+<p>Download the latest Chord&#32;version from <a href="http://code.google.com/p/jchord/downloads/list">here</a> and uncompress it.
+</p>
+<p>Directory <tt>chord/main</tt> (henceforth called the main directory) contains a <tt>build.xml</tt> file which is interpreted by Apache Ant.
+To see the various targets available, run the following command in that directory:
+</p>
+<div class="quote">
+<pre>
+prompt&gt; ant
+</pre>
+</div>
+<p>To compile Chord, run the following command in the same directory:
+</p>
+<div class="quote">
+<pre>
+prompt&gt; ant compile
+</pre>
+</div>
+<p>This will compile the following:
+</p>
+<ul><li>the Java source code of Chord&#32;from <tt>chord/main/src/java/</tt> to Java bytecode in <tt>chord/main/classes/</tt>
+</li><li>the C source code of BDD library <a href="http://buddy.sourceforge.net/">BuDDy</a> from <tt>chord/main/src/bdd/</tt>
+to a shared library in <tt>chord/main/lib/</tt> (<tt>libbuddy.so</tt> on Linux, <tt>buddy.dll</tt> on Windows, and <tt>libbuddy.dylib</tt> on MacOS);
+this library is needed for executing program analyses written in Datalog using
+<a href="http://bddbddb.sourceforge.net/">bddbddd</a> (a BDD-based Datalog solver).
+</li><li>the C++ source code of the Chord instrumentation agent from <tt>chord/main/src/agent/</tt> to a shared
+library in <tt>chord/main/lib</tt> (<tt>libchord&#95;instr&#95;agent.so</tt> on Linux, <tt>chord&#95;instr&#95;agent.dll</tt> on Windows,
+and <tt>libchord&#95;instr&#95;agent.dylib</tt> on MacOS); this agent is needed for building program scope dynamically
+and for executing dynamic program analyses.
+</li></ul>
+<hr /><address><p>mayur.naik@gmail.com, February 19, 2010</address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="user_guide_3.html"><img border="0" alt="Running Chord" src="next.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide_1.html"><img border="0" alt="Introduction" src="previous.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Download and Installation</b></td></tr></table></body></html>

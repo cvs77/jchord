@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- XML file produced from file: user_guide.tex
+     using Hyperlatex v 2.9-in-waiting-rk (oct06) (c) Otfried Cheong
+     on Emacs 21.3.1, Fri Feb 19 10:13:19 2010 -->
+<head>
+<title>User Guide -- Running Chord</title>
+
+<style type="text/css">
+.maketitle { align : center }
+div.abstract { margin-left: 20%; margin-right: 10%; }
+h3.abstract  { align : center }
+div.verse, div.quote, div.quotation {
+  margin-left : 10%; 
+  margin-right : 10%;
+}
+dt {font-weight: bold}
+</style>
+</p>
+</head>
+<body>
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="user_guide_4.html"><img border="0" alt="Building Program Scope" src="next.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide_2.html"><img border="0" alt="Download and Installation" src="previous.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Running Chord</b></td></tr></table>
+<h1>Running Chord</h1>
+<p>Suppose the program to be analyzed has the following directory structure:
+</p>
+<div class="quote">
+<pre>
+example/
+    src/
+        foo/
+            Main.java
+            ...
+    classes/
+        foo/
+            Main.class
+            ...
+    lib/
+        src/
+            taz/
+                ...
+        jar/
+            taz.jar
+    chord.properties
+</pre>
+</div>
+<p>The above structure is typical: the program's Java source files are under <code>example/src/</code>,
+its class files are under <code>example/classes/</code>, the source and jar files of the libraries
+used by the program are under <code>example/lib/src/</code> and <code>example/lib/jar/</code>, respectively.
+</p>
+<p>File <code>chord.properties</code> specifies properties to be passed to Chord (alternatively,
+these properties may be passed on the command-line, in format <code>-D&lt;name&gt;=&lt;value&gt;</code>).
+A sample such file for the above program is as follows:
+</p>
+<div class="quote">
+<pre>
+chord.main.class=foo.Main
+chord.class.path=classes:lib/jar/taz.jar
+chord.src.path=src:../lib/src
+chord.run.ids=0,1
+chord.args.0="-thread 1 -n 10"
+chord.args.1="-thread 2 -n 50"
+</pre>
+</div>
+<p>Each relative (instead of absolute) path element in the value of any property
+named <code>chord.&lt;...&gt;.path</code> set in this file is converted to an absolute path element with respect
+to the directory containing this file, which in the above case is <code>example/</code>.
+</p>
+<p>Section <a href="user_guide_6.html">*</a> presents an exhaustive
+listing of properties recognized by Chord.
+Here, we only describe those set in the above
+sample <code>chord.properties</code> file:
+</p>
+<ul><li><code>chord.main.class</code> specifies the fully-qualified name of the main class of the
+program.
+</li><li><code>chord.class.path</code> specifies the classpath of the program.
+The value of pre-defined property <code>${sun.boot.class.path}</code> is implicitly appended
+to it.
+</li><li><code>chord.src.path</code> specifies the Java source path of the program.
+All program analyses in Chord operate on Java bytecode (specified by <code>chord.class.path</code>).
+The only use of this property is to HTMLize the Java source files of the program so that the
+results of program analyses can be reported at the Java source code level.
+</li><li><code>chord.run.ids</code> specifies a list of IDs to identify runs of the program.
+It is used by dynamic program analyses to determine how many times the program must be run.
+An additional use of this property is to allow specifying the command-line arguments to use
+in the run having ID <code>XXX</code> via property <code>chord.args.XXX</code>, as illustrated by
+properties <code>chord.args.0</code> and <code>chord.args.1</code> in the above example.
+</li></ul>
+<p>To run Chord on the above program, run the following command in Chord's main directory:
+</p>
+<div class="quote">
+<pre>
+prompt&gt; ant -Dchord.work.dir=&lt;...&gt;/example run
+</pre>
+</div>
+<p>where <code>&lt;...&gt;</code> denotes either the absolute path, or the path relative to Chord's main directory,
+of the parent of directory <tt>example/</tt>.
+System property <code>chord.work.dir</code> specifies the working directory during Chord's execution.
+</p>
+<p>The above command causes Chord to load the <code>chord.properties</code> file if present.
+The location of this file may be specified explicitly by property
+<code>chord.props.file</code> on the above command line.
+By default, it is <code>${chord.work.dir}/chord.properties</code>.
+</p>
+<p>In the above case, the above command does not do much beyond loading the sample <code>chord.properties</code> file.
+For Chord to do something interesting, you need to set additional properties, either
+on the above command line or in the <code>chord.properties</code> file, specifying the task(s)
+Chord must perform.
+All tasks are summarized in the "Chord Task Properties" portion of Section <a href="user_guide_6.html">*</a>.
+The two most common tasks, described next, are building program scope (Section <a href="user_guide_4.html">*</a>)
+and running program analyses (Section <a href="user_guide_5.html">*</a>).
+</p>
+<hr /><address><p>mayur.naik@gmail.com, February 19, 2010</address><br />
+<table width="100%" cellpadding="0" cellspacing="2"><tr>
+<td bgcolor="#99ccff"><a href="user_guide_4.html"><img border="0" alt="Building Program Scope" src="next.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide.html"><img border="0" alt="Top" src="up.png"/></a></td><td bgcolor="#99ccff"><a href="user_guide_2.html"><img border="0" alt="Download and Installation" src="previous.png"/></a></td><td align="center" bgcolor="#99ccff" width="100%"><b>Running Chord</b></td></tr></table></body></html>
