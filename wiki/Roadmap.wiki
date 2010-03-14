@@ -3,9 +3,9 @@
 TODO:
   * Features
     * Separate path program analysis implementation from path-thresc-java analysis  
-    * [IN PROGRESS] write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers
+    * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers (IN PROGRESS)
     * tune bddvarorders to make race and deadlock checkers faster
-  * Documentation [WILL HAPPEN IN MAY 2010]
+  * Documentation (WILL HAPPEN IN MAY 2010)
     * How to write a program analysis in Chord (domains, relations, static analysis in Datalog, static analysis in Java, dynamic analysis)
     * How to fix performance problems in analyses written in Datalog and solved using bddbddb
 
