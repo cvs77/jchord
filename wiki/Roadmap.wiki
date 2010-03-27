@@ -10,6 +10,7 @@ TODO:
   * Documentation (WILL HAPPEN IN MAY 2010)
     * How to write a program analysis in Chord (domains, relations, static analysis in Datalog, static analysis in Java, dynamic analysis)
     * How to fix performance problems in analyses written in Datalog and solved using bddbddb
+  * Regression test suite
 
 DONE:
   * Features
