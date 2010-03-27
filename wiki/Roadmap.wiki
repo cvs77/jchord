@@ -1,7 +1,9 @@
 #summary Roadmap for Chord 2.0
+#labels Featured
 
 TODO:
   * Features
+    * Handle as much reflection as possible, statically or dynamically (HIGHEST PRIORITY)
     * Separate path program analysis implementation from path-thresc-java analysis  
     * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers (IN PROGRESS)
     * tune bddvarorders to make race and deadlock checkers faster
