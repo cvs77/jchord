@@ -1,2 +1,0 @@
-g:Ltest/A;@test.T
-g2:I@test.T
