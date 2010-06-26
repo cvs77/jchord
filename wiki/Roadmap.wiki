@@ -19,9 +19,9 @@ TODO:
     * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers (IN PROGRESS)
     * tune bddvarorders to make race and deadlock checkers faster
   * Documentation (IN PROGRESS)
-  * Regression test suite (IN PROGRESS)
 
 DONE:
+  * Regression test suite
   * Features
     * enable instrumenting only initial k iterations of loops, as a way to reduce run-time overhead of dynamic analyses
       * ACTION: enter_loop, perform_iteration, and leave_loop API now provided by chord.project.analyses.DynamicAnalysis 
