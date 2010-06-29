@@ -1,5 +1,0 @@
-<html>
-  <body onLoad="javascript:pageTracker._setVar('mayur_naik_self_visit');">
-   test
-  </body>
-</html>
