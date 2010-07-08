@@ -42,7 +42,6 @@ import chord.project.Project;
 import chord.project.analyses.JavaAnalysis;
 import chord.project.analyses.ProgramRel;
 import chord.util.ArraySet;
-import chord.util.ChordRuntimeException;
 import chord.util.graph.IGraph;
 import chord.util.graph.MutableGraph;
 
@@ -260,8 +259,15 @@ public class CtxtsAnalysis extends JavaAnalysis {
         	assert false;
 
 		kobjK = Integer.getInteger("chord.kobj.k", 1);
+		assert (kobjK > 0);
 		kcfaK = Integer.getInteger("chord.kcfa.k", 1);
 		assert (kobjK <= kcfaK+1);
+		
+		if (maxIters > 0) {
+			assert (instCtxtKind == KOBJSEN ||
+				instCtxtKind == KCFASEN ||
+				statCtxtKind == KCFASEN);
+		}
 		isInitialized  = true;
 	}
 	
@@ -379,7 +385,6 @@ public class CtxtsAnalysis extends JavaAnalysis {
 		int numH = domH.size();
 		int numI = domI.size();
 		if (currIter == 0) {
-
 			isCtxtSenV = new boolean[numV];
 			methKind = new int[numM];
 			for (int mIdx = 0; mIdx < numM; mIdx++) {
@@ -395,8 +400,7 @@ public class CtxtsAnalysis extends JavaAnalysis {
 						Register v = (Register) o;
 						if (v.getType().isReferenceType()) {
 							int vIdx = domV.indexOf(v);
-							// locals unused by any quad in cfg are not in
-							// domain V
+							// locals unused by any quad in cfg are not in domain V
 							if (vIdx != -1)
 								isCtxtSenV[vIdx] = true;
 						}
@@ -482,9 +486,6 @@ public class CtxtsAnalysis extends JavaAnalysis {
 				domC.setCtxt(newElems);
 			}
 		}
-		for (int hIdx = numA; hIdx < numH; hIdx++) {
-			// TODO
-		}
 		domC.save();
 
 		int numC = domC.size();
@@ -539,9 +540,6 @@ public class CtxtsAnalysis extends JavaAnalysis {
 				}
 				relCH.add(newCtxt, inst);
 			}
-		}
-		for (int hIdx = numA; hIdx < numH; hIdx++) {
-			// TODO
 		}
 		relCH.save();
 		if (!isLastIter)
@@ -870,26 +868,26 @@ public class CtxtsAnalysis extends JavaAnalysis {
 		return newCtxts;
 	}
 	public static String getCspaKind() {
-        String ctxtKindStr = System.getProperty("chord.ctxt.kind", "ci");
-        String instCtxtKindStr = System.getProperty("chord.inst.ctxt.kind", ctxtKindStr);
-        String statCtxtKindStr = System.getProperty("chord.stat.ctxt.kind", ctxtKindStr);
-        int instCtxtKind, statCtxtKind;
-        if (instCtxtKindStr.equals("ci")) {
-            instCtxtKind = CtxtsAnalysis.CTXTINS;
-        } else if (instCtxtKindStr.equals("cs")) {
-            instCtxtKind = CtxtsAnalysis.KCFASEN;
-        } else if (instCtxtKindStr.equals("co")) {
-            instCtxtKind = CtxtsAnalysis.KOBJSEN;
-        } else
-            throw new ChordRuntimeException();
-        if (statCtxtKindStr.equals("ci")) {
-            statCtxtKind = CtxtsAnalysis.CTXTINS;
-        } else if (statCtxtKindStr.equals("cs")) {
-            statCtxtKind = CtxtsAnalysis.KCFASEN;
-        } else if (statCtxtKindStr.equals("cc")) {
-            statCtxtKind = CtxtsAnalysis.CTXTCPY;
-        } else
-            throw new ChordRuntimeException();
+//        String ctxtKindStr = System.getProperty("chord.ctxt.kind", "ci");
+//        String instCtxtKindStr = System.getProperty("chord.inst.ctxt.kind", ctxtKindStr);
+//        String statCtxtKindStr = System.getProperty("chord.stat.ctxt.kind", ctxtKindStr);
+//        int instCtxtKind, statCtxtKind;
+//        if (instCtxtKindStr.equals("ci")) {
+//            instCtxtKind = CtxtsAnalysis.CTXTINS;
+//        } else if (instCtxtKindStr.equals("cs")) {
+//            instCtxtKind = CtxtsAnalysis.KCFASEN;
+//        } else if (instCtxtKindStr.equals("co")) {
+//            instCtxtKind = CtxtsAnalysis.KOBJSEN;
+//        } else
+//            throw new ChordRuntimeException();
+//        if (statCtxtKindStr.equals("ci")) {
+//            statCtxtKind = CtxtsAnalysis.CTXTINS;
+//        } else if (statCtxtKindStr.equals("cs")) {
+//            statCtxtKind = CtxtsAnalysis.KCFASEN;
+//        } else if (statCtxtKindStr.equals("cc")) {
+//            statCtxtKind = CtxtsAnalysis.CTXTCPY;
+//        } else
+//            throw new ChordRuntimeException();
         String cspaKind;
 //        if (instCtxtKind == CtxtsAnalysis.CTXTINS &&
 //            statCtxtKind == CtxtsAnalysis.CTXTINS)
