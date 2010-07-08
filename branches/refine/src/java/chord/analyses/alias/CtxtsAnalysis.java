@@ -601,13 +601,9 @@ public class CtxtsAnalysis extends JavaAnalysis {
 		relRefinableM.zero();
 		for (int m = 0; m < numM; m++) {
 			if (methKind[m] == CTXTINS) {
-				Messages.logAnon("methKind[" + m + "] == CTXTINS");
 				jq_Method meth = domM.get(m);
 				if (getCtxtKind(meth) != CTXTINS) {
-					Messages.logAnon("getCtxtKind(" + m + ") != CTXTINS");
 					relRefinableM.add(m);
-				} else {
-					Messages.logAnon("getCtxtKind(" + m + ") == " + String.valueOf(getCtxtKind(meth)));
 				}
 			}
 		}
