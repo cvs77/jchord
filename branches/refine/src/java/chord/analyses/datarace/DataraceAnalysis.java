@@ -70,6 +70,7 @@ import chord.util.tuple.object.Trio;
  * </ul>
  *
  * @author Mayur Naik (mhn@cs.stanford.edu)
+ * @author Omer Tripp (omertrip@post.tau.ac.il)
  */
 @Chord(
 	name="datarace-java"
@@ -177,7 +178,6 @@ public class DataraceAnalysis extends JavaAnalysis {
 			outputRaces();		
 			X.finish(null);
 		}
-		outputCtxtInsDataraces();
 	}
 
 	private void outputCtxtInsDataraces() {
@@ -233,6 +233,7 @@ public class DataraceAnalysis extends JavaAnalysis {
 	}
 
 	private void publishResults() {
+		outputCtxtInsDataraces();
 		Project.runTask(hybridAnalysis);
 		Project.runTask(thrSenAbbrCSCGAnalysis);
 	    final ICSCG thrSenAbbrCSCG = thrSenAbbrCSCGAnalysis.getCallGraph();
