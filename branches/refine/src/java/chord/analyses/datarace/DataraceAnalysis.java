@@ -73,7 +73,8 @@ import chord.util.tuple.object.Trio;
  * @author Omer Tripp (omertrip@post.tau.ac.il)
  */
 @Chord(
-	name="datarace-java"
+	name="datarace-java",
+	consumedNames="P"
 )
 public class DataraceAnalysis extends JavaAnalysis {
 	private static final boolean percy = System.getProperty("percy", "false").equals("true");
