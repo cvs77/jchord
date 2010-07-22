@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-1 (1.69)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Setting up a Java Program</TITLE>
+<META NAME="description" CONTENT="Setting up a Java Program">
+<META NAME="keywords" CONTENT="user_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="user_guide.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="user_guide.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html80"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/home/mhn/latex2html/icons/next.png"></A> 
+<A NAME="tex2html78"
+  HREF="user_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/home/mhn/latex2html/icons/up.png"></A> 
+<A NAME="tex2html72"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/home/mhn/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html81"
+  HREF="node4.html">Building Analysis Scope</A>
+<B> Up:</B> <A NAME="tex2html79"
+  HREF="user_guide.html">Chord: A Static and</A>
+<B> Previous:</B> <A NAME="tex2html73"
+  HREF="node2.html">Download and Installation</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000"></A>
+<A NAME="sec:program-setup"></A>
+<BR>
+Setting up a Java Program
+</H1>
+
+<P>
+Suppose the program to be analyzed has the following directory structure:
+
+<P><PRE>
+example/
+    src/
+        foo/
+            Main.java
+            ...
+    classes/
+        foo/
+            Main.class
+            ...
+    lib/
+        src/
+            taz/
+                ...
+        jar/
+            taz.jar
+    chord.properties
+</PRE>
+
+<P>
+The above structure is typical: the program's Java source files are under <TT>src/</TT>,
+its class files are under <TT>classes/</TT>, the source and jar files of the libraries
+used by the program are under <TT>lib/src/</TT> and <TT>lib/jar/</TT>, respectively.
+
+<P>
+File <TT>chord.properties</TT> specifies properties to be passed to Chord (alternatively,
+these properties may be passed on the command-line, in format <TT>-D&lt;name&gt;=&lt;value&gt;</TT>).
+A sample such file for the above program is as follows:
+
+<P><PRE>
+chord.main.class=foo.Main
+chord.class.path=classes:lib/jar/taz.jar
+chord.src.path=src:../lib/src
+chord.run.ids=0,1
+chord.args.0="-thread 1 -n 10"
+chord.args.1="-thread 2 -n 50"
+</PRE>
+
+<P>
+Each relative path element in the value of any property
+named <TT>chord.&lt;...&gt;.path</TT> defined in this file is converted to an absolute path element with respect
+to the directory containing this file, which in the above case is <TT>example/</TT>.
+
+<P>
+Section <A HREF="node15.html#sec:chord-sysprops">15</A> presents an exhaustive
+listing of properties recognized by Chord.
+Here, we only describe those defined in the above
+sample <TT>chord.properties</TT> file:
+
+<P>
+
+<UL>
+<LI><TT>chord.main.class</TT> specifies the fully-qualified name of the main class of the
+program.
+</LI>
+<LI><TT>chord.class.path</TT> specifies the application-specific classpath of the program
+(the standard library classpath is implicitly included).
+</LI>
+<LI><TT>chord.src.path</TT> specifies the Java source path of the program.
+All program analyses in Chord operate on Java bytecode.
+The only use of this property is to HTMLize the Java source files of the program so that the
+results of program analyses can be reported at the Java source code level.
+</LI>
+<LI><TT>chord.run.ids</TT> specifies a list of IDs to identify runs of the program.
+It is used by dynamic program analyses to determine how many times the program must be run.
+An additional use of this property is to allow specifying the command-line arguments to use
+in the run having ID <TT>&lt;id&gt;</TT> via property <TT>chord.args.&lt;id&gt;</TT>, as illustrated by
+properties <TT>chord.args.0</TT> and <TT>chord.args.1</TT> in the above example.
+</LI>
+</UL>
+
+<P>
+To run Chord on the above program, run the following command in Chord's <TT>main/</TT> directory:
+
+<P><PRE>
+prompt&gt; ant -Dchord.work.dir=&lt;...&gt;/example run
+</PRE>
+
+<P>
+where <TT>&lt;...&gt;</TT> denotes either the absolute path, or the path relative to Chord's <TT>main/</TT> directory,
+of the parent of directory <TT>example/</TT>.
+System property <TT>chord.work.dir</TT> specifies the working directory during Chord's execution.
+
+<P>
+The above command causes Chord to load the <TT>chord.properties</TT> file if present.
+The location of this file may be specified explicitly via property
+<TT>chord.props.file</TT> on the above command line.
+By default, it is <TT>[chord.work.dir]/chord.properties</TT>.
+
+<P>
+In the above case, Chord does not do much beyond loading the sample <TT>chord.properties</TT> file.
+For Chord to do something interesting, you need to set additional properties, either
+on the above command line or in the <TT>chord.properties</TT> file, specifying the task(s)
+Chord must perform.
+All tasks are summarized in Section <A HREF="node17.html#sec:chord-sysprops:task">15.2</A>.
+The two most common tasks, described next, are building the analysis scope of the given program (Section <A HREF="node4.html#sec:building-scope">4</A>)
+and running program analyses on the given program (Section <A HREF="node5.html#sec:running-analysis">5</A>).
+
+<P>
+
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html80"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/home/mhn/latex2html/icons/next.png"></A> 
+<A NAME="tex2html78"
+  HREF="user_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/home/mhn/latex2html/icons/up.png"></A> 
+<A NAME="tex2html72"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/home/mhn/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html81"
+  HREF="node4.html">Building Analysis Scope</A>
+<B> Up:</B> <A NAME="tex2html79"
+  HREF="user_guide.html">Chord: A Static and</A>
+<B> Previous:</B> <A NAME="tex2html73"
+  HREF="node2.html">Download and Installation</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Mayur Naik
+2010-04-15
+</ADDRESS>
+</BODY>
+</HTML>

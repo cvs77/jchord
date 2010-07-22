@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-1 (1.69)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Chord Debug Properties</TITLE>
+<META NAME="description" CONTENT="Chord Debug Properties">
+<META NAME="keywords" CONTENT="user_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="user_guide.css">
+
+<LINK REL="next" HREF="node23.html">
+<LINK REL="previous" HREF="node21.html">
+<LINK REL="up" HREF="node15.html">
+<LINK REL="next" HREF="node23.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html280"
+  HREF="node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/home/mhn/latex2html/icons/next.png"></A> 
+<A NAME="tex2html278"
+  HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/home/mhn/latex2html/icons/up.png"></A> 
+<A NAME="tex2html272"
+  HREF="node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/home/mhn/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html281"
+  HREF="node23.html">Chord Instrumentation Properties</A>
+<B> Up:</B> <A NAME="tex2html279"
+  HREF="node15.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html273"
+  HREF="node21.html">Program Transformation Properties</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000157000000000000000">
+Chord Debug Properties</A>
+</H2>
+
+<P>
+This section describes properties that specify the amount of debug information that Chord must produce during execution.
+
+<P>
+
+<UL>
+<LI><TT>chord.verbose</TT> 
+<BR>
+<B>Type:</B> bool 
+<BR>
+<B>Description:</B> Produce more verbose output during Chord's execution. 
+<BR>
+<B>Default value:</B> <TT>false</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.bddbddb.noisy</TT> 
+<BR>
+<B>Type:</B> bool 
+<BR>
+<B>Description:</B> Produce more verbose output during the Datalog solver <TT>bddbddb</TT>'s execution. 
+<BR>
+<B>Default value:</B> <TT>false</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.save.maps</TT> 
+<BR>
+<B>Type:</B> bool 
+<BR>
+<B>Description:</B> Write to file <TT>[chord.bddbddb.work.dir]/&lt;...&gt;.map</TT> when saving program domain named <TT>&lt;...&gt;</TT>. 
+<BR>
+<B>Default value:</B> <TT>true</TT>  
+<BR>
+<B>Note:</B> This functionality is useful for debugging Datalog programs using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory (see Section <A HREF="node10.html#sec:tuning-datalog-analysis">10</A>).
+</LI>
+</UL>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Mayur Naik
+2010-04-15
+</ADDRESS>
+</BODY>
+</HTML>

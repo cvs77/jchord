@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-1 (1.69)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Program Scope Properties</TITLE>
+<META NAME="description" CONTENT="Program Scope Properties">
+<META NAME="keywords" CONTENT="user_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="user_guide.css">
+
+<LINK REL="next" HREF="node20.html">
+<LINK REL="previous" HREF="node18.html">
+<LINK REL="up" HREF="node15.html">
+<LINK REL="next" HREF="node20.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html250"
+  HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/home/mhn/latex2html/icons/next.png"></A> 
+<A NAME="tex2html248"
+  HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/home/mhn/latex2html/icons/up.png"></A> 
+<A NAME="tex2html242"
+  HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/home/mhn/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html251"
+  HREF="node20.html">Program Analysis Properties</A>
+<B> Up:</B> <A NAME="tex2html249"
+  HREF="node15.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html243"
+  HREF="node18.html">Chord Boot Properties</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000154000000000000000">
+Program Scope Properties</A>
+</H2>
+
+<P>
+This section describes properties that specify how the analysis scope is computed.
+See Section <A HREF="node4.html#sec:building-scope">4</A> for more details.
+
+<P>
+
+<UL>
+<LI><TT>chord.reuse.scope</TT> 
+<BR>
+<B>Type:</B> bool 
+<BR>
+<B>Description:</B> Treat analysis scope as the classes and methods listed in files specified by properties <TT>chord.classes.file</TT> and <TT>chord.methods.file</TT>, respectively.  Property <TT>chord.scope.kind</TT> is ignored if this property is set to <TT>true</TT> and the two files exist. 
+<BR>
+<B>Default value:</B> <TT>false</TT>
+
+<P>
+</LI>
+<LI><TT>chord.scope.kind</TT> 
+<BR>
+<B>Type:</B> [<TT>dynamic</TT><IMG
+ WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$\vert$"><TT>rta</TT><IMG
+ WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$\vert$"><TT>rta_reflect</TT><IMG
+ WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$\vert$"><TT>cha</TT>] 
+<BR>
+<B>Description:</B> Algorithm to compute analysis scope (i.e., reachable classes and methods).  Current choices include <TT>dynamic</TT> (dynamic analysis), <TT>rta</TT> (static Rapid Type Analysis ignoring reflection), <TT>rta_reflect</TT> (static Rapid Type Analysis modeling a common reflection pattern), and <TT>cha</TT> (static Class Hierarchy Analysis). 
+<BR>
+<B>Default value:</B> <TT>rta</TT>
+
+<P>
+</LI>
+<LI><TT>chord.ch.dynamic</TT> 
+<BR>
+<B>Type:</B> bool 
+<BR>
+<B>Description:</B> Compute the set of all classes loaded by the JVM while running the given program, and exclude classes not in this set (and their subclasses) while building the class hierarchy.  This property is relevant only if <TT>chord.scope.kind</TT> is <TT>rta_reflect</TT> or <TT>cha</TT>, since only these two scope computing algorithms query the class hierarchy. 
+<BR>
+<B>Default value:</B> <TT>false</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.scope.exclude.std</TT> 
+<BR>
+<B>Type:</B> string list 
+<BR>
+<B>Description:</B> List of prefixes of names of classes inside the standard library whose method bodies must be treated as no-ops by static scope building algorithms. 
+<BR>
+<B>Default value:</B> <TT>[chord.main.class.path]</TT>
+
+<P>
+</LI>
+<LI><TT>chord.scope.exclude.ext</TT> 
+<BR>
+<B>Type:</B> string list 
+<BR>
+<B>Description:</B> List of prefixes of names of classes outside the standard library whose method bodies must be treated as no-ops by static scope building algorithms. 
+<BR>
+<B>Default value:</B> <TT>""</TT>
+
+<P>
+</LI>
+<LI><TT>chord.scope.exclude</TT> 
+<BR>
+<B>Type:</B> string list 
+<BR>
+<B>Description:</B> List of prefixes of names of classes whose method bodies must be treated as no-ops by static scope building algorithms. 
+<BR>
+<B>Default value:</B> <TT>"[chord.scope.exclude.std],[chord.scope.exclude.ext]"</TT>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html250"
+  HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/home/mhn/latex2html/icons/next.png"></A> 
+<A NAME="tex2html248"
+  HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/home/mhn/latex2html/icons/up.png"></A> 
+<A NAME="tex2html242"
+  HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/home/mhn/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html251"
+  HREF="node20.html">Program Analysis Properties</A>
+<B> Up:</B> <A NAME="tex2html249"
+  HREF="node15.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html243"
+  HREF="node18.html">Chord Boot Properties</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Mayur Naik
+2010-04-15
+</ADDRESS>
+</BODY>
+</HTML>

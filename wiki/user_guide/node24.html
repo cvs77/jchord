@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-1 (1.69)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Chord Output Properties</TITLE>
+<META NAME="description" CONTENT="Chord Output Properties">
+<META NAME="keywords" CONTENT="user_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="user_guide.css">
+
+<LINK REL="next" HREF="node25.html">
+<LINK REL="previous" HREF="node23.html">
+<LINK REL="up" HREF="node15.html">
+<LINK REL="next" HREF="node25.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html300"
+  HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/home/mhn/latex2html/icons/next.png"></A> 
+<A NAME="tex2html298"
+  HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/home/mhn/latex2html/icons/up.png"></A> 
+<A NAME="tex2html292"
+  HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/home/mhn/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html301"
+  HREF="node25.html">Chord Resource Properties</A>
+<B> Up:</B> <A NAME="tex2html299"
+  HREF="node15.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html293"
+  HREF="node23.html">Chord Instrumentation Properties</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000159000000000000000">
+Chord Output Properties</A>
+</H2>
+
+<P>
+This section describes properties specifying the names of files and directories output by Chord.
+Most users will not want to alter the default values of these properties.
+
+<P>
+
+<UL>
+<LI><TT>chord.out.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory to which Chord dumps all files. 
+<BR>
+<B>Default value:</B> <TT>[chord.work.dir]/chord_output/</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.out.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file to which the standard output stream is redirected during Chord's execution. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/log.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.err.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file to which the standard error stream is redirected during Chord's execution. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/log.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.classes.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file from/to which list of classes deemed reachable is read/written. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/classes.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.methods.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file from/to which list of methods deemed reachable is read/written. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/methods.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.bddbddb.work.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory used by the Datalog solver <TT>bddbddb</TT> as its input/output directory (namely, for program domain files <TT>*.dom</TT> and <TT>*.map</TT>, and program relation files <TT>*.bdd</TT>). 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/bddbddb/</TT>
+
+<P>
+</LI>
+<LI><TT>chord.boot.classes.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory from/to which instrumented JDK classes used by the given program are read/written by dynamic program analyses. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/boot_classes/</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.user.classes.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory from/to which instrumented non-JDK classes of the given program are read/written by dynamic program analyses. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/user_classes/</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.instr.scheme.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file specifying the kind and format of events in dynamic trace files. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/scheme.ser</TT>
+
+<P>
+</LI>
+<LI><TT>chord.crude.trace.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the crude dynamic trace file. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/crude_trace.txt</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.final.trace.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the final dynamic trace file. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/final_trace.txt</TT>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html300"
+  HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/home/mhn/latex2html/icons/next.png"></A> 
+<A NAME="tex2html298"
+  HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/home/mhn/latex2html/icons/up.png"></A> 
+<A NAME="tex2html292"
+  HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/home/mhn/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html301"
+  HREF="node25.html">Chord Resource Properties</A>
+<B> Up:</B> <A NAME="tex2html299"
+  HREF="node15.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html293"
+  HREF="node23.html">Chord Instrumentation Properties</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Mayur Naik
+2010-04-15
+</ADDRESS>
+</BODY>
+</HTML>
