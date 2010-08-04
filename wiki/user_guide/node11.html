@@ -67,47 +67,15 @@ domain <TT>Z0</TT> containing [8..16) elements will be assigned 4 variables with
 <P>
 If two domains are uninterleaved in the declared domain order in a Datalog program (i.e., <TT>_</TT> is used instead of <TT>x</TT> between them),
 then the BDD variables assigned to those domains are ordered in reverse order in the underlying BDD factory.
-For instance, the BDD variable order corresponding to the declared domain order <TT>F0_Z0</TT> is (in level2var format):
-
-<P>
-<BR><P></P>
-<DIV ALIGN="CENTER">
-<!-- MATH
- \begin{displaymath}
-70,69,68,67,66,65,64,63,62,61,60,59,108,107,106,105
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="390" HEIGHT="27" BORDER="0"
- SRC="img10.png"
- ALT="\begin{displaymath}70,69,68,67,66,65,64,63,62,61,60,59,108,107,106,105\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
+For instance, the BDD variable order corresponding to the declared domain order <TT>F0_Z0</TT> is (in level2var format)
+``70,69,68,67,66,65,64,63,62,61,60,59,108,107,106,105".
 
 <P>
 If two domains are interleaved in the declared domain order in a Datalog program (i.e., <TT>x</TT> is used instead of <TT>_</TT> between them),
 then the BDD variables assigned to those domains are still ordered in reverse order of IDs in the underlying BDD factory,
 but they are also interleaved.
-For instance, the BDD variable order corresponding to the declared domain order <TT>F0xZ0</TT> is (in level2var format):
-
-<P>
-<BR><P></P>
-<DIV ALIGN="CENTER">
-<!-- MATH
- \begin{displaymath}
-70,108,69,107,68,106,67,105,66,65,64,63,62,61,60,59
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="390" HEIGHT="27" BORDER="0"
- SRC="img11.png"
- ALT="\begin{displaymath}70,108,69,107,68,106,67,105,66,65,64,63,62,61,60,59\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
+For instance, the BDD variable order corresponding to the declared domain order <TT>F0xZ0</TT> is (in level2var format)
+``70,108,69,107,68,106,67,105,66,65,64,63,62,61,60,59".
 
 <P>
 Each BDD variable is at a unique ``level" which is its 0-based position in the BDD variable order in the underlying BDD factory.
