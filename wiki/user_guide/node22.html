@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord Debug Properties</TITLE>
-<META NAME="description" CONTENT="Chord Debug Properties">
+<TITLE>Program Transformation Properties</TITLE>
+<META NAME="description" CONTENT="Program Transformation Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -20,71 +20,49 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="next" HREF="node23.html">
 <LINK REL="previous" HREF="node21.html">
-<LINK REL="up" HREF="node15.html">
+<LINK REL="up" HREF="node16.html">
 <LINK REL="next" HREF="node23.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html279"
+<A NAME="tex2html280"
   HREF="node23.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html277"
-  HREF="node15.html">
+<A NAME="tex2html278"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html271"
+<A NAME="tex2html272"
   HREF="node21.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html280"
-  HREF="node23.html">Chord Instrumentation Properties</A>
-<B> Up:</B> <A NAME="tex2html278"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html272"
-  HREF="node21.html">Program Transformation Properties</A>
+<B> Next:</B> <A NAME="tex2html281"
+  HREF="node23.html">Chord Debug Properties</A>
+<B> Up:</B> <A NAME="tex2html279"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html273"
+  HREF="node21.html">Program Analysis Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION000157000000000000000">
-Chord Debug Properties</A>
+<H2><A NAME="SECTION000166000000000000000">
+Program Transformation Properties</A>
 </H2>
 
 <P>
-This section describes properties that specify the amount of debug information that Chord must produce during execution.
+This section describes properties regarding program transformations performed by Chord.
 
 <P>
 
 <UL>
-<LI><TT>chord.verbose</TT> 
+<LI><TT>chord.ssa</TT> 
 <BR>
 <B>Type:</B> bool 
 <BR>
-<B>Description:</B> Produce more verbose output during Chord's execution. 
+<B>Description:</B> Do SSA transformation for all methods deemed reachable by the algorithm used to compute analysis scope. 
 <BR>
-<B>Default value:</B> <TT>false</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.bddbddb.noisy</TT> 
-<BR>
-<B>Type:</B> bool 
-<BR>
-<B>Description:</B> Produce more verbose output during the Datalog solver <TT>bddbddb</TT>'s execution. 
-<BR>
-<B>Default value:</B> <TT>false</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.save.maps</TT> 
-<BR>
-<B>Type:</B> bool 
-<BR>
-<B>Description:</B> Write to file <TT>[chord.bddbddb.work.dir]/&lt;...&gt;.map</TT> when saving program domain named <TT>&lt;...&gt;</TT>. 
-<BR>
-<B>Default value:</B> <TT>true</TT>  
-<BR>
-<B>Note:</B> This functionality is useful for debugging Datalog programs using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory (see Section <A HREF="node10.html#sec:tuning-datalog-analysis"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>).
+<B>Default value:</B> <TT>true</TT> 
 </LI>
 </UL>
 
@@ -92,7 +70,7 @@ This section describes properties that specify the amount of debug information t
 <BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

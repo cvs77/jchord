@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord Task Properties</TITLE>
-<META NAME="description" CONTENT="Chord Task Properties">
+<TITLE>Basic Program Properties</TITLE>
+<META NAME="description" CONTENT="Basic Program Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -20,116 +20,137 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="next" HREF="node18.html">
 <LINK REL="previous" HREF="node16.html">
-<LINK REL="up" HREF="node15.html">
+<LINK REL="up" HREF="node16.html">
 <LINK REL="next" HREF="node18.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html229"
+<A NAME="tex2html230"
   HREF="node18.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html227"
-  HREF="node15.html">
+<A NAME="tex2html228"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html221"
+<A NAME="tex2html222"
   HREF="node16.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html230"
-  HREF="node18.html">Chord Boot Properties</A>
-<B> Up:</B> <A NAME="tex2html228"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html222"
-  HREF="node16.html">Basic Program Properties</A>
+<B> Next:</B> <A NAME="tex2html231"
+  HREF="node18.html">Chord Task Properties</A>
+<B> Up:</B> <A NAME="tex2html229"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html223"
+  HREF="node16.html">Chord System Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION000152000000000000000"></A>
-<A NAME="sec:chord-sysprops:task"></A>
-<BR>
-Chord Task Properties
+<H2><A NAME="SECTION000161000000000000000">
+Basic Program Properties</A>
 </H2>
 
 <P>
-This section describes properties that specify what task(s) Chord must perform, 
-such as computing the analysis scope of the given program or running program analyses on the given program.
+This section describes basic properties of the given program that are required by program analyses in Chord,
+such as its main class, the location(s) of its class files and Java source files, and command-line arguments
+to be used to run the program.
 
 <P>
 
 <UL>
-<LI><TT>chord.build.scope</TT> 
+<LI><TT>chord.main.class</TT> 
 <BR>
-<B>Type:</B> bool 
+<B>Type:</B> class 
 <BR>
-<B>Description:</B> Compute the analysis scope (i.e., reachable classes and methods) of the given program using the algorithm specified by properties <TT>chord.scope.kind</TT> and <TT>chord.reuse.scope</TT>. 
+<B>Description:</B> Fully-qualified name of the main class of the given program (e.g., <TT>com.example.Main</TT>). 
 <BR>
-<B>Default value:</B> <TT>false</TT> 
-<BR>
-<B>Note:</B> The analysis scope is computed regardless of the value of this property if another task
-(e.g., a program analysis specified via property <TT>chord.run.analyses</TT>) demands it by
-calling method <TT>chord.program.Program.v()</TT>.
+<B>Note:</B> This property is required by virtually every task Chord performs.
 
 <P>
 </LI>
-<LI><TT>chord.run.analyses</TT> 
+<LI><TT>chord.class.path</TT> 
 <BR>
-<B>Type:</B> string list 
+<B>Type:</B> path 
 <BR>
-<B>Description:</B> List of names of program analyses to be run in order. 
+<B>Description:</B> Classpath of the given program.  It does not need to include boot classes (i.e., classes in <TT>[sun.boot.class.path]</TT>) or standard extensions (i.e., classes in <TT>.jar</TT> files in directory <TT>[java.home]/lib/ext/</TT>). 
 <BR>
 <B>Default value:</B> <TT>""</TT> 
 <BR>
-<B>Note:</B> If the analysis is written in Java, its name is specified via statement <TT>name=&lt;...&gt;</TT> in its <TT>@Chord</TT> annotation, and is the name of the class itself if this statement is missing.  If the analysis is written in Datalog, its name is specified via a line of the form <TT>"#</TT> <TT>name=&lt;...&gt;"</TT>, and is the absolute location of the file itself if this line is missing.
+<B>Note:</B> This property is required by virtually every task Chord performs.
 
 <P>
 </LI>
-<LI><TT>chord.print.rels</TT> 
+<LI><TT>chord.src.path</TT> 
+<BR>
+<B>Type:</B> path 
+<BR>
+<B>Description:</B> Java source path of the given program. 
+<BR>
+<B>Default value:</B> <TT>""</TT>  
+<BR>
+<B>Note:</B> Chord analyzes only Java bytecode, not Java source code.  This property is used only by the task of converting Java source files into HTML files by program analyses that need to present their analysis results at the Java source code level (by calling method <TT>chord.program.Program.v().HTMLizeJavaSrcFiles())</TT>.
+
+<P>
+</LI>
+<LI><TT>chord.run.ids</TT> 
 <BR>
 <B>Type:</B> string list 
 <BR>
-<B>Description:</B> List of names of program relations whose contents must be printed to files <TT>[chord.out.dir]/&lt;...&gt;.txt</TT> where <TT>&lt;...&gt;</TT> denotes the relation name. 
+<B>Description:</B> List of IDs to identify runs of the given program. 
 <BR>
-<B>Default value:</B> <TT>""</TT> 
+<B>Default value:</B> <TT>0</TT> 
 <BR>
-<B>Note:</B> This task must be used with caution as certain program relations, albeit represented compactly as BDDs, may contain a large number (e.g., billions) of tuples, resulting in voluminous output when printed to a file.  See Section <A HREF="node10.html#sec:tuning-datalog-analysis"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for a more efficient way to query the contents of program relations (namely, by using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory).
+<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to build the analysis scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
 
 <P>
 </LI>
-<LI><TT>chord.publish.targets</TT> 
+<LI><TT>chord.args.&lt;id&gt;</TT> 
 <BR>
-<B>Type:</B> bool 
+<B>Type:</B> string 
 <BR>
-<B>Description:</B> Create files <TT>targets_sortby_name.html</TT>, <TT>targets_sortby_kind.html</TT>, and <TT>targets_sortby_producers.html</TT> in directory <TT>[chord.out.dir]</TT>, publishing all targets defined by program analyses in paths <TT>[chord.java.analysis.path]</TT> and <TT>[chord.dlog.analysis.path]</TT>. 
+<B>Description:</B> Command-line arguments string to be used for the given program in the run having ID <TT>&lt;id&gt;</TT>. 
 <BR>
-<B>Default value:</B> <TT>false</TT>
+<B>Default value:</B> <TT>""</TT> 
+<BR>
+<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to build the analysis scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
+
+<P>
+</LI>
+<LI><TT>chord.runtime.jvmargs</TT> 
+<BR>
+<B>Type:</B> string 
+<BR>
+<B>Description:</B> Arguments to JVM which runs the given program. 
+<BR>
+<B>Default value:</B> <TT>"-ea</TT> <TT>-Xmx1024m"</TT> 
+<BR>
+<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to build the analysis scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
 </LI>
 </UL>
 
 <P>
 <HR>
 <!--Navigation Panel-->
-<A NAME="tex2html229"
+<A NAME="tex2html230"
   HREF="node18.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html227"
-  HREF="node15.html">
+<A NAME="tex2html228"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html221"
+<A NAME="tex2html222"
   HREF="node16.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html230"
-  HREF="node18.html">Chord Boot Properties</A>
-<B> Up:</B> <A NAME="tex2html228"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html222"
-  HREF="node16.html">Basic Program Properties</A>
+<B> Next:</B> <A NAME="tex2html231"
+  HREF="node18.html">Chord Task Properties</A>
+<B> Up:</B> <A NAME="tex2html229"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html223"
+  HREF="node16.html">Chord System Properties</A>
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

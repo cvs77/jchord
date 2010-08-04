@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Acknowledgments</TITLE>
-<META NAME="description" CONTENT="Acknowledgments">
+<TITLE>Chord Resource Properties</TITLE>
+<META NAME="description" CONTENT="Chord Resource Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -18,95 +18,110 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="STYLESHEET" HREF="user_guide.css">
 
-<LINK REL="next" HREF="node27.html">
-<LINK REL="previous" HREF="node15.html">
-<LINK REL="up" HREF="user_guide.html">
+<LINK REL="previous" HREF="node25.html">
+<LINK REL="up" HREF="node16.html">
 <LINK REL="next" HREF="node27.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html317"
+<A NAME="tex2html318"
   HREF="node27.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html315"
-  HREF="user_guide.html">
+<A NAME="tex2html316"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html309"
+<A NAME="tex2html312"
   HREF="node25.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html318"
-  HREF="node27.html">About this document ...</A>
-<B> Up:</B> <A NAME="tex2html316"
-  HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html310"
-  HREF="node25.html">Chord Resource Properties</A>
+<B> Next:</B> <A NAME="tex2html319"
+  HREF="node27.html">Acknowledgments</A>
+<B> Up:</B> <A NAME="tex2html317"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html313"
+  HREF="node25.html">Chord Output Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H1><A NAME="SECTION000160000000000000000"></A>
-<A NAME="sec:acknowledgments"></A>
+<H2><A NAME="SECTION0001610000000000000000"></A>
+<A NAME="sec:chord-sysprops:resource"></A>
 <BR>
-Acknowledgments
-</H1>
+Chord Resource Properties
+</H2>
 
 <P>
-Chord would not be possible without the following open-source software:
+This section describes properties specifying classpaths and locations of runtime libraries used by Chord.
+Ordinarily, users must not alter the default values of these properties.
 
 <P>
 
 <UL>
-<LI><A NAME="tex2html13"
-  HREF="http://joeq.sourceforge.net/">Joeq</A>, a Java compiler framework
+<LI><TT>chord.main.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the <TT>main/</TT> directory in Chord's installation.
+
+<P>
 </LI>
-<LI><A NAME="tex2html14"
-  HREF="http://www.csg.is.titech.ac.jp/~chiba/javassist/">Javassist</A>,
-a Java bytecode manipulation tool
+<LI><TT>chord.lib.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Directory containing libraries needed by Chord. 
+<BR>
+<B>Default value:</B> <TT>[chord.main.dir]/lib/</TT>
+
+<P>
 </LI>
-<LI><A NAME="tex2html15"
-  HREF="http://bddbddb.sourceforge.net/">bddbddb</A>, a BDD-based Datalog solver
+<LI><TT>chord.main.class.path</TT> 
+<BR>
+<B>Type:</B> path 
+<BR>
+<B>Description:</B> Classpath of Chord.  It includes the path specified by property <TT>chord.java.analysis.path</TT> to allow running user-defined program analyses. 
+<BR>
+<B>Default value:</B> See <TT>[chord.main.dir]/build.xml</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.bddbddb.class.path</TT> 
+<BR>
+<B>Type:</B> path 
+<BR>
+<B>Description:</B> Classpath of <TT>bddbddb</TT>. 
+<BR>
+<B>Default value:</B> See <TT>[chord.main.dir]/build.xml</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.instr.agent.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Shared library implementing Chord instrumentation agent. 
+<BR>
+<B>Default value:</B> <TT>[chord.main.dir]/lib/libchord_instr_agent.so</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.javadoc.url</TT> 
+<BR>
+<B>Type:</B> string 
+<BR>
+<B>Description:</B> URL of the Javadoc location of program analyses.  It is used when publishing targets (i.e., when property <TT>chord.publish.targets</TT> is set to <TT>true</TT>). 
+<BR>
+<B>Default value:</B> <TT>http://chord.stanford.edu/javadoc/</TT>
 </LI>
 </UL>
 
 <P>
-Chord additionally relies on the following open-source tools and libraries:
 
-<UL>
-<LI><A NAME="tex2html16"
-  HREF="http://ant-contrib.sourceforge.net/">Ant-Contrib</A>,
-a collection of useful Ant tasks  
-</LI>
-<LI><A NAME="tex2html17"
-  HREF="http://buddy.sourceforge.net/">BuDDy</A>, a BDD library
-</LI>
-<LI><A NAME="tex2html18"
-  HREF="http://trove4j.sourceforge.net/">GNU Trove</A>,
-a primitive collections library for Java
-</LI>
-<LI><A NAME="tex2html19"
-  HREF="http://www.java2html.com/">Java2HTML</A>
-and
-<A NAME="tex2html20"
-  HREF="http://www.java2html.de/">Java2Html</A>, Java to HTML tools
-</LI>
-<LI><A NAME="tex2html21"
-  HREF="http://saxon.sourceforge.net/">Saxon</A>, an XSLT processor
-</LI>
-</UL>
-
-<P>
-Chord was supported in part by grants from the National Science Foundation,
-an equipment grant from Intel, and a Microsoft fellowship during 2005-2007.
-
-<P>
-
-<P>
 <BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

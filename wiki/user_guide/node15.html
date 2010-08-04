@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord System Properties</TITLE>
-<META NAME="description" CONTENT="Chord System Properties">
+<TITLE>Deadlock Analysis</TITLE>
+<META NAME="description" CONTENT="Deadlock Analysis">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -18,7 +18,7 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="STYLESHEET" HREF="user_guide.css">
 
-<LINK REL="next" HREF="node26.html">
+<LINK REL="next" HREF="node16.html">
 <LINK REL="previous" HREF="node14.html">
 <LINK REL="up" HREF="user_guide.html">
 <LINK REL="next" HREF="node16.html">
@@ -26,70 +26,61 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html199"
+<A NAME="tex2html200"
   HREF="node16.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html197"
+<A NAME="tex2html198"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html191"
+<A NAME="tex2html192"
   HREF="node14.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html200"
-  HREF="node16.html">Basic Program Properties</A>
-<B> Up:</B> <A NAME="tex2html198"
+<B> Next:</B> <A NAME="tex2html201"
+  HREF="node16.html">Chord System Properties</A>
+<B> Up:</B> <A NAME="tex2html199"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html192"
-  HREF="node14.html">Deadlock Analysis</A>
+<B> Previous:</B> <A NAME="tex2html193"
+  HREF="node14.html">Datarace Analysis</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
 <H1><A NAME="SECTION000150000000000000000"></A>
-<A NAME="sec:chord-sysprops"></A>
+<A NAME="sec:deadlock"></A>
 <BR>
-Chord System Properties
+Deadlock Analysis
 </H1>
 
 <P>
-Users can use system properties to control Chord's functionality.
-The following properties are recognized by Chord.
-The separator for list-valued properties can be either a blank space, a comma, a colon, or a semi-colon.
-Notation <TT>[&lt;...&gt;]</TT> is used in this section to denote the value of the property named <TT>&lt;...&gt;</TT>.
+Run the deadlock analysis provided in Chord by running the following command in Chord's <TT>main/</TT> directory:
+
+<P><PRE>
+prompt&gt; ant -Dchord.work.dir=&lt;...&gt; -Dchord.run.analyses=deadlock-java run
+</PRE>
+
+<P>
+where directory <TT>&lt;...&gt;</TT> contains a file named <TT>chord.properties</TT> which
+defines properties <TT>chord.main.class</TT>, <TT>chord.class.path</TT>, and <TT>chord.src.path</TT>.
+See Section <A HREF="node16.html#sec:chord-sysprops">16</A> for the meaning of these properties.
+
+<P>
+Directory <TT>main/examples/deadlock_test/</TT> provides a toy Java program on which you can run
+the deadlock analysis.
+First run <TT>ant</TT> in that directory (in order to compile the program's <TT>.java</TT> files to
+<TT>.class</TT> files) and then run the above command in Chord's <TT>main/</TT> directory with
+<TT>&lt;...&gt;</TT> replaced by <TT>examples/deadlock_test/</TT>.
+Upon successful completion, the file <TT>deadlocks.html</TT> should be produced in directory
+<TT>main/examples/deadlock_test/chord_output/</TT>.
+
+<P>
+
 
 <P>
 <BR><HR>
-<!--Table of Child-Links-->
-<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL>
-<LI><A NAME="tex2html201"
-  HREF="node16.html">Basic Program Properties</A>
-<LI><A NAME="tex2html202"
-  HREF="node17.html">Chord Task Properties</A>
-<LI><A NAME="tex2html203"
-  HREF="node18.html">Chord Boot Properties</A>
-<LI><A NAME="tex2html204"
-  HREF="node19.html">Program Scope Properties</A>
-<LI><A NAME="tex2html205"
-  HREF="node20.html">Program Analysis Properties</A>
-<LI><A NAME="tex2html206"
-  HREF="node21.html">Program Transformation Properties</A>
-<LI><A NAME="tex2html207"
-  HREF="node22.html">Chord Debug Properties</A>
-<LI><A NAME="tex2html208"
-  HREF="node23.html">Chord Instrumentation Properties</A>
-<LI><A NAME="tex2html209"
-  HREF="node24.html">Chord Output Properties</A>
-<LI><A NAME="tex2html210"
-  HREF="node25.html">Chord Resource Properties</A>
-</UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

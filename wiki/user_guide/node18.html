@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord Boot Properties</TITLE>
-<META NAME="description" CONTENT="Chord Boot Properties">
+<TITLE>Chord Task Properties</TITLE>
+<META NAME="description" CONTENT="Chord Task Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -20,127 +20,116 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="next" HREF="node19.html">
 <LINK REL="previous" HREF="node17.html">
-<LINK REL="up" HREF="node15.html">
+<LINK REL="up" HREF="node16.html">
 <LINK REL="next" HREF="node19.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html239"
+<A NAME="tex2html240"
   HREF="node19.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html237"
-  HREF="node15.html">
+<A NAME="tex2html238"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html231"
+<A NAME="tex2html232"
   HREF="node17.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html240"
-  HREF="node19.html">Program Scope Properties</A>
-<B> Up:</B> <A NAME="tex2html238"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html232"
-  HREF="node17.html">Chord Task Properties</A>
+<B> Next:</B> <A NAME="tex2html241"
+  HREF="node19.html">Chord Boot Properties</A>
+<B> Up:</B> <A NAME="tex2html239"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html233"
+  HREF="node17.html">Basic Program Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION000153000000000000000">
-Chord Boot Properties</A>
+<H2><A NAME="SECTION000162000000000000000"></A>
+<A NAME="sec:chord-sysprops:task"></A>
+<BR>
+Chord Task Properties
 </H2>
 
 <P>
-This section describes properties of the JVM running Chord, such as the working directory and various memory limits.
+This section describes properties that specify what task(s) Chord must perform, 
+such as computing the analysis scope of the given program or running program analyses on the given program.
 
 <P>
 
 <UL>
-<LI><TT>chord.work.dir</TT> 
+<LI><TT>chord.build.scope</TT> 
 <BR>
-<B>Type:</B> location 
+<B>Type:</B> bool 
 <BR>
-<B>Description:</B> Working directory during Chord's execution. 
+<B>Description:</B> Compute the analysis scope (i.e., reachable classes and methods) of the given program using the algorithm specified by properties <TT>chord.scope.kind</TT> and <TT>chord.reuse.scope</TT>. 
 <BR>
-<B>Default value:</B> current working directory
+<B>Default value:</B> <TT>false</TT> 
+<BR>
+<B>Note:</B> The analysis scope is computed regardless of the value of this property if another task
+(e.g., a program analysis specified via property <TT>chord.run.analyses</TT>) demands it by
+calling method <TT>chord.program.Program.v()</TT>.
 
 <P>
 </LI>
-<LI><TT>chord.props.file</TT> 
+<LI><TT>chord.run.analyses</TT> 
 <BR>
-<B>Type:</B> location 
+<B>Type:</B> string list 
 <BR>
-<B>Description:</B> Properties file loaded by <TT>[chord.main.dir]/build.xml</TT>.  Any of the below properties, as well as other user-defined properties to be passed to Chord (e.g., for user-defined analyses), may be set in this file.  Each relative (instead of absolute) path element in the value of any property named <TT>chord.&lt;...&gt;.path</TT> set in this file is converted to an absolute path element with respect to the directory containing this file. 
+<B>Description:</B> List of names of program analyses to be run in order. 
 <BR>
-<B>Default value:</B> <TT>[chord.work.dir]/chord.properties</TT> 
+<B>Default value:</B> <TT>""</TT> 
+<BR>
+<B>Note:</B> If the analysis is written in Java, its name is specified via statement <TT>name=&lt;...&gt;</TT> in its <TT>@Chord</TT> annotation, and is the name of the class itself if this statement is missing.  If the analysis is written in Datalog, its name is specified via a line of the form <TT>"#</TT> <TT>name=&lt;...&gt;"</TT>, and is the absolute location of the file itself if this line is missing.
 
 <P>
 </LI>
-<LI><TT>chord.max.heap</TT> 
+<LI><TT>chord.print.rels</TT> 
 <BR>
-<B>Type:</B> string 
+<B>Type:</B> string list 
 <BR>
-<B>Description:</B> Maximum memory size of JVM running Chord. 
+<B>Description:</B> List of names of program relations whose contents must be printed to files <TT>[chord.out.dir]/&lt;...&gt;.txt</TT> where <TT>&lt;...&gt;</TT> denotes the relation name. 
 <BR>
-<B>Default value:</B> <TT>1024m</TT> 
+<B>Default value:</B> <TT>""</TT> 
+<BR>
+<B>Note:</B> This task must be used with caution as certain program relations, albeit represented compactly as BDDs, may contain a large number (e.g., billions) of tuples, resulting in voluminous output when printed to a file.  See Section <A HREF="node10.html#sec:tuning-datalog-analysis">10</A> for a more efficient way to query the contents of program relations (namely, by using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory).
 
 <P>
 </LI>
-<LI><TT>chord.max.stack</TT> 
+<LI><TT>chord.publish.targets</TT> 
 <BR>
-<B>Type:</B> string 
+<B>Type:</B> bool 
 <BR>
-<B>Description:</B> Maximum thread stack size of JVM running Chord. 
+<B>Description:</B> Create files <TT>targets_sortby_name.html</TT>, <TT>targets_sortby_kind.html</TT>, and <TT>targets_sortby_producers.html</TT> in directory <TT>[chord.out.dir]</TT>, publishing all targets defined by program analyses in paths <TT>[chord.java.analysis.path]</TT> and <TT>[chord.dlog.analysis.path]</TT>. 
 <BR>
-<B>Default value:</B> <TT>32m</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.jvmargs</TT> 
-<BR>
-<B>Type:</B> string 
-<BR>
-<B>Description:</B> Arguments to JVM running Chord. 
-<BR>
-<B>Default value:</B> <TT>"-showversion</TT> <TT>-ea</TT> <TT>-Xmx[chord.max.heap]</TT> <TT>-Xss[chord.max.stack]"</TT>
-
-<P>
-</LI>
-<LI><TT>chord.bddbddb.max.heap</TT> 
-<BR>
-<B>Type:</B> string 
-<BR>
-<B>Description:</B> Maximum memory size of JVM running <TT>bddbddb</TT>. 
-<BR>
-<B>Default value:</B> <TT>1024m</TT> 
-<BR>
-<B>Note:</B> Each program analysis written in Datalog is run in a separate JVM because there may be multiple invocations of the Datalog solver <TT>bddbddb</TT> in a single run of Chord and it is difficult to reset the global state of <TT>bddbddb</TT> on each invocation.
+<B>Default value:</B> <TT>false</TT>
 </LI>
 </UL>
 
 <P>
 <HR>
 <!--Navigation Panel-->
-<A NAME="tex2html239"
+<A NAME="tex2html240"
   HREF="node19.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html237"
-  HREF="node15.html">
+<A NAME="tex2html238"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html231"
+<A NAME="tex2html232"
   HREF="node17.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html240"
-  HREF="node19.html">Program Scope Properties</A>
-<B> Up:</B> <A NAME="tex2html238"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html232"
-  HREF="node17.html">Chord Task Properties</A>
+<B> Next:</B> <A NAME="tex2html241"
+  HREF="node19.html">Chord Boot Properties</A>
+<B> Up:</B> <A NAME="tex2html239"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html233"
+  HREF="node17.html">Basic Program Properties</A>
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

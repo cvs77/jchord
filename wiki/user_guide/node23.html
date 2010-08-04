@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord Instrumentation Properties</TITLE>
-<META NAME="description" CONTENT="Chord Instrumentation Properties">
+<TITLE>Chord Debug Properties</TITLE>
+<META NAME="description" CONTENT="Chord Debug Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -20,178 +20,79 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="next" HREF="node24.html">
 <LINK REL="previous" HREF="node22.html">
-<LINK REL="up" HREF="node15.html">
+<LINK REL="up" HREF="node16.html">
 <LINK REL="next" HREF="node24.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html289"
+<A NAME="tex2html290"
   HREF="node24.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html287"
-  HREF="node15.html">
+<A NAME="tex2html288"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html281"
+<A NAME="tex2html282"
   HREF="node22.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html290"
-  HREF="node24.html">Chord Output Properties</A>
-<B> Up:</B> <A NAME="tex2html288"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html282"
-  HREF="node22.html">Chord Debug Properties</A>
+<B> Next:</B> <A NAME="tex2html291"
+  HREF="node24.html">Chord Instrumentation Properties</A>
+<B> Up:</B> <A NAME="tex2html289"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html283"
+  HREF="node22.html">Program Transformation Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION000158000000000000000">
-Chord Instrumentation Properties</A>
+<H2><A NAME="SECTION000167000000000000000">
+Chord Debug Properties</A>
 </H2>
 
 <P>
-This section describes properties regarding execution of instrumented programs for dynamic analyses.
+This section describes properties that specify the amount of debug information that Chord must produce during execution.
 
 <P>
 
 <UL>
-<LI><TT>chord.reuse.trace</TT> 
+<LI><TT>chord.verbose</TT> 
 <BR>
 <B>Type:</B> bool 
 <BR>
-<B>Description:</B> Reuse the dynamic trace file specified by property <TT>chord.final.trace.file</TT> (computed by a previous run of Chord) if it exists. 
+<B>Description:</B> Produce more verbose output during Chord's execution. 
 <BR>
 <B>Default value:</B> <TT>false</TT> 
-<BR>
-<B>Note:</B> Property <TT>chord.trace.pipe</TT> must be set to <TT>false</TT> if this property is set to <TT>true</TT>.
 
 <P>
 </LI>
-<LI><TT>chord.trace.pipe</TT> 
+<LI><TT>chord.bddbddb.noisy</TT> 
 <BR>
 <B>Type:</B> bool 
 <BR>
-<B>Description:</B> Implement the dynamic trace file as a POSIX pipe instead of a regular file. 
+<B>Description:</B> Produce more verbose output during the Datalog solver <TT>bddbddb</TT>'s execution. 
+<BR>
+<B>Default value:</B> <TT>false</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.save.maps</TT> 
+<BR>
+<B>Type:</B> bool 
+<BR>
+<B>Description:</B> Write to file <TT>[chord.bddbddb.work.dir]/&lt;...&gt;.map</TT> when saving program domain named <TT>&lt;...&gt;</TT>. 
 <BR>
 <B>Default value:</B> <TT>true</TT>  
 <BR>
-<B>Note:</B> Property <TT>chord.reuse.trace</TT> must be set to <TT>false</TT> if this property is set to <TT>true</TT>.
-
-<P>
-</LI>
-<LI><TT>chord.trace.block.size</TT> 
-<BR>
-<B>Type:</B> int 
-<BR>
-<B>Description:</B> Number of bytes to read/write in a single operation from/to the dynamic trace file. 
-<BR>
-<B>Default value:</B> <TT>4096</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.runtime.class</TT> 
-<BR>
-<B>Type:</B> class 
-<BR>
-<B>Description:</B> Subclass of <TT>chord.project.Runtime</TT> used by dynamic program analyses to handle events generated during an instrumented program's execution. 
-<BR>
-<B>Default value:</B> <TT>chord.project.BufferedRuntime</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.max.constr</TT> 
-<BR>
-<B>Type:</B> int 
-<BR>
-<B>Description:</B> Maximum number of bytes over which events generated during the execution of any constructor in the given program may span. 
-<BR>
-<B>Default value:</B> 50000000 
-<BR>
-<B>Note:</B> This property is relevant only for dynamic analyses which want events of the form <TT>NEW</TT> <IMG
- WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$h$"> <IMG
- WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img4.png"
- ALT="$t$"> <IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img9.png"
- ALT="$o$"> to be generated (see Section <A HREF="node8.html#sec:instr-events"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>).  The problem with generating such events at run-time is that the ID <TT>o</TT> of the object freshly created by thread <TT>t</TT> at object allocation site <TT>h</TT> cannot be instrumented until the object is fully initialized (i.e., its constructor has finished executing).  Hence, Chord first generates a ``crude dynamic trace", which has events of the form <TT>BEF_NEW</TT> <IMG
- WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$h$"> <IMG
- WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img4.png"
- ALT="$t$"> and <TT>AFT_NEW</TT> <IMG
- WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$h$"> <IMG
- WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img4.png"
- ALT="$t$"> <IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img9.png"
- ALT="$o$"> generated before and after the execution of the constructor, respectively.  A subsequent pass generates a ``final dynamic trace", which replaces the <TT>BEF_NEW</TT> <IMG
- WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$h$"> <IMG
- WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img4.png"
- ALT="$t$"> events by <TT>NEW</TT> <IMG
- WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$h$"> <IMG
- WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img4.png"
- ALT="$t$"> <IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img9.png"
- ALT="$o$"> and discards the <TT>AFT_NEW</TT> <IMG
- WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$h$"> <IMG
- WIDTH="10" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img4.png"
- ALT="$t$"> <IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img9.png"
- ALT="$o$"> events.  For this purpose, however, Chord must buffer all events generated between the <TT>BEF_NEW</TT> and <TT>AFT_NEW</TT> events, and this property specifies the number of bytes over which these events may span.  If the actual number of bytes exceeds the value specified by this property (e.g., if the constructor throws an exception and the <TT>AFT_NEW</TT> event is not generated at all), then Chord simply generates event <TT>NEW</TT> <IMG
- WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$h$"> <IMG
- WIDTH="9" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
- SRC="img10.png"
- ALT="$i$"> <IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="img11.png"
- ALT="$0$"> (i.e., it treats the created object as having ID 0, which is the ID also used for <TT>null</TT>).
+<B>Note:</B> This functionality is useful for debugging Datalog programs using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory (see Section <A HREF="node10.html#sec:tuning-datalog-analysis">10</A>).
 </LI>
 </UL>
 
 <P>
-<HR>
-<!--Navigation Panel-->
-<A NAME="tex2html289"
-  HREF="node24.html">
-<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html287"
-  HREF="node15.html">
-<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html281"
-  HREF="node22.html">
-<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
-<BR>
-<B> Next:</B> <A NAME="tex2html290"
-  HREF="node24.html">Chord Output Properties</A>
-<B> Up:</B> <A NAME="tex2html288"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html282"
-  HREF="node22.html">Chord Debug Properties</A>
-<!--End of Navigation Panel-->
+<BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

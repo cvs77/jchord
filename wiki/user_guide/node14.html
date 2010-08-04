@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Deadlock Analysis</TITLE>
-<META NAME="description" CONTENT="Deadlock Analysis">
+<TITLE>Datarace Analysis</TITLE>
+<META NAME="description" CONTENT="Datarace Analysis">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,61 +26,90 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html189"
+<A NAME="tex2html190"
   HREF="node15.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html187"
+<A NAME="tex2html188"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html181"
+<A NAME="tex2html182"
   HREF="node13.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html190"
-  HREF="node15.html">Chord System Properties</A>
-<B> Up:</B> <A NAME="tex2html188"
+<B> Next:</B> <A NAME="tex2html191"
+  HREF="node15.html">Deadlock Analysis</A>
+<B> Up:</B> <A NAME="tex2html189"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html182"
-  HREF="node13.html">Datarace Analysis</A>
+<B> Previous:</B> <A NAME="tex2html183"
+  HREF="node13.html">Points-to and Call-Graph Analyses</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
 <H1><A NAME="SECTION000140000000000000000"></A>
-<A NAME="sec:deadlock"></A>
+<A NAME="sec:datarace"></A>
 <BR>
-Deadlock Analysis
+Datarace Analysis
 </H1>
 
 <P>
-Run the deadlock analysis provided in Chord by running the following command in Chord's <TT>main/</TT> directory:
+Run the datarace analysis provided in Chord by running the following command in Chord's <TT>main/</TT> directory:
 
 <P><PRE>
-prompt&gt; ant -Dchord.work.dir=&lt;...&gt; -Dchord.run.analyses=deadlock-java run
+prompt&gt; ant -Dchord.work.dir=&lt;...&gt; -Dchord.run.analyses=datarace-java run
 </PRE>
 
 <P>
 where directory <TT>&lt;...&gt;</TT> contains a file named <TT>chord.properties</TT> which
 defines properties <TT>chord.main.class</TT>, <TT>chord.class.path</TT>, and <TT>chord.src.path</TT>.
-See Section <A HREF="node15.html#sec:chord-sysprops"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for the meaning of these properties.
+See Section <A HREF="node16.html#sec:chord-sysprops">16</A> for the meaning of these properties.
 
 <P>
-Directory <TT>main/examples/deadlock_test/</TT> provides a toy Java program on which you can run
-the deadlock analysis.
+Directory <TT>main/examples/datarace_test/</TT> provides a toy Java program on which you can run the datarace
+analysis.
 First run <TT>ant</TT> in that directory (in order to compile the program's <TT>.java</TT> files to
-<TT>.class</TT> files) and then run the above command in Chord's <TT>main/</TT> directory with
-<TT>&lt;...&gt;</TT> replaced by <TT>examples/deadlock_test/</TT>.
-Upon successful completion, the file <TT>deadlocks.html</TT> should be produced in directory
-<TT>main/examples/deadlock_test/chord_output/</TT>.
+<TT>.class</TT> files) and then run the above command in Chord's <TT>main/</TT> directory
+with <TT>&lt;...&gt;</TT> replaced by <TT>examples/datarace_test/</TT>.
+Upon successful completion, the following files should be produced in directory
+<TT>main/examples/datarace_test/chord_output/</TT>:
 
 <P>
 
+<UL>
+<LI>File <TT>dataraces_by_fld.html</TT>, listing all dataraces grouped by the field on which they occur; all
+dataraces on the same instance field or the same static field are listed in the same group, and so are
+all dataraces on array elements.
+</LI>
+<LI>File <TT>dataraces_by_obj.html</TT>, listing all dataraces grouped by the abstract object on whose field they occur;
+dataraces on all static fields are listed in the same group, and so are dataraces on different
+instance fields of the same abstract object.
+</LI>
+</UL>
 
 <P>
-<BR><HR>
+
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html190"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html188"
+  HREF="user_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html182"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html191"
+  HREF="node15.html">Deadlock Analysis</A>
+<B> Up:</B> <A NAME="tex2html189"
+  HREF="user_guide.html">Chord: A Static and</A>
+<B> Previous:</B> <A NAME="tex2html183"
+  HREF="node13.html">Points-to and Call-Graph Analyses</A>
+<!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Program Scope Properties</TITLE>
-<META NAME="description" CONTENT="Program Scope Properties">
+<TITLE>Chord Boot Properties</TITLE>
+<META NAME="description" CONTENT="Chord Boot Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -20,135 +20,127 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="next" HREF="node20.html">
 <LINK REL="previous" HREF="node18.html">
-<LINK REL="up" HREF="node15.html">
+<LINK REL="up" HREF="node16.html">
 <LINK REL="next" HREF="node20.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html249"
+<A NAME="tex2html250"
   HREF="node20.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html247"
-  HREF="node15.html">
+<A NAME="tex2html248"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html241"
+<A NAME="tex2html242"
   HREF="node18.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html250"
-  HREF="node20.html">Program Analysis Properties</A>
-<B> Up:</B> <A NAME="tex2html248"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html242"
-  HREF="node18.html">Chord Boot Properties</A>
+<B> Next:</B> <A NAME="tex2html251"
+  HREF="node20.html">Program Scope Properties</A>
+<B> Up:</B> <A NAME="tex2html249"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html243"
+  HREF="node18.html">Chord Task Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION000154000000000000000">
-Program Scope Properties</A>
+<H2><A NAME="SECTION000163000000000000000">
+Chord Boot Properties</A>
 </H2>
 
 <P>
-This section describes properties that specify how the analysis scope is computed.
-See Section <A HREF="node4.html#sec:building-scope"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for more details.
+This section describes properties of the JVM running Chord, such as the working directory and various memory limits.
 
 <P>
 
 <UL>
-<LI><TT>chord.reuse.scope</TT> 
+<LI><TT>chord.work.dir</TT> 
 <BR>
-<B>Type:</B> bool 
+<B>Type:</B> location 
 <BR>
-<B>Description:</B> Treat analysis scope as the classes and methods listed in files specified by properties <TT>chord.classes.file</TT> and <TT>chord.methods.file</TT>, respectively.  Property <TT>chord.scope.kind</TT> is ignored if this property is set to <TT>true</TT> and the two files exist. 
+<B>Description:</B> Working directory during Chord's execution. 
 <BR>
-<B>Default value:</B> <TT>false</TT>
+<B>Default value:</B> current working directory
 
 <P>
 </LI>
-<LI><TT>chord.scope.kind</TT> 
+<LI><TT>chord.props.file</TT> 
 <BR>
-<B>Type:</B> [<TT>dynamic</TT><IMG
- WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="img1.png"
- ALT="$\vert$"><TT>rta</TT><IMG
- WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="img1.png"
- ALT="$\vert$"><TT>rta_reflect</TT><IMG
- WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="img1.png"
- ALT="$\vert$"><TT>cha</TT>] 
+<B>Type:</B> location 
 <BR>
-<B>Description:</B> Algorithm to compute analysis scope (i.e., reachable classes and methods).  Current choices include <TT>dynamic</TT> (dynamic analysis), <TT>rta</TT> (static Rapid Type Analysis ignoring reflection), <TT>rta_reflect</TT> (static Rapid Type Analysis modeling a common reflection pattern), and <TT>cha</TT> (static Class Hierarchy Analysis). 
+<B>Description:</B> Properties file loaded by <TT>[chord.main.dir]/build.xml</TT>.  Any of the below properties, as well as other user-defined properties to be passed to Chord (e.g., for user-defined analyses), may be set in this file.  Each relative (instead of absolute) path element in the value of any property named <TT>chord.&lt;...&gt;.path</TT> set in this file is converted to an absolute path element with respect to the directory containing this file. 
 <BR>
-<B>Default value:</B> <TT>rta</TT>
+<B>Default value:</B> <TT>[chord.work.dir]/chord.properties</TT> 
 
 <P>
 </LI>
-<LI><TT>chord.ch.dynamic</TT> 
+<LI><TT>chord.max.heap</TT> 
 <BR>
-<B>Type:</B> bool 
+<B>Type:</B> string 
 <BR>
-<B>Description:</B> Compute the set of all classes loaded by the JVM while running the given program, and exclude classes not in this set (and their subclasses) while building the class hierarchy.  This property is relevant only if <TT>chord.scope.kind</TT> is <TT>rta_reflect</TT> or <TT>cha</TT>, since only these two scope computing algorithms query the class hierarchy. 
+<B>Description:</B> Maximum memory size of JVM running Chord. 
 <BR>
-<B>Default value:</B> <TT>false</TT> 
+<B>Default value:</B> <TT>1024m</TT> 
 
 <P>
 </LI>
-<LI><TT>chord.scope.exclude.std</TT> 
+<LI><TT>chord.max.stack</TT> 
 <BR>
-<B>Type:</B> string list 
+<B>Type:</B> string 
 <BR>
-<B>Description:</B> List of prefixes of names of classes inside the standard library whose method bodies must be treated as no-ops by static scope building algorithms. 
+<B>Description:</B> Maximum thread stack size of JVM running Chord. 
 <BR>
-<B>Default value:</B> <TT>[chord.main.class.path]</TT>
+<B>Default value:</B> <TT>32m</TT> 
 
 <P>
 </LI>
-<LI><TT>chord.scope.exclude.ext</TT> 
+<LI><TT>chord.jvmargs</TT> 
 <BR>
-<B>Type:</B> string list 
+<B>Type:</B> string 
 <BR>
-<B>Description:</B> List of prefixes of names of classes outside the standard library whose method bodies must be treated as no-ops by static scope building algorithms. 
+<B>Description:</B> Arguments to JVM running Chord. 
 <BR>
-<B>Default value:</B> <TT>""</TT>
+<B>Default value:</B> <TT>"-showversion</TT> <TT>-ea</TT> <TT>-Xmx[chord.max.heap]</TT> <TT>-Xss[chord.max.stack]"</TT>
 
 <P>
 </LI>
-<LI><TT>chord.scope.exclude</TT> 
+<LI><TT>chord.bddbddb.max.heap</TT> 
 <BR>
-<B>Type:</B> string list 
+<B>Type:</B> string 
 <BR>
-<B>Description:</B> List of prefixes of names of classes whose method bodies must be treated as no-ops by static scope building algorithms. 
+<B>Description:</B> Maximum memory size of JVM running <TT>bddbddb</TT>. 
 <BR>
-<B>Default value:</B> <TT>"[chord.scope.exclude.std],[chord.scope.exclude.ext]"</TT>
+<B>Default value:</B> <TT>1024m</TT> 
+<BR>
+<B>Note:</B> Each program analysis written in Datalog is run in a separate JVM because there may be multiple invocations of the Datalog solver <TT>bddbddb</TT> in a single run of Chord and it is difficult to reset the global state of <TT>bddbddb</TT> on each invocation.
 </LI>
 </UL>
 
 <P>
 <HR>
 <!--Navigation Panel-->
-<A NAME="tex2html249"
+<A NAME="tex2html250"
   HREF="node20.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html247"
-  HREF="node15.html">
+<A NAME="tex2html248"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html241"
+<A NAME="tex2html242"
   HREF="node18.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html250"
-  HREF="node20.html">Program Analysis Properties</A>
-<B> Up:</B> <A NAME="tex2html248"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html242"
-  HREF="node18.html">Chord Boot Properties</A>
+<B> Next:</B> <A NAME="tex2html251"
+  HREF="node20.html">Program Scope Properties</A>
+<B> Up:</B> <A NAME="tex2html249"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html243"
+  HREF="node18.html">Chord Task Properties</A>
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

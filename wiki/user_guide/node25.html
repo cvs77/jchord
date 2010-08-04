@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord Resource Properties</TITLE>
-<META NAME="description" CONTENT="Chord Resource Properties">
+<TITLE>Chord Output Properties</TITLE>
+<META NAME="description" CONTENT="Chord Output Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -18,110 +18,178 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="STYLESHEET" HREF="user_guide.css">
 
+<LINK REL="next" HREF="node26.html">
 <LINK REL="previous" HREF="node24.html">
-<LINK REL="up" HREF="node15.html">
+<LINK REL="up" HREF="node16.html">
 <LINK REL="next" HREF="node26.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html307"
+<A NAME="tex2html310"
   HREF="node26.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html305"
-  HREF="node15.html">
+<A NAME="tex2html308"
+  HREF="node16.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html301"
+<A NAME="tex2html302"
   HREF="node24.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html308"
-  HREF="node26.html">Acknowledgments</A>
-<B> Up:</B> <A NAME="tex2html306"
-  HREF="node15.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html302"
-  HREF="node24.html">Chord Output Properties</A>
+<B> Next:</B> <A NAME="tex2html311"
+  HREF="node26.html">Chord Resource Properties</A>
+<B> Up:</B> <A NAME="tex2html309"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html303"
+  HREF="node24.html">Chord Instrumentation Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION0001510000000000000000"></A>
-<A NAME="sec:chord-sysprops:resource"></A>
-<BR>
-Chord Resource Properties
+<H2><A NAME="SECTION000169000000000000000">
+Chord Output Properties</A>
 </H2>
 
 <P>
-This section describes properties specifying classpaths and locations of runtime libraries used by Chord.
-Ordinarily, users must not alter the default values of these properties.
+This section describes properties specifying the names of files and directories output by Chord.
+Most users will not want to alter the default values of these properties.
 
 <P>
 
 <UL>
-<LI><TT>chord.main.dir</TT> 
+<LI><TT>chord.out.dir</TT> 
 <BR>
 <B>Type:</B> location 
 <BR>
-<B>Description:</B> Absolute location of the <TT>main/</TT> directory in Chord's installation.
+<B>Description:</B> Absolute location of the directory to which Chord dumps all files. 
+<BR>
+<B>Default value:</B> <TT>[chord.work.dir]/chord_output/</TT> 
 
 <P>
 </LI>
-<LI><TT>chord.lib.dir</TT> 
+<LI><TT>chord.out.file</TT> 
 <BR>
 <B>Type:</B> location 
 <BR>
-<B>Description:</B> Directory containing libraries needed by Chord. 
+<B>Description:</B> Absolute location of the file to which the standard output stream is redirected during Chord's execution. 
 <BR>
-<B>Default value:</B> <TT>[chord.main.dir]/lib/</TT>
+<B>Default value:</B> <TT>[chord.out.dir]/log.txt</TT>
 
 <P>
 </LI>
-<LI><TT>chord.main.class.path</TT> 
-<BR>
-<B>Type:</B> path 
-<BR>
-<B>Description:</B> Classpath of Chord.  It includes the path specified by property <TT>chord.java.analysis.path</TT> to allow running user-defined program analyses. 
-<BR>
-<B>Default value:</B> See <TT>[chord.main.dir]/build.xml</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.bddbddb.class.path</TT> 
-<BR>
-<B>Type:</B> path 
-<BR>
-<B>Description:</B> Classpath of <TT>bddbddb</TT>. 
-<BR>
-<B>Default value:</B> See <TT>[chord.main.dir]/build.xml</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.instr.agent.file</TT> 
+<LI><TT>chord.err.file</TT> 
 <BR>
 <B>Type:</B> location 
 <BR>
-<B>Description:</B> Shared library implementing Chord instrumentation agent. 
+<B>Description:</B> Absolute location of the file to which the standard error stream is redirected during Chord's execution. 
 <BR>
-<B>Default value:</B> <TT>[chord.main.dir]/lib/libchord_instr_agent.so</TT> 
+<B>Default value:</B> <TT>[chord.out.dir]/log.txt</TT>
 
 <P>
 </LI>
-<LI><TT>chord.javadoc.url</TT> 
+<LI><TT>chord.classes.file</TT> 
 <BR>
-<B>Type:</B> string 
+<B>Type:</B> location 
 <BR>
-<B>Description:</B> URL of the Javadoc location of program analyses.  It is used when publishing targets (i.e., when property <TT>chord.publish.targets</TT> is set to <TT>true</TT>). 
+<B>Description:</B> Absolute location of the file from/to which list of classes deemed reachable is read/written. 
 <BR>
-<B>Default value:</B> <TT>http://chord.stanford.edu/javadoc/</TT>
+<B>Default value:</B> <TT>[chord.out.dir]/classes.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.methods.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file from/to which list of methods deemed reachable is read/written. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/methods.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.bddbddb.work.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory used by the Datalog solver <TT>bddbddb</TT> as its input/output directory (namely, for program domain files <TT>*.dom</TT> and <TT>*.map</TT>, and program relation files <TT>*.bdd</TT>). 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/bddbddb/</TT>
+
+<P>
+</LI>
+<LI><TT>chord.boot.classes.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory from/to which instrumented JDK classes used by the given program are read/written by dynamic program analyses. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/boot_classes/</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.user.classes.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory from/to which instrumented non-JDK classes of the given program are read/written by dynamic program analyses. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/user_classes/</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.instr.scheme.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file specifying the kind and format of events in dynamic trace files. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/scheme.ser</TT>
+
+<P>
+</LI>
+<LI><TT>chord.crude.trace.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the crude dynamic trace file. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/crude_trace.txt</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.final.trace.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the final dynamic trace file. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/final_trace.txt</TT>
 </LI>
 </UL>
 
 <P>
-
-<BR><HR>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html310"
+  HREF="node26.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html308"
+  HREF="node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html302"
+  HREF="node24.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html311"
+  HREF="node26.html">Chord Resource Properties</A>
+<B> Up:</B> <A NAME="tex2html309"
+  HREF="node16.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html303"
+  HREF="node24.html">Chord Instrumentation Properties</A>
+<!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>

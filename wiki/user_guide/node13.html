@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Datarace Analysis</TITLE>
-<META NAME="description" CONTENT="Datarace Analysis">
+<TITLE>Points-to and Call-Graph Analyses</TITLE>
+<META NAME="description" CONTENT="Points-to and Call-Graph Analyses">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,90 +26,41 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html179"
+<A NAME="tex2html180"
   HREF="node14.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html177"
+<A NAME="tex2html178"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html171"
+<A NAME="tex2html172"
   HREF="node12.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html180"
-  HREF="node14.html">Deadlock Analysis</A>
-<B> Up:</B> <A NAME="tex2html178"
+<B> Next:</B> <A NAME="tex2html181"
+  HREF="node14.html">Datarace Analysis</A>
+<B> Up:</B> <A NAME="tex2html179"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html172"
-  HREF="node12.html">Points-to and Call-Graph Analyses</A>
+<B> Previous:</B> <A NAME="tex2html173"
+  HREF="node12.html">Program Representation</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
 <H1><A NAME="SECTION000130000000000000000"></A>
-<A NAME="sec:datarace"></A>
+<A NAME="sec:pointsto"></A>
 <BR>
-Datarace Analysis
+Points-to and Call-Graph Analyses
 </H1>
 
 <P>
-Run the datarace analysis provided in Chord by running the following command in Chord's <TT>main/</TT> directory:
-
-<P><PRE>
-prompt&gt; ant -Dchord.work.dir=&lt;...&gt; -Dchord.run.analyses=datarace-java run
-</PRE>
-
-<P>
-where directory <TT>&lt;...&gt;</TT> contains a file named <TT>chord.properties</TT> which
-defines properties <TT>chord.main.class</TT>, <TT>chord.class.path</TT>, and <TT>chord.src.path</TT>.
-See Section <A HREF="node15.html#sec:chord-sysprops"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for the meaning of these properties.
-
-<P>
-Directory <TT>main/examples/datarace_test/</TT> provides a toy Java program on which you can run the datarace
-analysis.
-First run <TT>ant</TT> in that directory (in order to compile the program's <TT>.java</TT> files to
-<TT>.class</TT> files) and then run the above command in Chord's <TT>main/</TT> directory
-with <TT>&lt;...&gt;</TT> replaced by <TT>examples/datarace_test/</TT>.
-Upon successful completion, the following files should be produced in directory
-<TT>main/examples/datarace_test/chord_output/</TT>:
+TODO
 
 <P>
 
-<UL>
-<LI>File <TT>dataraces_by_fld.html</TT>, listing all dataraces grouped by the field on which they occur; all
-dataraces on the same instance field or the same static field are listed in the same group, and so are
-all dataraces on array elements.
-</LI>
-<LI>File <TT>dataraces_by_obj.html</TT>, listing all dataraces grouped by the abstract object on whose field they occur;
-dataraces on all static fields are listed in the same group, and so are dataraces on different
-instance fields of the same abstract object.
-</LI>
-</UL>
-
-<P>
-
-<HR>
-<!--Navigation Panel-->
-<A NAME="tex2html179"
-  HREF="node14.html">
-<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html177"
-  HREF="user_guide.html">
-<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html171"
-  HREF="node12.html">
-<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
-<BR>
-<B> Next:</B> <A NAME="tex2html180"
-  HREF="node14.html">Deadlock Analysis</A>
-<B> Up:</B> <A NAME="tex2html178"
-  HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html172"
-  HREF="node12.html">Points-to and Call-Graph Analyses</A>
-<!--End of Navigation Panel-->
+<BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-07-22
+2010-08-03
 </ADDRESS>
 </BODY>
 </HTML>
