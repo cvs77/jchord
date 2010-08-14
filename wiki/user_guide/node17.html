@@ -88,7 +88,7 @@ to be used to run the program.
 <BR>
 <B>Default value:</B> <TT>""</TT>  
 <BR>
-<B>Note:</B> Chord analyzes only Java bytecode, not Java source code.  This property is used only by the task of converting Java source files into HTML files by program analyses that need to present their analysis results at the Java source code level (by calling method <TT>chord.program.Program.v().HTMLizeJavaSrcFiles())</TT>.
+<B>Note:</B> Chord analyzes only Java bytecode, not Java source code.  This property is used only by the task of converting Java source files into HTML files by program analyses that need to present their analysis results at the Java source code level (by calling method <TT>chord.program.Program.getProgram().HTMLizeJavaSrcFiles())</TT>.
 
 <P>
 </LI>
@@ -100,7 +100,7 @@ to be used to run the program.
 <BR>
 <B>Default value:</B> <TT>0</TT> 
 <BR>
-<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to build the analysis scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
+<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to compute the program scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
 
 <P>
 </LI>
@@ -112,7 +112,7 @@ to be used to run the program.
 <BR>
 <B>Default value:</B> <TT>""</TT> 
 <BR>
-<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to build the analysis scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
+<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to compute the program scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
 
 <P>
 </LI>
@@ -122,9 +122,9 @@ to be used to run the program.
 <BR>
 <B>Description:</B> Arguments to JVM which runs the given program. 
 <BR>
-<B>Default value:</B> <TT>"-ea</TT> <TT>-Xmx1024m"</TT> 
+<B>Default value:</B> <TT>"-ea -Xmx1024m"</TT> 
 <BR>
-<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to build the analysis scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
+<B>Note:</B> This property is used only when Chord executes the given program, namely, when it is asked to compute the program scope dynamically (i.e., when <TT>[chord.scope.kind]=dynamic</TT>) or when it is asked to execute a dynamic program analysis.
 </LI>
 </UL>
 
@@ -150,7 +150,7 @@ to be used to run the program.
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-03
+2010-08-13
 </ADDRESS>
 </BODY>
 </HTML>

@@ -41,7 +41,7 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 <B> Up:</B> <A NAME="tex2html159"
   HREF="user_guide.html">Chord: A Static and</A>
 <B> Previous:</B> <A NAME="tex2html153"
-  HREF="node10.html">Tuning a Program Analysis</A>
+  HREF="node10.html">Tuning a Datalog Analysis</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
@@ -53,29 +53,23 @@ BDD Representation
 </H1>
 
 <P>
-Each domain containing <IMG
- WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
- ALT="$N$"> elements is assigned <IMG
- WIDTH="46" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="img9.png"
- ALT="$log_2 N$"> BDD variables in the underlying BDD factory with contiguous IDs.
+Each domain containing N elements is assigned log2(N) BDD variables in the underlying BDD factory with contiguous IDs.
 For instance,
-domain <TT>F0</TT> containing [2048..4096) elements will be assigned 12 variables with IDs (say) 59,60,61,62,63,64,65,66,67,68,69,70 and
+domain <TT>F0</TT> containing [128..256) elements will be assigned 8 variables with IDs (say) 63,64,65,66,67,68,69,70 and
 domain <TT>Z0</TT> containing [8..16) elements will be assigned 4 variables with IDs (say) 105,106,107,108.
 
 <P>
 If two domains are uninterleaved in the declared domain order in a Datalog program (i.e., <TT>_</TT> is used instead of <TT>x</TT> between them),
 then the BDD variables assigned to those domains are ordered in reverse order in the underlying BDD factory.
 For instance, the BDD variable order corresponding to the declared domain order <TT>F0_Z0</TT> is (in level2var format)
-``70,69,68,67,66,65,64,63,62,61,60,59,108,107,106,105".
+``70,69,68,67,66,65,64,63,108,107,106,105".
 
 <P>
 If two domains are interleaved in the declared domain order in a Datalog program (i.e., <TT>x</TT> is used instead of <TT>_</TT> between them),
 then the BDD variables assigned to those domains are still ordered in reverse order of IDs in the underlying BDD factory,
 but they are also interleaved.
 For instance, the BDD variable order corresponding to the declared domain order <TT>F0xZ0</TT> is (in level2var format)
-``70,108,69,107,68,106,67,105,66,65,64,63,62,61,60,59".
+``70,108,69,107,68,106,67,105,66,65,64,63".
 
 <P>
 Each BDD variable is at a unique ``level" which is its 0-based position in the BDD variable order in the underlying BDD factory.
@@ -108,10 +102,10 @@ represented using 16 and 12 unique BDD variables, respectively).
 <P>
 If there are <IMG
  WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
+ SRC="img5.png"
  ALT="$N$"> domains, there are <IMG
  WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img8.png"
+ SRC="img5.png"
  ALT="$N$"> following comment lines, each specifying the
 BDD variables assigned to the corresponding domain.
 
@@ -176,11 +170,11 @@ starting at the root of BDD <TT>r</TT>.
 <B> Up:</B> <A NAME="tex2html159"
   HREF="user_guide.html">Chord: A Static and</A>
 <B> Previous:</B> <A NAME="tex2html153"
-  HREF="node10.html">Tuning a Program Analysis</A>
+  HREF="node10.html">Tuning a Datalog Analysis</A>
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-03
+2010-08-13
 </ADDRESS>
 </BODY>
 </HTML>

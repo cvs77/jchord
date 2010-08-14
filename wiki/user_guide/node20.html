@@ -52,7 +52,7 @@ Program Scope Properties</A>
 
 <P>
 This section describes properties that specify how the analysis scope is computed.
-See Section <A HREF="node4.html#sec:building-scope">4</A> for more details.
+See Section <A HREF="node4.html#sec:building-scope"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for more details.
 
 <P>
 
@@ -75,24 +75,24 @@ See Section <A HREF="node4.html#sec:building-scope">4</A> for more details.
  ALT="$\vert$"><TT>rta</TT><IMG
  WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
  SRC="img1.png"
- ALT="$\vert$"><TT>rta_reflect</TT><IMG
- WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="img1.png"
  ALT="$\vert$"><TT>cha</TT>] 
 <BR>
-<B>Description:</B> Algorithm to compute analysis scope (i.e., reachable classes and methods).  Current choices include <TT>dynamic</TT> (dynamic analysis), <TT>rta</TT> (static Rapid Type Analysis ignoring reflection), <TT>rta_reflect</TT> (static Rapid Type Analysis modeling a common reflection pattern), and <TT>cha</TT> (static Class Hierarchy Analysis). 
+<B>Description:</B> Algorithm to compute analysis scope (i.e., reachable classes and methods).  Current choices include <TT>dynamic</TT> (dynamic analysis), <TT>rta</TT> (static Rapid Type Analysis), and <TT>cha</TT> (static Class Hierarchy Analysis). 
 <BR>
 <B>Default value:</B> <TT>rta</TT>
 
 <P>
 </LI>
-<LI><TT>chord.ch.dynamic</TT> 
+<LI><TT>chord.ch.kind</TT> 
 <BR>
-<B>Type:</B> bool 
+<B>Type:</B> [<TT>static</TT><IMG
+ WIDTH="8" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$\vert$"><TT>dynamic</TT>] 
 <BR>
-<B>Description:</B> Compute the set of all classes loaded by the JVM while running the given program, and exclude classes not in this set (and their subclasses) while building the class hierarchy.  This property is relevant only if <TT>chord.scope.kind</TT> is <TT>rta_reflect</TT> or <TT>cha</TT>, since only these two scope computing algorithms query the class hierarchy. 
+<B>Description:</B> Algorithm to build the class hierarchy.  If it is <TT>dynamic</TT>, then the given program is executed and classes not loaded by the JVM while running the program are excluded while building the class hierarchy.  This property is relevant only if <TT>chord.scope.kind</TT> is <TT>cha</TT> since only this scope computing algorithm queries the class hierarchy. 
 <BR>
-<B>Default value:</B> <TT>false</TT> 
+<B>Default value:</B> <TT>static</TT> 
 
 <P>
 </LI>
@@ -122,7 +122,7 @@ See Section <A HREF="node4.html#sec:building-scope">4</A> for more details.
 <BR>
 <B>Description:</B> List of prefixes of names of classes whose method bodies must be treated as no-ops by static scope building algorithms. 
 <BR>
-<B>Default value:</B> <TT>"[chord.scope.exclude.std],[chord.scope.exclude.ext]"</TT>
+<B>Default value:</B> <TT>"[chord.main.class.path],[chord.scope.exclude.ext]"</TT>
 </LI>
 </UL>
 
@@ -148,7 +148,7 @@ See Section <A HREF="node4.html#sec:building-scope">4</A> for more details.
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-03
+2010-08-13
 </ADDRESS>
 </BODY>
 </HTML>

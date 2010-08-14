@@ -58,7 +58,7 @@ Ensure that the following software is installed on your machine:
 <P>
 
 <UL>
-<LI>JDK 5 or higher, e.g. from <A NAME="tex2html3"
+<LI>JDK 6 or higher, e.g. from <A NAME="tex2html3"
   HREF="http://www.ibm.com/developerworks/java/jdk/">IBM</A>
 or
 <A NAME="tex2html4"
@@ -104,22 +104,15 @@ prompt&gt; ant compile
 This will compile the following:
 
 <UL>
-<LI>the Java source code of Chord from <TT>main/src/java/</TT> to Java bytecode in <TT>main/classes/</TT>
+<LI>the Java source code of Chord from <TT>main/src/java/</TT> (and from <TT>extra/src/java/</TT> if that directory is present) to Java bytecode in <TT>main/classes/</TT>.
 </LI>
 <LI>the C source code of BDD library <A NAME="tex2html11"
   HREF="http://buddy.sourceforge.net/">BuDDy</A>
-from <TT>main/src/bdd/</TT>
-to a shared library in <TT>main/lib/</TT> (<TT>libbuddy.so</TT> on Linux, <TT>buddy.dll</TT> on Windows, and
-<TT>libbuddy.dylib</TT> on MacOS);
-this library is needed for executing program analyses written in Datalog using
-<A NAME="tex2html12"
+from <TT>main/src/bdd/</TT> to a shared library in <TT>main/lib/</TT> (<TT>libbuddy.so</TT> on Linux, <TT>buddy.dll</TT> on Windows, and <TT>libbuddy.dylib</TT> on MacOS); this library is needed for executing program analyses written in Datalog using <A NAME="tex2html12"
   HREF="http://bddbddb.sourceforge.net/">bddbddb</A>
 (a BDD-based Datalog solver).
 </LI>
-<LI>the C++ source code of the Chord instrumentation agent from <TT>main/src/agent/</TT> to a shared
-library in <TT>main/lib/</TT> (<TT>libchord_instr_agent.so</TT> on all architectures);
-this agent is needed for building program scope dynamically
-and for executing dynamic program analyses.
+<LI>the C++ source code of the Chord instrumentation agent from <TT>main/src/agent/</TT> to a shared library in <TT>main/lib/</TT> (<TT>libchord_instr_agent.so</TT> on all architectures); this agent is needed for computing program scope dynamically and for executing dynamic program analyses.
 </LI>
 </UL>
 
@@ -146,7 +139,7 @@ and for executing dynamic program analyses.
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-03
+2010-08-13
 </ADDRESS>
 </BODY>
 </HTML>

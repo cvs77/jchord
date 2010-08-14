@@ -147,23 +147,15 @@ Most users will not want to alter the default values of these properties.
 
 <P>
 </LI>
-<LI><TT>chord.crude.trace.file</TT> 
+<LI><TT>chord.trace.file</TT> 
 <BR>
 <B>Type:</B> location 
 <BR>
-<B>Description:</B> Absolute location of the crude dynamic trace file. 
+<B>Description:</B> Absolute location of the dynamic trace file. 
 <BR>
-<B>Default value:</B> <TT>[chord.out.dir]/crude_trace.txt</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.final.trace.file</TT> 
+<B>Default value:</B> <TT>[chord.out.dir]/trace</TT>  
 <BR>
-<B>Type:</B> location 
-<BR>
-<B>Description:</B> Absolute location of the final dynamic trace file. 
-<BR>
-<B>Default value:</B> <TT>[chord.out.dir]/final_trace.txt</TT>
+<B>Note:</B> <TT>_full_verN.txt</TT> or <TT>_pipe_verN.txt</TT> is appended to the name of the file, depending upon whether it is a regular file or a POSIX pipe, respectively, where <TT>N</TT> is the version of the file (multiple versions are maintained if the trace is transformed by filters defined by the dynamic analysis; 0 is the final version).  If <TT>chord.reuse.traces</TT> is set to <TT>true</TT>, then <TT>_full_verN_runM.txt</TT> is appended to the name of the file, where <TT>M</TT> is the run ID.
 </LI>
 </UL>
 
@@ -189,7 +181,7 @@ Most users will not want to alter the default values of these properties.
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-03
+2010-08-13
 </ADDRESS>
 </BODY>
 </HTML>

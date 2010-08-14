@@ -54,7 +54,7 @@ Chord Task Properties
 
 <P>
 This section describes properties that specify what task(s) Chord must perform, 
-such as computing the analysis scope of the given program or running program analyses on the given program.
+such as computing the scope of the given program or running program analyses on the given program.
 
 <P>
 
@@ -63,13 +63,11 @@ such as computing the analysis scope of the given program or running program ana
 <BR>
 <B>Type:</B> bool 
 <BR>
-<B>Description:</B> Compute the analysis scope (i.e., reachable classes and methods) of the given program using the algorithm specified by properties <TT>chord.scope.kind</TT> and <TT>chord.reuse.scope</TT>. 
+<B>Description:</B> Compute the scope (i.e., reachable classes and methods) of the given program using the algorithm specified by properties <TT>chord.scope.kind</TT> and <TT>chord.reuse.scope</TT>. 
 <BR>
 <B>Default value:</B> <TT>false</TT> 
 <BR>
-<B>Note:</B> The analysis scope is computed regardless of the value of this property if another task
-(e.g., a program analysis specified via property <TT>chord.run.analyses</TT>) demands it by
-calling method <TT>chord.program.Program.v()</TT>.
+<B>Note:</B> The program scope is computed regardless of the value of this property if another task (e.g., a program analysis specified via property <TT>chord.run.analyses</TT>) demands it by calling method <TT>chord.program.Program.getProgram()</TT>.
 
 <P>
 </LI>
@@ -81,7 +79,41 @@ calling method <TT>chord.program.Program.v()</TT>.
 <BR>
 <B>Default value:</B> <TT>""</TT> 
 <BR>
-<B>Note:</B> If the analysis is written in Java, its name is specified via statement <TT>name=&lt;...&gt;</TT> in its <TT>@Chord</TT> annotation, and is the name of the class itself if this statement is missing.  If the analysis is written in Datalog, its name is specified via a line of the form <TT>"#</TT> <TT>name=&lt;...&gt;"</TT>, and is the absolute location of the file itself if this line is missing.
+<B>Note:</B> If the analysis is written in Java, its name is specified via statement <TT>name=&lt;...&gt;</TT> in its <TT>@Chord</TT> annotation, and is the name of the class itself if this statement is missing.  If the analysis is written in Datalog, its name is specified via a line of the form ``<TT># name=&lt;...&gt;</TT>", and is the absolute location of the file itself if this line is missing.
+
+<P>
+</LI>
+<LI><TT>chord.print.classes</TT> 
+<BR>
+<B>Type:</B> string list 
+<BR>
+<B>Description:</B> List of classes in scope whose intermediate representation to print to standard output. 
+<BR>
+<B>Default value:</B> <TT>""</TT> 
+<BR>
+<B>Note:</B> In class names, use `.' instead of `/', and use <TT>#</TT> instead of the dollar character.
+
+<P>
+</LI>
+<LI><TT>chord.print.methods</TT> 
+<BR>
+<B>Type:</B> string list 
+<BR>
+<B>Description:</B> List of methods in scope whose intermediate representation to print to standard output. 
+<BR>
+<B>Default value:</B> <TT>""</TT> 
+<BR>
+<B>Note:</B> Specify each method in format <TT>&lt;mname&gt;:&lt;mdesc&gt;@&lt;cname&gt;</TT> where <TT>&lt;mname&gt;</TT> is the method's name, <TT>&lt;mdesc&gt;</TT> is the method's descriptor, and <TT>&lt;cname&gt;</TT> is the name of the method's declaring class. In <TT>&lt;cname&gt;</TT>, use `.' instead of `/', and use <TT>#</TT> instead of the dollar character.
+
+<P>
+</LI>
+<LI><TT>chord.print.all.classes</TT> 
+<BR>
+<B>Type:</B> bool 
+<BR>
+<B>Description:</B> Print intermediate representation of all classes in scope to standard output. 
+<BR>
+<B>Default value:</B> <TT>false</TT>
 
 <P>
 </LI>
@@ -93,7 +125,7 @@ calling method <TT>chord.program.Program.v()</TT>.
 <BR>
 <B>Default value:</B> <TT>""</TT> 
 <BR>
-<B>Note:</B> This task must be used with caution as certain program relations, albeit represented compactly as BDDs, may contain a large number (e.g., billions) of tuples, resulting in voluminous output when printed to a file.  See Section <A HREF="node10.html#sec:tuning-datalog-analysis">10</A> for a more efficient way to query the contents of program relations (namely, by using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory).
+<B>Note:</B> This task must be used with caution as certain program relations, albeit represented compactly as BDDs, may contain a large number (e.g., billions) of tuples, resulting in voluminous output when printed to a file.  See Section <A HREF="node10.html#sec:tuning-datalog-analysis"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for a more efficient way to query the contents of program relations (namely, by using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory).
 
 <P>
 </LI>
@@ -129,7 +161,7 @@ calling method <TT>chord.program.Program.v()</TT>.
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-03
+2010-08-13
 </ADDRESS>
 </BODY>
 </HTML>

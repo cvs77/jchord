@@ -70,9 +70,9 @@ This section describes properties regarding program analyses executed by Chord.
 <BR>
 <B>Type:</B> path 
 <BR>
-<B>Description:</B> Path of directories containing program analyses written in Datalog (i.e., <TT>*.datalog</TT> and <TT>*.dlog</TT> files). 
+<B>Description:</B> Path of directories containing program analyses written in Datalog (i.e., files with suffix <TT>.dlog</TT> or <TT>.datalog</TT>). 
 <BR>
-<B>Default value:</B> <TT>[chord.main.dir]/src/dlog/</TT> 
+<B>Default value:</B> <TT>[chord.main.dir]/src/dlog/:[chord.main.dir]/../extra/src/dlog/</TT> 
 
 <P>
 </LI>
@@ -95,8 +95,7 @@ This section describes properties regarding program analyses executed by Chord.
 <B>Default value:</B> <TT>true</TT> 
 
 <P>
-</LI>
-<LI><TT>chord.check.exclude.std</TT> 
+<TT>chord.check.exclude.std</TT> 
 <BR>
 <B>Type:</B> string list 
 <BR>
@@ -148,7 +147,7 @@ This section describes properties regarding program analyses executed by Chord.
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-03
+2010-08-13
 </ADDRESS>
 </BODY>
 </HTML>
