@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>About this document ...</TITLE>
-<META NAME="description" CONTENT="About this document ...">
+<TITLE>Chord Output Properties</TITLE>
+<META NAME="description" CONTENT="Chord Output Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -18,51 +18,170 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="STYLESHEET" HREF="user_guide.css">
 
+<LINK REL="next" HREF="node29.html">
 <LINK REL="previous" HREF="node27.html">
-<LINK REL="up" HREF="user_guide.html">
+<LINK REL="up" HREF="node19.html">
+<LINK REL="next" HREF="node29.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_g.png"> 
-<A NAME="tex2html334"
-  HREF="user_guide.html">
+<A NAME="tex2html344"
+  HREF="node29.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html342"
+  HREF="node19.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html330"
+<A NAME="tex2html336"
   HREF="node27.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Up:</B> <A NAME="tex2html335"
-  HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html331"
-  HREF="node27.html">Acknowledgments</A>
+<B> Next:</B> <A NAME="tex2html345"
+  HREF="node29.html">Chord Resource Properties</A>
+<B> Up:</B> <A NAME="tex2html343"
+  HREF="node19.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html337"
+  HREF="node27.html">Chord Instrumentation Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H1><A NAME="SECTION000180000000000000000">
-About this document ...</A>
-</H1>
- <STRONG>Chord: A Static and Dynamic Program Analysis Framework for Java</STRONG><P>
-This document was generated using the
-<A HREF="http://www.latex2html.org/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 2002-1 (1.69)
+<H2><A NAME="SECTION000169000000000000000">
+Chord Output Properties</A>
+</H2>
+
 <P>
-Copyright &#169; 1993, 1994, 1995, 1996,
-<A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, 
-Computer Based Learning Unit, University of Leeds.
+This section describes properties specifying the names of files and directories output by Chord.
+Most users will not want to alter the default values of these properties.
+
+<P>
+
+<UL>
+<LI><TT>chord.out.dir</TT> 
 <BR>
-Copyright &#169; 1997, 1998, 1999,
-<A HREF="http://www.maths.mq.edu.au/~ross/">Ross Moore</A>, 
-Mathematics Department, Macquarie University, Sydney.
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory to which Chord dumps all files. 
+<BR>
+<B>Default value:</B> <TT>[chord.work.dir]/chord_output/</TT> 
+
 <P>
-The command line arguments were: <BR>
- <STRONG>latex2html</STRONG> <TT>-local_icons user_guide.tex</TT>
+</LI>
+<LI><TT>chord.out.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file to which the standard output stream is redirected during Chord's execution. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/log.txt</TT>
+
 <P>
-The translation was initiated by Mayur Naik on 2010-08-13
-<BR><HR>
+</LI>
+<LI><TT>chord.err.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file to which the standard error stream is redirected during Chord's execution. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/log.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.classes.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file from/to which list of classes deemed reachable is read/written. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/classes.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.methods.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file from/to which list of methods deemed reachable is read/written. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/methods.txt</TT>
+
+<P>
+</LI>
+<LI><TT>chord.bddbddb.work.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory used by the Datalog solver <TT>bddbddb</TT> as its input/output directory (namely, for program domain files <TT>*.dom</TT> and <TT>*.map</TT>, and program relation files <TT>*.bdd</TT>). 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/bddbddb/</TT>
+
+<P>
+</LI>
+<LI><TT>chord.boot.classes.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory from/to which instrumented JDK classes used by the given program are read/written by dynamic program analyses. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/boot_classes/</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.user.classes.dir</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the directory from/to which instrumented non-JDK classes of the given program are read/written by dynamic program analyses. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/user_classes/</TT> 
+
+<P>
+</LI>
+<LI><TT>chord.instr.scheme.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the file specifying the kind and format of events in dynamic trace files. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/scheme.ser</TT>
+
+<P>
+</LI>
+<LI><TT>chord.trace.file</TT> 
+<BR>
+<B>Type:</B> location 
+<BR>
+<B>Description:</B> Absolute location of the dynamic trace file. 
+<BR>
+<B>Default value:</B> <TT>[chord.out.dir]/trace</TT>  
+<BR>
+<B>Note:</B> <TT>_full_verN.txt</TT> or <TT>_pipe_verN.txt</TT> is appended to the name of the file, depending upon whether it is a regular file or a POSIX pipe, respectively, where <TT>N</TT> is the version of the file (multiple versions are maintained if the trace is transformed by filters defined by the dynamic analysis; 0 is the final version).  If <TT>chord.reuse.traces</TT> is set to <TT>true</TT>, then <TT>_full_verN_runM.txt</TT> is appended to the name of the file, where <TT>M</TT> is the run ID.
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html344"
+  HREF="node29.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html342"
+  HREF="node19.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html336"
+  HREF="node27.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html345"
+  HREF="node29.html">Chord Resource Properties</A>
+<B> Up:</B> <A NAME="tex2html343"
+  HREF="node19.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html337"
+  HREF="node27.html">Chord Instrumentation Properties</A>
+<!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>

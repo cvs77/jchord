@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Writing a Datalog Analysis</TITLE>
-<META NAME="description" CONTENT="Writing a Datalog Analysis">
+<TITLE>Configuring the Analysis</TITLE>
+<META NAME="description" CONTENT="Configuring the Analysis">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -20,153 +20,110 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="next" HREF="node10.html">
 <LINK REL="previous" HREF="node8.html">
-<LINK REL="up" HREF="user_guide.html">
+<LINK REL="up" HREF="node7.html">
 <LINK REL="next" HREF="node10.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html140"
+<A NAME="tex2html146"
   HREF="node10.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html138"
-  HREF="user_guide.html">
+<A NAME="tex2html144"
+  HREF="node7.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html132"
+<A NAME="tex2html138"
   HREF="node8.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html141"
-  HREF="node10.html">Tuning a Datalog Analysis</A>
-<B> Up:</B> <A NAME="tex2html139"
-  HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html133"
-  HREF="node8.html">Instrumentation Events</A>
+<B> Next:</B> <A NAME="tex2html147"
+  HREF="node10.html">Compiling and Running the</A>
+<B> Up:</B> <A NAME="tex2html145"
+  HREF="node7.html">Writing a Dynamic Analysis</A>
+<B> Previous:</B> <A NAME="tex2html139"
+  HREF="node8.html">Implementing the Analysis</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H1><A NAME="SECTION00090000000000000000"></A>
-<A NAME="sec:writing-datalog-analysis"></A>
-<BR>
-Writing a Datalog Analysis
-</H1>
+<H2><A NAME="SECTION00072000000000000000">
+Configuring the Analysis</A>
+</H2>
 
 <P>
-Chord interprets each file with extension <TT>.dlog</TT> or <TT>.datalog</TT> in the path specified by
-property <TT>chord.dlog.analysis.path</TT> as a program analysis expressed in Datalog.
-A Datalog analysis declares a bunch of input/output program relations,
-each over one or more program domains, and provides a bunch of rules (constraints)
-specifying how to compute the output relations from the input relations.
-An example of such an analysis is as follows:
+You can change the default values of various properties for configuring your dynamic analysis;
+see Sections <A HREF="node23.html#sec:scope-props"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> and <A HREF="node27.html#sec:instr-props"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>.
+For instance:
 
-<P><PRE>
-# name=datarace-dlog
-
-# Program domains
-.include "E.dom"
-.include "F.dom"
-.include "T.dom"
-
-# BDD variable order
-.bddvarorder E0xE1_T0_T1_F0
-
-# Input/intermediate/output program relations
-field(e:E0,f:F0) input
-write(e:E0) input
-reach(t:T0,e:E0) input
-alias(e1:E0,e2:E1) input
-escape(e:E0) input
-unguarded(t1:T0,e1:E0,t2:T1,e2:E1) input
-hasWrite(e1:E0,e2:E1)
-candidate(e1:E0,e2:E1) 
-datarace(t1:T0,e1:E0, t2:T1,e2:E1) output
-
-# Analysis constraints
-hasWrite(e1,e2) :- write(e1).
-hasWrite(e1,e2) :- write(e2).
-candidate(e1,e2) :- field(e1,f), field(e2,f), hasWrite(e1,e2), e1 &lt;= e2.
-datarace(t1,e1,t2,e2) :- candidate(e1,e2), reach(t1,e1), reach(t2,e2), \
-    alias(e1,e2), escape(e1), escape(e2), unguarded(t1,e1,t2,e2).
-</PRE>
-
-<P>
-Any line that begins with a <TT>#</TT> is regarded a comment, except a
-line of the form <TT>#</TT> <TT>name=&lt;...&gt;</TT>, which specifies the name
-<TT>&lt;...&gt;</TT> of the Datalog analysis.
-Each Datalog analysis is expected to have exactly one such line.
-The above Datalog analysis is named <TT>datarace-dlog</TT>.
-In Chord, all Datalog analysis names have suffix
-<TT>-dlog</TT> and all Java analysis names have suffix <TT>-java</TT>, but
-this is merely a convention that user-defined analyses are free to deviate from.
-The name of each analysis, written in Datalog or in Java, is expected to be
-unique across all analyses in scope (i.e., across all analyses in paths
-specified by properties <TT>chord.dlog.analysis.path</TT> and <TT>chord.java.analysis.path</TT>).
+<UL>
+<LI>You can set property <TT>chord.scope.kind</TT> to <TT>dynamic</TT> so that the program scope
+is computed dynamically (i.e., by running the program) instead of statically.
+</LI>
+<LI>You can exclude certain classes (e.g., JDK classes) from being instrumented by setting
+properties <TT>chord.scope.exclude.std</TT>, <TT>chord.scope.exclude.ext</TT>, and
+<TT>chord.scope.exclude</TT>.
+</LI>
+<LI>You can choose between online (i.e. load-time) and offline bytecode instrumentation by
+setting property <TT>chord.instr.kind</TT> to <TT>online</TT> or <TT>offline</TT>.
+</LI>
+<LI>You can require the event-generating and event-handling JVMs to be one and the same (by setting
+property <TT>chord.trace.kind</TT> to <TT>none</TT>),
+or to be separate (by setting property <TT>chord.trace.kind</TT> to <TT>full</TT> or <TT>pipe</TT>, depending upon
+whether you want the two JVMs to exchange events by a regular file or a POSIX pipe, respectively).
+Using a single JVM can cause correctness/performance issues if event-handling Java code itself is instrumented
+(e.g., say the event-handling code uses class <TT>java.util.ArrayList</TT> which is not excluded from program scope).
+Using separate JVMs prevents such issues since the event-handling JVM runs uninstrumented bytecode (only
+the event-generating JVM runs instrumented bytecode).
+If a regular file is used to exchange events between the two JVMs, then the JVMs run serially:
+the event-generating JVM first runs to completion, dumps the entire dynamic trace to the regular file,
+and then the event-handling JVM processes the dynamic trace.
+If a POSIX pipe is used to exchange events between the two JVMs, then the JVMs run in lockstep.
+Obviously, a pipe is more efficient for very long traces, but it 
+not portable (e.g., it does not currently work on Windows/Cygwin), and the traces cannot be reused
+across Chord runs (see the following item).
+</LI>
+<LI>You can reuse dynamic traces from a previous Chord run by setting property
+<TT>chord.reuse.traces</TT> to <TT>true</TT>.  In this case, you must also set property
+<TT>chord.trace.kind</TT> to <TT>full</TT>.
+</LI>
+<LI>You can set property <TT>chord.dynamic.haltonerr</TT> to <TT>false</TT> to prevent Chord from terminating
+even if the program on which dynamic analysis is being performed crashes.
+</LI>
+</UL>
 
 <P>
-The <TT>.include "&lt;...&gt;.dom"</TT> lines specify each program domain named
-<TT>&lt;...&gt;</TT> that is needed by the Datalog analysis, i.e., each domain over which
-any program relation that is input/output by the Datalog analysis is defined. 
-The declaration of each such relation specifies the domain of each of the relation's attributes.
-If the same domain appears in multiple attributes of a relation then
-contiguous integers starting from 0 must be used to distinguish them; for instance,
-in the above example, <TT>candidate</TT> is a binary relation, both of whose
-attributes have domain E, and they are distinguished as E0 and E1.
+Chord offers much more flexibility in crafting dynamic analyses.
+You can define your own instrumentor (by subclassing <TT>chord.instr.CoreInstrumentor</TT>
+instead of using the default <TT>chord.instr.Instrumentor</TT>) and your own event handler (by subclassing <TT>chord.runtime.CoreEventHandler</TT>
+instead of using the default <TT>chord.runtime.EventHandler</TT>).
+You can ask the dynamic analysis to use your custom instrumentor and/or your custom event handler by overriding
+methods <TT>getInstrumentor()</TT> and <TT>getEventHandler()</TT>, respectively, defined in <TT>chord.project.analyses.CoreDynamicAnalysis</TT>.
+Finally, you can define your own dynamic analysis template by subclassing <TT>chord.project.analyses.CoreDynamicAnalysis</TT>
+instead of subclassing the default <TT>chord.project.analyses.DynamicAnalysis</TT>.
 
 <P>
-Each relation is represented symbolically (as opposed to explicitly)
-using a graph-based data structure called a Binary Decision Diagram (BDD for short).
-Each domain containing N elements is assigned log2(N) BDD variables.
-The size of a BDD and the efficiency of operations on it depends heavily
-on the order of these BDD variables.
-The <TT>.bddvarorder &lt;...&gt;</TT> line in the Datalog analysis enables the Datalog
-analysis writer to specify this order.
-It must list all domains along with their numerical suffixes, separated
-by <TT>_</TT> or <TT>x</TT>.
-Using a <TT>_</TT> between two domains, such as <TT>T0_T1</TT>, means that the BDD variables assigned
-to domain <TT>T0</TT> precede those assigned to domain <TT>T1</TT> in the BDD variable
-order for this Datalog analysis.
-Using a <TT>x</TT> between two domains, such as <TT>E0xE1</TT>, means that the
-BDD variables assigned to domains <TT>E0</TT> and <TT>E1</TT>
-will be interleaved in the BDD variable order for this Datalog analysis.
-See Section <A HREF="node11.html#sec:bdd-representation"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for more details on BDD representations.
-
-<P>
-Each Datalog analysis rule is a Horn clause of the form
-<TT>R(t) :- R1(t1), ..., Rn(tn)</TT>
-meaning that if relations <TT>R1</TT>, ..., <TT>Rn</TT> contain tuples <TT>t1</TT>, ..., <TT>tn</TT>
-respectively, then relation <TT>R</TT> contains tuple <TT>t</TT>.
-A backslash may be used at the end of a line to break long rules for readability.
-The Datalog analysis solver <TT>bddbddb</TT> used in Chord does not apply any
-sophisticated optimizations to simplify the rules; besides the BDD variable order,
-the manner in which these rules are expressed heavily affects the performance of
-the solver.  For instance, an important manual optimization involves breaking down
-long rules into multiple shorter rules communicating via intermediate relations.
-See Section <A HREF="node10.html#sec:tuning-datalog-analysis"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for hints on tuning the performance
-of Datalog analyses.
-
 <HR>
 <!--Navigation Panel-->
-<A NAME="tex2html140"
+<A NAME="tex2html146"
   HREF="node10.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html138"
-  HREF="user_guide.html">
+<A NAME="tex2html144"
+  HREF="node7.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html132"
+<A NAME="tex2html138"
   HREF="node8.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html141"
-  HREF="node10.html">Tuning a Datalog Analysis</A>
-<B> Up:</B> <A NAME="tex2html139"
-  HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html133"
-  HREF="node8.html">Instrumentation Events</A>
+<B> Next:</B> <A NAME="tex2html147"
+  HREF="node10.html">Compiling and Running the</A>
+<B> Up:</B> <A NAME="tex2html145"
+  HREF="node7.html">Writing a Dynamic Analysis</A>
+<B> Previous:</B> <A NAME="tex2html139"
+  HREF="node8.html">Implementing the Analysis</A>
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>

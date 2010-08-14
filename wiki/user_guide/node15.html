@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Deadlock Analysis</TITLE>
-<META NAME="description" CONTENT="Deadlock Analysis">
+<TITLE>Program Representation</TITLE>
+<META NAME="description" CONTENT="Program Representation">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,61 +26,41 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html200"
+<A NAME="tex2html204"
   HREF="node16.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html198"
+<A NAME="tex2html202"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html192"
+<A NAME="tex2html196"
   HREF="node14.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html201"
-  HREF="node16.html">Chord System Properties</A>
-<B> Up:</B> <A NAME="tex2html199"
+<B> Next:</B> <A NAME="tex2html205"
+  HREF="node16.html">Points-to and Call-Graph Analyses</A>
+<B> Up:</B> <A NAME="tex2html203"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html193"
-  HREF="node14.html">Datarace Analysis</A>
+<B> Previous:</B> <A NAME="tex2html197"
+  HREF="node14.html">BDD Representation</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H1><A NAME="SECTION000150000000000000000"></A>
-<A NAME="sec:deadlock"></A>
+<H1><A NAME="SECTION000120000000000000000"></A>
+<A NAME="sec:program-representation"></A>
 <BR>
-Deadlock Analysis
+Program Representation
 </H1>
 
 <P>
-Run the deadlock analysis provided in Chord by running the following command in Chord's <TT>main/</TT> directory:
-
-<P><PRE>
-prompt&gt; ant -Dchord.work.dir=&lt;...&gt; -Dchord.run.analyses=deadlock-java run
-</PRE>
-
-<P>
-where directory <TT>&lt;...&gt;</TT> contains a file named <TT>chord.properties</TT> which
-defines properties <TT>chord.main.class</TT>, <TT>chord.class.path</TT>, and <TT>chord.src.path</TT>.
-See Section <A HREF="node16.html#sec:chord-sysprops"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for the meaning of these properties.
-
-<P>
-Directory <TT>main/examples/deadlock_test/</TT> provides a toy Java program on which you can run
-the deadlock analysis.
-First run <TT>ant</TT> in that directory (in order to compile the program's <TT>.java</TT> files to
-<TT>.class</TT> files) and then run the above command in Chord's <TT>main/</TT> directory with
-<TT>&lt;...&gt;</TT> replaced by <TT>examples/deadlock_test/</TT>.
-Upon successful completion, the file <TT>deadlocks.html</TT> should be produced in directory
-<TT>main/examples/deadlock_test/chord_output/</TT>.
+TODO
 
 <P>
 
-
-<P>
 <BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>

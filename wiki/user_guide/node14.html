@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Datarace Analysis</TITLE>
-<META NAME="description" CONTENT="Datarace Analysis">
+<TITLE>BDD Representation</TITLE>
+<META NAME="description" CONTENT="BDD Representation">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,90 +26,155 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html190"
+<A NAME="tex2html194"
   HREF="node15.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html188"
+<A NAME="tex2html192"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html182"
+<A NAME="tex2html186"
   HREF="node13.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html191"
-  HREF="node15.html">Deadlock Analysis</A>
-<B> Up:</B> <A NAME="tex2html189"
+<B> Next:</B> <A NAME="tex2html195"
+  HREF="node15.html">Program Representation</A>
+<B> Up:</B> <A NAME="tex2html193"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html183"
-  HREF="node13.html">Points-to and Call-Graph Analyses</A>
+<B> Previous:</B> <A NAME="tex2html187"
+  HREF="node13.html">Tuning a Datalog Analysis</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H1><A NAME="SECTION000140000000000000000"></A>
-<A NAME="sec:datarace"></A>
+<H1><A NAME="SECTION000110000000000000000"></A>
+<A NAME="sec:bdd-representation"></A>
 <BR>
-Datarace Analysis
+BDD Representation
 </H1>
 
 <P>
-Run the datarace analysis provided in Chord by running the following command in Chord's <TT>main/</TT> directory:
+Each domain containing N elements is assigned log2(N) BDD variables in the underlying BDD factory with contiguous IDs.
+For instance,
+domain <TT>F0</TT> containing [128..256) elements will be assigned 8 variables with IDs (say) 63,64,65,66,67,68,69,70 and
+domain <TT>Z0</TT> containing [8..16) elements will be assigned 4 variables with IDs (say) 105,106,107,108.
 
-<P><PRE>
-prompt&gt; ant -Dchord.work.dir=&lt;...&gt; -Dchord.run.analyses=datarace-java run
+<P>
+If two domains are uninterleaved in the declared domain order in a Datalog program (i.e., <TT>_</TT> is used instead of <TT>x</TT> between them),
+then the BDD variables assigned to those domains are ordered in reverse order in the underlying BDD factory.
+For instance, the BDD variable order corresponding to the declared domain order <TT>F0_Z0</TT> is (in level2var format)
+``70,69,68,67,66,65,64,63,108,107,106,105".
+
+<P>
+If two domains are interleaved in the declared domain order in a Datalog program (i.e., <TT>x</TT> is used instead of <TT>_</TT> between them),
+then the BDD variables assigned to those domains are still ordered in reverse order of IDs in the underlying BDD factory,
+but they are also interleaved.
+For instance, the BDD variable order corresponding to the declared domain order <TT>F0xZ0</TT> is (in level2var format)
+``70,108,69,107,68,106,67,105,66,65,64,63".
+
+<P>
+Each BDD variable is at a unique ``level" which is its 0-based position in the BDD variable order in the underlying BDD factory.
+
+<P>
+We will next illustrate the format of a BDD stored on disk (in a .bdd file) using the following example:
+
+<P>
+<PRE>
+# V0:16 H0:12
+# 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+# 82 83 84 85 86 87 88 89 90 91 92 93
+28489 134
+39 36 33 30 27 24 21 18 15 12 9 6 3 0 81 79 77 75 73 71 69 67 65 63 61 59 57 55  \
+   53 51 82 80 78 76 74 72 70 68 66 64 62 60 58 56 54 52 37 34 31 28 25 22 19 16 \
+   13 10 7 4 1 117 116 115 114 113 112 111 110 109 108 107 106 50 49 48 47 46 45 \
+   44 43 42 41 40 105 104 103 102 101 100 99 98 97 96 95 94 93 92 91 90 89 88 87 \
+   86 85 84 83 133 132 131 130 129 128 127 126 125 124 123 122 121 120 119 118   \
+   38 35 32 29 26 23 20 17 14 11 8 5 2
+287 83 0 1
+349123 84 287 0
+349138 85 0 349123
+...
 </PRE>
 
 <P>
-where directory <TT>&lt;...&gt;</TT> contains a file named <TT>chord.properties</TT> which
-defines properties <TT>chord.main.class</TT>, <TT>chord.class.path</TT>, and <TT>chord.src.path</TT>.
-See Section <A HREF="node16.html#sec:chord-sysprops"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for the meaning of these properties.
+The first comment line indicates the domains in the relation (in the above case, <TT>V0</TT> and <TT>H0</TT>,
+represented using 16 and 12 unique BDD variables, respectively).
 
 <P>
-Directory <TT>main/examples/datarace_test/</TT> provides a toy Java program on which you can run the datarace
-analysis.
-First run <TT>ant</TT> in that directory (in order to compile the program's <TT>.java</TT> files to
-<TT>.class</TT> files) and then run the above command in Chord's <TT>main/</TT> directory
-with <TT>&lt;...&gt;</TT> replaced by <TT>examples/datarace_test/</TT>.
-Upon successful completion, the following files should be produced in directory
-<TT>main/examples/datarace_test/chord_output/</TT>:
+If there are <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$N$"> domains, there are <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$N$"> following comment lines, each specifying the
+BDD variables assigned to the corresponding domain.
 
 <P>
+The following line has two numbers: the number of nodes in the represented BDD (28489 in this case) and the number of variables
+in the BDD factory from which the BDD was dumped to disk.  Note that the number of variables (134 in this case) is not
+necessarily the number of variables in the represented BDD (16+12=28 in this case) though it is guaranteed to be
+greater than or equal to it.
+
+<P>
+The following line specifies the BDD variable order in var2level format.  In this case, the specified order subsumes
+<TT>V0_H0</TT> (notice that levels ``81 79 77 75 73 71 69 67 65 63 61 59 57 55 53 51", which are at positions ``14 15 ... 28 29" 
+in the specified order are lower than levels ``105 104 103 102 101 100 99 98 97 96 95 94" which are at positions
+``82 83 .. 92 93"). 
+
+<P>
+Each of the following lines specifies a unique node in the represented BDD; it has format ``X V L H" where:
 
 <UL>
-<LI>File <TT>dataraces_by_fld.html</TT>, listing all dataraces grouped by the field on which they occur; all
-dataraces on the same instance field or the same static field are listed in the same group, and so are
-all dataraces on array elements.
+<LI>X is the ID of the BDD node
 </LI>
-<LI>File <TT>dataraces_by_obj.html</TT>, listing all dataraces grouped by the abstract object on whose field they occur;
-dataraces on all static fields are listed in the same group, and so are dataraces on different
-instance fields of the same abstract object.
+<LI>V is the ID of the bdd variable labeling that node (unless it is 0 or 1, in which case it represents a leaf node)
+</LI>
+<LI>L is the ID of the BDD node's low child
+</LI>
+<LI>H is the ID of the BDD node's high child
 </LI>
 </UL>
+
+<P>
+The order of these lines specifying BDD nodes is such that the lines specifying the BDD nodes in the L and H entries
+of each BDD node are guaranteed to occur before the line specifying that BDD node (for instance, the L entry 287 on
+the second line and the R entry 349123 on the third line are IDs of BDD nodes specified on the first and second lines,
+respectively).
+
+<P>
+Terminology note:
+The <I>support</I> of a BDD <TT>b</TT> is another BDD <TT>r</TT> = <TT>b.support()</TT>
+that represents all the variables used in <TT>b</TT>.
+The support BDD <TT>r</TT> is a linear tree each of whose nodes contains a separate variable,
+the low branch is 0, and high branch is the node representing the next variable.
+To list all the variables used in a BDD <TT>b</TT> use <TT>r.scanSet()</TT>.
+Needless to say, <TT>scanSet()</TT> simply walks along the high branches
+starting at the root of BDD <TT>r</TT>.
 
 <P>
 
 <HR>
 <!--Navigation Panel-->
-<A NAME="tex2html190"
+<A NAME="tex2html194"
   HREF="node15.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html188"
+<A NAME="tex2html192"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html182"
+<A NAME="tex2html186"
   HREF="node13.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html191"
-  HREF="node15.html">Deadlock Analysis</A>
-<B> Up:</B> <A NAME="tex2html189"
+<B> Next:</B> <A NAME="tex2html195"
+  HREF="node15.html">Program Representation</A>
+<B> Up:</B> <A NAME="tex2html193"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html183"
-  HREF="node13.html">Points-to and Call-Graph Analyses</A>
+<B> Previous:</B> <A NAME="tex2html187"
+  HREF="node13.html">Tuning a Datalog Analysis</A>
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>

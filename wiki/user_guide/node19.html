@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord Boot Properties</TITLE>
-<META NAME="description" CONTENT="Chord Boot Properties">
+<TITLE>Chord System Properties</TITLE>
+<META NAME="description" CONTENT="Chord System Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -18,129 +18,78 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="STYLESHEET" HREF="user_guide.css">
 
-<LINK REL="next" HREF="node20.html">
+<LINK REL="next" HREF="node30.html">
 <LINK REL="previous" HREF="node18.html">
-<LINK REL="up" HREF="node16.html">
+<LINK REL="up" HREF="user_guide.html">
 <LINK REL="next" HREF="node20.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html250"
+<A NAME="tex2html244"
   HREF="node20.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html248"
-  HREF="node16.html">
-<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
 <A NAME="tex2html242"
+  HREF="user_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html236"
   HREF="node18.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html251"
-  HREF="node20.html">Program Scope Properties</A>
-<B> Up:</B> <A NAME="tex2html249"
-  HREF="node16.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html243"
-  HREF="node18.html">Chord Task Properties</A>
+<B> Next:</B> <A NAME="tex2html245"
+  HREF="node20.html">Basic Program Properties</A>
+<B> Up:</B> <A NAME="tex2html243"
+  HREF="user_guide.html">Chord: A Static and</A>
+<B> Previous:</B> <A NAME="tex2html237"
+  HREF="node18.html">Deadlock Analysis</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION000163000000000000000">
-Chord Boot Properties</A>
-</H2>
+<H1><A NAME="SECTION000160000000000000000"></A>
+<A NAME="sec:chord-sysprops"></A>
+<BR>
+Chord System Properties
+</H1>
 
 <P>
-This section describes properties of the JVM running Chord, such as the working directory and various memory limits.
+Users can use system properties to control Chord's functionality.
+The following properties are recognized by Chord.
+The separator for list-valued properties can be either a blank space, a comma, a colon, or a semi-colon.
+Notation <TT>[&lt;...&gt;]</TT> is used in this section to denote the value of the property named <TT>&lt;...&gt;</TT>.
 
 <P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL>
-<LI><TT>chord.work.dir</TT> 
-<BR>
-<B>Type:</B> location 
-<BR>
-<B>Description:</B> Working directory during Chord's execution. 
-<BR>
-<B>Default value:</B> current working directory
-
-<P>
-</LI>
-<LI><TT>chord.props.file</TT> 
-<BR>
-<B>Type:</B> location 
-<BR>
-<B>Description:</B> Properties file loaded by <TT>[chord.main.dir]/build.xml</TT>.  Any of the below properties, as well as other user-defined properties to be passed to Chord (e.g., for user-defined analyses), may be set in this file.  Each relative (instead of absolute) path element in the value of any property named <TT>chord.&lt;...&gt;.path</TT> set in this file is converted to an absolute path element with respect to the directory containing this file. 
-<BR>
-<B>Default value:</B> <TT>[chord.work.dir]/chord.properties</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.max.heap</TT> 
-<BR>
-<B>Type:</B> string 
-<BR>
-<B>Description:</B> Maximum memory size of JVM running Chord. 
-<BR>
-<B>Default value:</B> <TT>1024m</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.max.stack</TT> 
-<BR>
-<B>Type:</B> string 
-<BR>
-<B>Description:</B> Maximum thread stack size of JVM running Chord. 
-<BR>
-<B>Default value:</B> <TT>32m</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.jvmargs</TT> 
-<BR>
-<B>Type:</B> string 
-<BR>
-<B>Description:</B> Arguments to JVM running Chord. 
-<BR>
-<B>Default value:</B> <TT>"-showversion</TT> <TT>-ea</TT> <TT>-Xmx[chord.max.heap]</TT> <TT>-Xss[chord.max.stack]"</TT>
-
-<P>
-</LI>
-<LI><TT>chord.bddbddb.max.heap</TT> 
-<BR>
-<B>Type:</B> string 
-<BR>
-<B>Description:</B> Maximum memory size of JVM running <TT>bddbddb</TT>. 
-<BR>
-<B>Default value:</B> <TT>1024m</TT> 
-<BR>
-<B>Note:</B> Each program analysis written in Datalog is run in a separate JVM because there may be multiple invocations of the Datalog solver <TT>bddbddb</TT> in a single run of Chord and it is difficult to reset the global state of <TT>bddbddb</TT> on each invocation.
-</LI>
+<LI><A NAME="tex2html246"
+  HREF="node20.html">Basic Program Properties</A>
+<LI><A NAME="tex2html247"
+  HREF="node21.html">Chord Task Properties</A>
+<LI><A NAME="tex2html248"
+  HREF="node22.html">Chord Boot Properties</A>
+<LI><A NAME="tex2html249"
+  HREF="node23.html">Program Scope Properties</A>
+<LI><A NAME="tex2html250"
+  HREF="node24.html">Program Analysis Properties</A>
+<LI><A NAME="tex2html251"
+  HREF="node25.html">Program Transformation Properties</A>
+<LI><A NAME="tex2html252"
+  HREF="node26.html">Chord Debug Properties</A>
+<LI><A NAME="tex2html253"
+  HREF="node27.html">Chord Instrumentation Properties</A>
+<LI><A NAME="tex2html254"
+  HREF="node28.html">Chord Output Properties</A>
+<LI><A NAME="tex2html255"
+  HREF="node29.html">Chord Resource Properties</A>
 </UL>
-
-<P>
-<HR>
-<!--Navigation Panel-->
-<A NAME="tex2html250"
-  HREF="node20.html">
-<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html248"
-  HREF="node16.html">
-<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html242"
-  HREF="node18.html">
-<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
-<BR>
-<B> Next:</B> <A NAME="tex2html251"
-  HREF="node20.html">Program Scope Properties</A>
-<B> Up:</B> <A NAME="tex2html249"
-  HREF="node16.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html243"
-  HREF="node18.html">Chord Task Properties</A>
-<!--End of Navigation Panel-->
+<!--End of Table of Child-Links-->
+<BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>

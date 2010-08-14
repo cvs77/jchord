@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>BDD Representation</TITLE>
-<META NAME="description" CONTENT="BDD Representation">
+<TITLE>Instrumentation Events</TITLE>
+<META NAME="description" CONTENT="Instrumentation Events">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -19,162 +19,264 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 <LINK REL="STYLESHEET" HREF="user_guide.css">
 
 <LINK REL="next" HREF="node12.html">
-<LINK REL="previous" HREF="node10.html">
+<LINK REL="previous" HREF="node7.html">
 <LINK REL="up" HREF="user_guide.html">
 <LINK REL="next" HREF="node12.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html160"
+<A NAME="tex2html164"
   HREF="node12.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html158"
+<A NAME="tex2html162"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html152"
+<A NAME="tex2html156"
   HREF="node10.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html161"
-  HREF="node12.html">Program Representation</A>
-<B> Up:</B> <A NAME="tex2html159"
+<B> Next:</B> <A NAME="tex2html165"
+  HREF="node12.html">Writing a Datalog Analysis</A>
+<B> Up:</B> <A NAME="tex2html163"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html153"
-  HREF="node10.html">Tuning a Datalog Analysis</A>
+<B> Previous:</B> <A NAME="tex2html157"
+  HREF="node10.html">Compiling and Running the</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H1><A NAME="SECTION000110000000000000000"></A>
-<A NAME="sec:bdd-representation"></A>
+<H1><A NAME="SECTION00080000000000000000"></A>
+<A NAME="sec:instr-events"></A>
 <BR>
-BDD Representation
+Instrumentation Events
 </H1>
 
 <P>
-Each domain containing N elements is assigned log2(N) BDD variables in the underlying BDD factory with contiguous IDs.
-For instance,
-domain <TT>F0</TT> containing [128..256) elements will be assigned 8 variables with IDs (say) 63,64,65,66,67,68,69,70 and
-domain <TT>Z0</TT> containing [8..16) elements will be assigned 4 variables with IDs (say) 105,106,107,108.
+Chord allows a given Java program to be instrumented to generate the
+following kinds of events during its execution.
 
 <P>
-If two domains are uninterleaved in the declared domain order in a Datalog program (i.e., <TT>_</TT> is used instead of <TT>x</TT> between them),
-then the BDD variables assigned to those domains are ordered in reverse order in the underlying BDD factory.
-For instance, the BDD variable order corresponding to the declared domain order <TT>F0_Z0</TT> is (in level2var format)
-``70,69,68,67,66,65,64,63,108,107,106,105".
+
+<OL>
+<LI>Method entry and exit. 
+<BR>
+<B>Event:</B> <TT>ENTER_METHOD</TT> m t 
+<BR>
+<B>Desc.:</B> Generated after thread t enters method m respectively. 
+<BR>
+<B>Event:</B> <TT>LEAVE_METHOD</TT> m t 
+<BR>
+<B>Desc.:</B> Generated before thread t leaves method m respectively.
 
 <P>
-If two domains are interleaved in the declared domain order in a Datalog program (i.e., <TT>x</TT> is used instead of <TT>_</TT> between them),
-then the BDD variables assigned to those domains are still ordered in reverse order of IDs in the underlying BDD factory,
-but they are also interleaved.
-For instance, the BDD variable order corresponding to the declared domain order <TT>F0xZ0</TT> is (in level2var format)
-``70,108,69,107,68,106,67,105,66,65,64,63".
-
-<P>
-Each BDD variable is at a unique ``level" which is its 0-based position in the BDD variable order in the underlying BDD factory.
-
-<P>
-We will next illustrate the format of a BDD stored on disk (in a .bdd file) using the following example:
-
-<P>
-<PRE>
-# V0:16 H0:12
-# 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
-# 82 83 84 85 86 87 88 89 90 91 92 93
-28489 134
-39 36 33 30 27 24 21 18 15 12 9 6 3 0 81 79 77 75 73 71 69 67 65 63 61 59 57 55  \
-   53 51 82 80 78 76 74 72 70 68 66 64 62 60 58 56 54 52 37 34 31 28 25 22 19 16 \
-   13 10 7 4 1 117 116 115 114 113 112 111 110 109 108 107 106 50 49 48 47 46 45 \
-   44 43 42 41 40 105 104 103 102 101 100 99 98 97 96 95 94 93 92 91 90 89 88 87 \
-   86 85 84 83 133 132 131 130 129 128 127 126 125 124 123 122 121 120 119 118   \
-   38 35 32 29 26 23 20 17 14 11 8 5 2
-287 83 0 1
-349123 84 287 0
-349138 85 0 349123
-...
-</PRE>
-
-<P>
-The first comment line indicates the domains in the relation (in the above case, <TT>V0</TT> and <TT>H0</TT>,
-represented using 16 and 12 unique BDD variables, respectively).
-
-<P>
-If there are <IMG
- WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img5.png"
- ALT="$N$"> domains, there are <IMG
- WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="img5.png"
- ALT="$N$"> following comment lines, each specifying the
-BDD variables assigned to the corresponding domain.
-
-<P>
-The following line has two numbers: the number of nodes in the represented BDD (28489 in this case) and the number of variables
-in the BDD factory from which the BDD was dumped to disk.  Note that the number of variables (134 in this case) is not
-necessarily the number of variables in the represented BDD (16+12=28 in this case) though it is guaranteed to be
-greater than or equal to it.
-
-<P>
-The following line specifies the BDD variable order in var2level format.  In this case, the specified order subsumes
-<TT>V0_H0</TT> (notice that levels ``81 79 77 75 73 71 69 67 65 63 61 59 57 55 53 51", which are at positions ``14 15 ... 28 29" 
-in the specified order are lower than levels ``105 104 103 102 101 100 99 98 97 96 95 94" which are at positions
-``82 83 .. 92 93"). 
-
-<P>
-Each of the following lines specifies a unique node in the represented BDD; it has format ``X V L H" where:
-
-<UL>
-<LI>X is the ID of the BDD node
 </LI>
-<LI>V is the ID of the bdd variable labeling that node (unless it is 0 or 1, in which case it represents a leaf node)
-</LI>
-<LI>L is the ID of the BDD node's low child
-</LI>
-<LI>H is the ID of the BDD node's high child
-</LI>
-</UL>
+<LI>Loop entry and exit. 
+<BR>
+<B>Event:</B> <TT>ENTER_LOOP</TT> w t 
+<BR>
+<B>Desc.:</B> Generated before thread t enters loop w respectively. 
+<BR>
+<B>Event:</B> <TT>LEAVE_LOOP</TT> w t 
+<BR>
+<B>Desc.:</B> Generated after thread t leaves loop w respectively.
 
 <P>
-The order of these lines specifying BDD nodes is such that the lines specifying the BDD nodes in the L and H entries
-of each BDD node are guaranteed to occur before the line specifying that BDD node (for instance, the L entry 287 on
-the second line and the R entry 349123 on the third line are IDs of BDD nodes specified on the first and second lines,
-respectively).
+</LI>
+<LI>Object allocation 
+<BR>
+<B>Event:</B> <TT>BEF_NEW</TT> h t 
+<BR>
+<B>Desc.:</B> Generated only in the crude trace before thread t executes a <TT>new</TT> bytecode instruction at program point h. 
+<BR>
+<B>Event:</B> <TT>AFT_NEW</TT> h t o 
+<BR>
+<B>Desc.:</B> Generated only in the crude trace after thread t executes a <TT>new</TT> bytecode instruction at program point h and allocates new object o. 
+<BR>
+<B>Event:</B> <TT>NEW</TT> h t o 
+<BR>
+<B>Desc.:</B> Generated after thread t executes a <TT>new</TT> bytecode instruction at program point h and allocates new object o. 
+<BR>
+<B>Event:</B> <TT>NEW_ARRAY</TT> h t o 
+<BR>
+<B>Desc.:</B> Generated after thread t executes a <TT>newarray</TT> bytecode instruction at program point h and allocates new object o.
 
 <P>
-Terminology note:
-The <I>support</I> of a BDD <TT>b</TT> is another BDD <TT>r</TT> = <TT>b.support()</TT>
-that represents all the variables used in <TT>b</TT>.
-The support BDD <TT>r</TT> is a linear tree each of whose nodes contains a separate variable,
-the low branch is 0, and high branch is the node representing the next variable.
-To list all the variables used in a BDD <TT>b</TT> use <TT>r.scanSet()</TT>.
-Needless to say, <TT>scanSet()</TT> simply walks along the high branches
-starting at the root of BDD <TT>r</TT>.
+</LI>
+<LI>Getstatic primitive 
+<BR>
+<B>Event:</B> <TT>GETSTATIC_PRIMITIVE</TT> e t f 
+<BR>
+<B>Desc.:</B> Generated after thread t reads primitive-typed static field f at program point e.
 
 <P>
+</LI>
+<LI>Getstatic reference 
+<BR>
+<B>Event:</B> <TT>GETSTATIC_REFERENCE</TT> e t f o 
+<BR>
+<B>Desc.:</B> Generated after thread t reads object o from reference-typed static field f at program point e.
+
+<P>
+</LI>
+<LI>Putstatic primitive 
+<BR>
+<B>Event:</B> <TT>PUTSTATIC_PRIMITIVE</TT> e t f 
+<BR>
+<B>Desc.:</B> Generated after thread t writes primitive-typed static field f at program point e.
+
+<P>
+</LI>
+<LI>Putstatic reference 
+<BR>
+<B>Event:</B> <TT>PUTSTATIC_REFERENCE</TT> e t f o 
+<BR>
+<B>Desc.:</B> Generated after thread t writes object o to reference-typed static field f at program point e.
+
+<P>
+</LI>
+<LI>Getfield primitive 
+<BR>
+<B>Event:</B> <TT>GETFIELD_PRIMITIVE</TT> e t b f 
+<BR>
+<B>Desc.:</B> Generated after thread t reads primitive-typed instance field f of object b at program point e.
+
+<P>
+</LI>
+<LI>Getfield reference 
+<BR>
+<B>Event:</B> <TT>GETFIELD_REFERENCE</TT> e t b f o 
+<BR>
+<B>Desc.:</B> Generated after thread t reads object o from reference-typed instance field f of object b at program point e.
+
+<P>
+</LI>
+<LI>Putfield primitive 
+<BR>
+<B>Event:</B> <TT>PUTFIELD_PRIMITIVE</TT> e t b f 
+<BR>
+<B>Desc.:</B> Generated after thread t writes primitive-typed instance field f of object b at program point e.
+
+<P>
+</LI>
+<LI>Putfield reference 
+<BR>
+<B>Event:</B> <TT>PUTFIELD_REFERENCE</TT> e t b f o 
+<BR>
+<B>Desc.:</B> Generated after thread t writes object o to reference-typed instance field f of object b at program point e.
+
+<P>
+</LI>
+<LI>Aload primitive 
+<BR>
+<B>Event:</B> <TT>ALOAD_PRIMITIVE</TT> e t b i 
+<BR>
+<B>Desc.:</B> Generated after thread t reads the primitive-typed element at index i of array object b at program point e.
+
+<P>
+</LI>
+<LI>Aload reference 
+<BR>
+<B>Event:</B> <TT>ALOAD_REFERENCE</TT> e t b i o 
+<BR>
+<B>Desc.:</B> Generated after thread t reads object o from the reference-typed element at index i of array object b at program point e.
+
+<P>
+</LI>
+<LI>Astore primitive 
+<BR>
+<B>Event:</B> <TT>ASTORE_PRIMITIVE</TT> e t b i 
+<BR>
+<B>Desc.:</B> Generated after thread t writes the primitive-typed element at index i of array object b at program point e.
+
+<P>
+</LI>
+<LI>Astore reference 
+<BR>
+<B>Event:</B> <TT>ASTORE_REFERENCE</TT> e t b i o 
+<BR>
+<B>Desc.:</B> Generated after thread t writes object o to the reference-typed element at index i of array object b at program point e.
+
+<P>
+</LI>
+<LI>Method call 
+<BR>
+<B>Event:</B> <TT>METHOD_CALL</TT> i t 
+<BR>
+<B>Desc.:</B> Generated before or after thread t executes the method invocation statement at program point i.
+
+<P>
+</LI>
+<LI>Thread start call 
+<BR>
+<B>Event:</B> <TT>THREAD_START</TT> i t o 
+<BR>
+<B>Desc.:</B> Generated before thread t calls the <TT>start()</TT> method of <TT>java.lang.Thread</TT> at program point i and spawns a thread o. 
+
+<P>
+</LI>
+<LI>Thread join call 
+<BR>
+<B>Event:</B> <TT>THREAD_JOIN</TT> i t o 
+<BR>
+<B>Desc.:</B> Generated before thread t calls the <TT>join()</TT> method of <TT>java.lang.Thread</TT> at program point i to join with thread o.
+
+<P>
+</LI>
+<LI>Lock acquire 
+<BR>
+<B>Event:</B> <TT>ACQUIRE_LOCK</TT> l t o 
+<BR>
+<B>Desc.:</B> Generated after thread t executes a statement of the form monitorenter o or enters a method synchronized on o at program point l.
+
+<P>
+</LI>
+<LI>Lock release 
+<BR>
+<B>Event:</B> <TT>RELEASE_LOCK</TT> r t o 
+<BR>
+<B>Desc.:</B> Generated before thread t executes a statement of the form monitorexit o or leaves a method synchronized on o at program point r.
+
+<P>
+</LI>
+<LI>Thread wait call 
+<BR>
+<B>Event:</B> <TT>WAIT</TT> i t o 
+<BR>
+<B>Desc.:</B> Generated before thread t calls the <TT>wait()</TT> method of <TT>java.lang.Object</TT> at program point i on object o.
+
+<P>
+</LI>
+<LI>Thread notify call 
+<BR>
+<B>Event:</B> <TT>NOTIFY</TT> i t o 
+<BR>
+<B>Desc.:</B> Generated before thread t calls the <TT>notify()</TT> or <TT>notifyAll()</TT> method of <TT>java.lang.Object</TT> at program point i on object o.
+</LI>
+</OL>
 
 <HR>
 <!--Navigation Panel-->
-<A NAME="tex2html160"
+<A NAME="tex2html164"
   HREF="node12.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html158"
+<A NAME="tex2html162"
   HREF="user_guide.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html152"
+<A NAME="tex2html156"
   HREF="node10.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html161"
-  HREF="node12.html">Program Representation</A>
-<B> Up:</B> <A NAME="tex2html159"
+<B> Next:</B> <A NAME="tex2html165"
+  HREF="node12.html">Writing a Datalog Analysis</A>
+<B> Up:</B> <A NAME="tex2html163"
   HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html153"
-  HREF="node10.html">Tuning a Datalog Analysis</A>
+<B> Previous:</B> <A NAME="tex2html157"
+  HREF="node10.html">Compiling and Running the</A>
 <!--End of Navigation Panel-->
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>

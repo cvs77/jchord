@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Chord Resource Properties</TITLE>
-<META NAME="description" CONTENT="Chord Resource Properties">
+<TITLE>Chord Debug Properties</TITLE>
+<META NAME="description" CONTENT="Chord Debug Properties">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -18,100 +18,81 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="STYLESHEET" HREF="user_guide.css">
 
+<LINK REL="next" HREF="node27.html">
 <LINK REL="previous" HREF="node25.html">
-<LINK REL="up" HREF="node16.html">
+<LINK REL="up" HREF="node19.html">
 <LINK REL="next" HREF="node27.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html318"
+<A NAME="tex2html324"
   HREF="node27.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html316"
-  HREF="node16.html">
+<A NAME="tex2html322"
+  HREF="node19.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html312"
+<A NAME="tex2html316"
   HREF="node25.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html319"
-  HREF="node27.html">Acknowledgments</A>
-<B> Up:</B> <A NAME="tex2html317"
-  HREF="node16.html">Chord System Properties</A>
-<B> Previous:</B> <A NAME="tex2html313"
-  HREF="node25.html">Chord Output Properties</A>
+<B> Next:</B> <A NAME="tex2html325"
+  HREF="node27.html">Chord Instrumentation Properties</A>
+<B> Up:</B> <A NAME="tex2html323"
+  HREF="node19.html">Chord System Properties</A>
+<B> Previous:</B> <A NAME="tex2html317"
+  HREF="node25.html">Program Transformation Properties</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION0001610000000000000000"></A>
-<A NAME="sec:chord-sysprops:resource"></A>
-<BR>
-Chord Resource Properties
+<H2><A NAME="SECTION000167000000000000000">
+Chord Debug Properties</A>
 </H2>
 
 <P>
-This section describes properties specifying classpaths and locations of runtime libraries used by Chord.
-Ordinarily, users must not alter the default values of these properties.
+This section describes properties that specify the amount of debug information that Chord must produce during execution.
 
 <P>
 
 <UL>
-<LI><TT>chord.main.dir</TT> 
+<LI><TT>chord.verbose</TT> 
 <BR>
-<B>Type:</B> location 
+<B>Type:</B> bool 
 <BR>
-<B>Description:</B> Absolute location of the <TT>main/</TT> directory in Chord's installation.
+<B>Description:</B> Produce more verbose output during Chord's execution. 
+<BR>
+<B>Default value:</B> <TT>false</TT> 
 
 <P>
 </LI>
-<LI><TT>chord.lib.dir</TT> 
+<LI><TT>chord.bddbddb.noisy</TT> 
 <BR>
-<B>Type:</B> location 
+<B>Type:</B> bool 
 <BR>
-<B>Description:</B> Directory containing libraries needed by Chord. 
+<B>Description:</B> Produce more verbose output during the Datalog solver <TT>bddbddb</TT>'s execution. 
 <BR>
-<B>Default value:</B> <TT>[chord.main.dir]/lib/</TT>
+<B>Default value:</B> <TT>false</TT> 
 
 <P>
 </LI>
-<LI><TT>chord.main.class.path</TT> 
+<LI><TT>chord.save.maps</TT> 
 <BR>
-<B>Type:</B> path 
+<B>Type:</B> bool 
 <BR>
-<B>Description:</B> Classpath of Chord.  It includes the path specified by property <TT>chord.java.analysis.path</TT> to allow running user-defined program analyses. 
+<B>Description:</B> Write to file <TT>[chord.bddbddb.work.dir]/&lt;...&gt;.map</TT> when saving program domain named <TT>&lt;...&gt;</TT>. 
 <BR>
-<B>Default value:</B> See <TT>[chord.main.dir]/build.xml</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.bddbddb.class.path</TT> 
+<B>Default value:</B> <TT>true</TT>  
 <BR>
-<B>Type:</B> path 
-<BR>
-<B>Description:</B> Classpath of <TT>bddbddb</TT>. 
-<BR>
-<B>Default value:</B> See <TT>[chord.main.dir]/build.xml</TT> 
-
-<P>
-</LI>
-<LI><TT>chord.javadoc.url</TT> 
-<BR>
-<B>Type:</B> string 
-<BR>
-<B>Description:</B> URL of the Javadoc location of program analyses.  It is used when publishing targets (i.e., when property <TT>chord.publish.targets</TT> is set to <TT>true</TT>). 
-<BR>
-<B>Default value:</B> <TT>http://jchord.googlecode.com/svn/wiki/javadoc/</TT>
+<B>Note:</B> This functionality is useful for debugging Datalog programs using the <TT>debug</TT> target provided in file <TT>build.xml</TT> in Chord's <TT>main/</TT> directory (see Section <A HREF="node13.html#sec:tuning-datalog-analysis"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A>).
 </LI>
 </UL>
 
 <P>
-
 <BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>

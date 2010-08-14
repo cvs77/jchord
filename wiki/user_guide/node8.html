@@ -7,8 +7,8 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
   Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
 <HTML>
 <HEAD>
-<TITLE>Instrumentation Events</TITLE>
-<META NAME="description" CONTENT="Instrumentation Events">
+<TITLE>Implementing the Analysis</TITLE>
+<META NAME="description" CONTENT="Implementing the Analysis">
 <META NAME="keywords" CONTENT="user_guide">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -20,263 +20,120 @@ original version by:  Nikos Drakos, CBLU, University of Leeds
 
 <LINK REL="next" HREF="node9.html">
 <LINK REL="previous" HREF="node7.html">
-<LINK REL="up" HREF="user_guide.html">
+<LINK REL="up" HREF="node7.html">
 <LINK REL="next" HREF="node9.html">
 </HEAD>
 
 <BODY >
 <!--Navigation Panel-->
-<A NAME="tex2html130"
+<A NAME="tex2html136"
   HREF="node9.html">
 <IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html128"
-  HREF="user_guide.html">
+<A NAME="tex2html134"
+  HREF="node7.html">
 <IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html122"
+<A NAME="tex2html128"
   HREF="node7.html">
 <IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<B> Next:</B> <A NAME="tex2html131"
-  HREF="node9.html">Writing a Datalog Analysis</A>
-<B> Up:</B> <A NAME="tex2html129"
-  HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html123"
+<B> Next:</B> <A NAME="tex2html137"
+  HREF="node9.html">Configuring the Analysis</A>
+<B> Up:</B> <A NAME="tex2html135"
+  HREF="node7.html">Writing a Dynamic Analysis</A>
+<B> Previous:</B> <A NAME="tex2html129"
   HREF="node7.html">Writing a Dynamic Analysis</A>
 <BR>
 <BR>
 <!--End of Navigation Panel-->
 
-<H1><A NAME="SECTION00080000000000000000"></A>
-<A NAME="sec:instr-events"></A>
-<BR>
-Instrumentation Events
-</H1>
+<H2><A NAME="SECTION00071000000000000000">
+Implementing the Analysis</A>
+</H2>
 
 <P>
-Chord allows a given Java program to be instrumented to generate the
-following kinds of events during its execution.
+Create a class extending <TT>chord.project.analyses.DynamicAnalysis</TT> and override
+the appropriate methods in it.
+The only methods that must be compulsorily overridden are method <TT>getInstrScheme()</TT>,
+which must return an instance of the ``instrumentation scheme" required by
+your dynamic analysis (i.e., the kind and format of events to be generated during an
+instrumented program's execution)
+plus each <TT>process&lt;event&gt;(&lt;args&gt;)</TT> method that corresponds to event <TT>&lt;event&gt;</TT>
+with format <TT>&lt;args&gt;</TT> enabled by the chosen instrumentation scheme.
+See Section <A HREF="node11.html#sec:instr-events"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="crossref.png"></A> for the kinds of supported events and their formats.
 
 <P>
-
-<OL>
-<LI>Method entry and exit. 
-<BR>
-<B>Event:</B> <TT>ENTER_METHOD</TT> m t 
-<BR>
-<B>Desc.:</B> Generated after thread t enters method m respectively. 
-<BR>
-<B>Event:</B> <TT>LEAVE_METHOD</TT> m t 
-<BR>
-<B>Desc.:</B> Generated before thread t leaves method m respectively.
+A sample such class <TT>MyDynamicAnalysis</TT> is shown below:
 
 <P>
-</LI>
-<LI>Loop entry and exit. 
-<BR>
-<B>Event:</B> <TT>ENTER_LOOP</TT> w t 
-<BR>
-<B>Desc.:</B> Generated before thread t enters loop w respectively. 
-<BR>
-<B>Event:</B> <TT>LEAVE_LOOP</TT> w t 
-<BR>
-<B>Desc.:</B> Generated after thread t leaves loop w respectively.
+<PRE>
+    import chord.project.analyses.DynamicAnalysis;
+    import chord.instr.InstrScheme;
+
+    // ***TODO***: analysis won't be recognized by Chord without this annotation
+    @Chord(name=&lt;name-of-analysis&gt;)    
+    public class MyDynamicAnalysis extends DynamicAnalysis {
+        InstrScheme scheme;
+
+        @Override
+        public InstrScheme getInstrScheme() {
+            if (scheme != null)
+                return scheme;
+            scheme = new InstrScheme();
+            // ***TODO***: Choose (&lt;event1&gt;, &lt;args1&gt;), ... (&lt;eventN&gt;, &lt;argsN&gt;)
+            // depending upon the kind and format of events required by this
+            // dynamic analysis to be generated for this during an instrumented
+            // program's execution.
+            scheme.set&lt;event1&gt;(&lt;args1&gt;);
+            ...
+            scheme.set&lt;eventN&gt;(&lt;argsN&gt;);
+            return scheme;
+        }
+
+        @Override
+        public void initAllPasses() {
+            // ***TODO***: User code to be executed once and for all
+            // before all instrumented program runs start.
+        }
+
+        @Override
+        public void doneAllPasses() {
+            // ***TODO***: User code to be executed once and for all
+            // after all instrumented program runs finish.
+        }
+
+        @Override
+        public void initPass() {
+            // ***TODO***: User code to be executed once before each
+            // instrumented program run starts.
+        }
+
+        @Override
+        public void donePass() {
+            // ***TODO***: User code to be executed once after each
+            // instrumented program run finishes.
+        }
+
+        // User-defined event handlers for this dynamic analysis.
+        // No-ops if not overridden.
+        @Override
+        public void process&lt;event1&gt;(&lt;args1&gt;) {
+            // ***TODO***: User code for handling events of kind
+            // &lt;event1&gt; with format &lt;args1&gt;.
+        }
+        ...
+        @Override
+        public void process&lt;eventN&gt;(&lt;argsN&gt;) {
+            // ***TODO***: User code for handling events of kind
+            // &lt;eventN&gt; with format &lt;argsN&gt;.
+        }
+    }
+</PRE>
 
 <P>
-</LI>
-<LI>Object allocation 
-<BR>
-<B>Event:</B> <TT>BEF_NEW</TT> h t 
-<BR>
-<B>Desc.:</B> Generated only in the crude trace before thread t executes a <TT>new</TT> bytecode instruction at program point h. 
-<BR>
-<B>Event:</B> <TT>AFT_NEW</TT> h t o 
-<BR>
-<B>Desc.:</B> Generated only in the crude trace after thread t executes a <TT>new</TT> bytecode instruction at program point h and allocates new object o. 
-<BR>
-<B>Event:</B> <TT>NEW</TT> h t o 
-<BR>
-<B>Desc.:</B> Generated after thread t executes a <TT>new</TT> bytecode instruction at program point h and allocates new object o. 
-<BR>
-<B>Event:</B> <TT>NEW_ARRAY</TT> h t o 
-<BR>
-<B>Desc.:</B> Generated after thread t executes a <TT>newarray</TT> bytecode instruction at program point h and allocates new object o.
-
-<P>
-</LI>
-<LI>Getstatic primitive 
-<BR>
-<B>Event:</B> <TT>GETSTATIC_PRIMITIVE</TT> e t f 
-<BR>
-<B>Desc.:</B> Generated after thread t reads primitive-typed static field f at program point e.
-
-<P>
-</LI>
-<LI>Getstatic reference 
-<BR>
-<B>Event:</B> <TT>GETSTATIC_REFERENCE</TT> e t f o 
-<BR>
-<B>Desc.:</B> Generated after thread t reads object o from reference-typed static field f at program point e.
-
-<P>
-</LI>
-<LI>Putstatic primitive 
-<BR>
-<B>Event:</B> <TT>PUTSTATIC_PRIMITIVE</TT> e t f 
-<BR>
-<B>Desc.:</B> Generated after thread t writes primitive-typed static field f at program point e.
-
-<P>
-</LI>
-<LI>Putstatic reference 
-<BR>
-<B>Event:</B> <TT>PUTSTATIC_REFERENCE</TT> e t f o 
-<BR>
-<B>Desc.:</B> Generated after thread t writes object o to reference-typed static field f at program point e.
-
-<P>
-</LI>
-<LI>Getfield primitive 
-<BR>
-<B>Event:</B> <TT>GETFIELD_PRIMITIVE</TT> e t b f 
-<BR>
-<B>Desc.:</B> Generated after thread t reads primitive-typed instance field f of object b at program point e.
-
-<P>
-</LI>
-<LI>Getfield reference 
-<BR>
-<B>Event:</B> <TT>GETFIELD_REFERENCE</TT> e t b f o 
-<BR>
-<B>Desc.:</B> Generated after thread t reads object o from reference-typed instance field f of object b at program point e.
-
-<P>
-</LI>
-<LI>Putfield primitive 
-<BR>
-<B>Event:</B> <TT>PUTFIELD_PRIMITIVE</TT> e t b f 
-<BR>
-<B>Desc.:</B> Generated after thread t writes primitive-typed instance field f of object b at program point e.
-
-<P>
-</LI>
-<LI>Putfield reference 
-<BR>
-<B>Event:</B> <TT>PUTFIELD_REFERENCE</TT> e t b f o 
-<BR>
-<B>Desc.:</B> Generated after thread t writes object o to reference-typed instance field f of object b at program point e.
-
-<P>
-</LI>
-<LI>Aload primitive 
-<BR>
-<B>Event:</B> <TT>ALOAD_PRIMITIVE</TT> e t b i 
-<BR>
-<B>Desc.:</B> Generated after thread t reads the primitive-typed element at index i of array object b at program point e.
-
-<P>
-</LI>
-<LI>Aload reference 
-<BR>
-<B>Event:</B> <TT>ALOAD_REFERENCE</TT> e t b i o 
-<BR>
-<B>Desc.:</B> Generated after thread t reads object o from the reference-typed element at index i of array object b at program point e.
-
-<P>
-</LI>
-<LI>Astore primitive 
-<BR>
-<B>Event:</B> <TT>ASTORE_PRIMITIVE</TT> e t b i 
-<BR>
-<B>Desc.:</B> Generated after thread t writes the primitive-typed element at index i of array object b at program point e.
-
-<P>
-</LI>
-<LI>Astore reference 
-<BR>
-<B>Event:</B> <TT>ASTORE_REFERENCE</TT> e t b i o 
-<BR>
-<B>Desc.:</B> Generated after thread t writes object o to the reference-typed element at index i of array object b at program point e.
-
-<P>
-</LI>
-<LI>Method call 
-<BR>
-<B>Event:</B> <TT>METHOD_CALL</TT> i t 
-<BR>
-<B>Desc.:</B> Generated before or after thread t executes the method invocation statement at program point i.
-
-<P>
-</LI>
-<LI>Thread start call 
-<BR>
-<B>Event:</B> <TT>THREAD_START</TT> i t o 
-<BR>
-<B>Desc.:</B> Generated before thread t calls the <TT>start()</TT> method of <TT>java.lang.Thread</TT> at program point i and spawns a thread o. 
-
-<P>
-</LI>
-<LI>Thread join call 
-<BR>
-<B>Event:</B> <TT>THREAD_JOIN</TT> i t o 
-<BR>
-<B>Desc.:</B> Generated before thread t calls the <TT>join()</TT> method of <TT>java.lang.Thread</TT> at program point i to join with thread o.
-
-<P>
-</LI>
-<LI>Lock acquire 
-<BR>
-<B>Event:</B> <TT>ACQUIRE_LOCK</TT> l t o 
-<BR>
-<B>Desc.:</B> Generated after thread t executes a statement of the form monitorenter o or enters a method synchronized on o at program point l.
-
-<P>
-</LI>
-<LI>Lock release 
-<BR>
-<B>Event:</B> <TT>RELEASE_LOCK</TT> r t o 
-<BR>
-<B>Desc.:</B> Generated before thread t executes a statement of the form monitorexit o or leaves a method synchronized on o at program point r.
-
-<P>
-</LI>
-<LI>Thread wait call 
-<BR>
-<B>Event:</B> <TT>WAIT</TT> i t o 
-<BR>
-<B>Desc.:</B> Generated before thread t calls the <TT>wait()</TT> method of <TT>java.lang.Object</TT> at program point i on object o.
-
-<P>
-</LI>
-<LI>Thread notify call 
-<BR>
-<B>Event:</B> <TT>NOTIFY</TT> i t o 
-<BR>
-<B>Desc.:</B> Generated before thread t calls the <TT>notify()</TT> or <TT>notifyAll()</TT> method of <TT>java.lang.Object</TT> at program point i on object o.
-</LI>
-</OL>
-
-<HR>
-<!--Navigation Panel-->
-<A NAME="tex2html130"
-  HREF="node9.html">
-<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
-<A NAME="tex2html128"
-  HREF="user_guide.html">
-<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
-<A NAME="tex2html122"
-  HREF="node7.html">
-<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
-<BR>
-<B> Next:</B> <A NAME="tex2html131"
-  HREF="node9.html">Writing a Datalog Analysis</A>
-<B> Up:</B> <A NAME="tex2html129"
-  HREF="user_guide.html">Chord: A Static and</A>
-<B> Previous:</B> <A NAME="tex2html123"
-  HREF="node7.html">Writing a Dynamic Analysis</A>
-<!--End of Navigation Panel-->
+<BR><HR>
 <ADDRESS>
 Mayur Naik
-2010-08-13
+2010-08-14
 </ADDRESS>
 </BODY>
 </HTML>
