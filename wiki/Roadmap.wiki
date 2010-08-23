@@ -12,8 +12,8 @@ TODO:
 
 TODO:
   * Features
-    * Integrate CnC/Habanero-Java runtime from Rice Univ's Habanero project, for expressing data/control dependencies between program analyses (phase out current ad-hoc semantics provided by @Chord annotations which allow expressing only data dependencies).  Besides cleaner semantics, it will provide additional benefits like parallel execution of independent analyses and deterministic execution guarantees. 
-    * Handle as much reflection as possible, statically or dynamically (HIGHEST PRIORITY)
+    * Integrate CnC/Habanero-Java runtime from Rice Univ's Habanero project, for expressing data/control dependencies between program analyses (phase out current ad-hoc semantics provided by @Chord annotations which allow expressing only data dependencies).  Besides cleaner semantics, it will provide additional benefits like parallel execution of independent analyses and deterministic execution guarantees (IN PROGRESS). 
+    * Handle as much reflection as possible, statically or dynamically (IN PROGRESS)
     * Refactor path program analysis implementation from path-thresc-java analysis  
     * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers (IN PROGRESS)
     * tune bddvarorders to make race and deadlock checkers faster
