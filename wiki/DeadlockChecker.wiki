@@ -7,4 +7,4 @@ See the example in directory `main/examples/deadlock_test/` of the Chord 2.0 dis
 
 === Case Studies ===
 
-Details of the experimental results reported in [http://berkeley.intel-research.net/mnaik/pubs/icse09/paper.pdf our ICSE'09 paper] are available [http://berkeley.intel-research.net/mnaik/pubs/icse09/results.html here].
+Details of the experimental results reported in [http://berkeley.intel-research.net/mnaik/pubs/icse09/paper.pdf our ICSE'09 paper] are available [http://berkeley.intel-research.net/mnaik/research/icse09/results.html here].
