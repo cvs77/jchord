@@ -3,25 +3,20 @@
 
 ==Chord 3.0==
 
-TODO:
-  * Features
-    * Integrate Java source-to-source translator based on Eclipse JDT.  This will enable instrumentation of Java source files in addition to bytecode instrumentation currently available in Chord.
-    * Integrate quadcode -> jasmincode translator.  This will enable transformations in quadcode to be realized in bytecode (via jasmincode); currently Chord only supports analyses, no transformations, due to the lack of this feature.
+None yet.
 
 ==Chord 2.0==
 
 TODO:
   * Features
     * Integrate CnC/Habanero-Java runtime from Rice Univ's Habanero project, for expressing data/control dependencies between program analyses (phase out current ad-hoc semantics provided by @Chord annotations which allow expressing only data dependencies).  Besides cleaner semantics, it will provide additional benefits like parallel execution of independent analyses and deterministic execution guarantees (IN PROGRESS). 
-    * Handle as much reflection as possible, statically or dynamically (IN PROGRESS)
-    * Refactor path program analysis implementation from path-thresc-java analysis  
-    * write more dynamic analyses akin to that for escape analysis, and also make dynamic versions of race and deadlock checkers (IN PROGRESS)
-    * tune bddvarorders to make race and deadlock checkers faster
-  * Documentation (IN PROGRESS)
 
 DONE:
+  * Documentation
   * Regression test suite
   * Features
+    * Handle as much reflection as possible, statically or dynamically
+      * ACTION: provided various options via chord.reflect.kind, all implemented in main/src/chord/program/reflect/
     * enable instrumenting only initial k iterations of loops, as a way to reduce run-time overhead of dynamic analyses
       * ACTION: enter_loop, perform_iteration, and leave_loop API now provided by chord.project.analyses.DynamicAnalysis 
     * Separate the RHS algorithm implementation from full-thresc-java analysis
