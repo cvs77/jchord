@@ -9,7 +9,19 @@ None yet.
 
 TODO:
   * Features
-    * Integrate CnC/Habanero-Java runtime from Rice Univ's Habanero project, for expressing data/control dependencies between program analyses (phase out current ad-hoc semantics provided by @Chord annotations which allow expressing only data dependencies).  Besides cleaner semantics, it will provide additional benefits like parallel execution of independent analyses and deterministic execution guarantees (IN PROGRESS). 
+    * Integrate CnC/Habanero-Java runtime from Rice Univ's Habanero project, for expressing data/control dependencies between program analyses (phase out current ad-hoc semantics provided by @Chord annotations which allow expressing only data dependencies).  Besides cleaner semantics, it will provide additional benefits like parallel execution of independent analyses and deterministic execution guarantees.
+    * Sound analysis scope construction
+      * Class objects (and .class fields)
+      * Exceptions
+      * native methods (currentThread, ...)
+      * Method.invoke
+      * System.out.println
+  * Documentation
+    * javadoc for chord.project.*Project classes
+    * user guide chapter on "writing and running analyses"
+    * user guide chapter on dynamic analysis configuration
+  * Regression test suite
+    * dynamic analysis
 
 DONE:
   * Documentation
