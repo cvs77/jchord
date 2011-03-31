@@ -17,7 +17,7 @@ TODO:
       * Method.invoke
       * System.out.println
   * Documentation
-    * javadoc for chord.project.*Project classes
+    * javadoc for chord.project.Project classes
     * user guide chapter on "writing and running analyses"
     * user guide chapter on dynamic analysis configuration
   * Regression test suite
