@@ -3,10 +3,8 @@
 
 === Getting Started ===
 
-Run the datarace checker on the example Java program in directory `main/examples/datarace_test/` of the Chord 2.0 distribution by following the instructions in the `README` file in that directory.  Upon successful completion, the checker should produce the following files:
-  * [http://chord.stanford.edu/examples/datarace_test/k.0/dataraces_by_fld.html dataraces_by_fld.html] and [http://chord.stanford.edu/examples/datarace_test/k.0/dataraces_by_obj.html dataraces_by_obj.html] using 0-CFA,
-  * [http://chord.stanford.edu/examples/datarace_test/k.1/dataraces_by_fld.html dataraces_by_fld.html] and [http://chord.stanford.edu/examples/datarace_test/k.1/dataraces_by_obj.html dataraces_by_obj.html] using 1-object-sensitive alias analysis, and
-  * [http://chord.stanford.edu/examples/datarace_test/k.2/dataraces_by_fld.html dataraces_by_fld.html] and [http://chord.stanford.edu/examples/datarace_test/k.2/dataraces_by_obj.html dataraces_by_obj.html] using 2-object-sensitive alias analysis.
+Run the datarace checker on the example Java program in directory `main/examples/datarace_test/` of the Chord 2.0 distribution by following the instructions in the `README` file in that directory.  Upon successful completion, the checker should produce files
+[http://chord.stanford.edu/examples/datarace_test/dataraces_by_fld.html dataraces_by_fld.html] and [http://chord.stanford.edu/examples/datarace_test/dataraces_by_obj.html dataraces_by_obj.html].
 
 === Configuration Options ===
 
