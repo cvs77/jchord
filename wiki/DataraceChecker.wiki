@@ -12,4 +12,4 @@ Read the section titled ``Static Datarace Analysis" in the chapter on [http://ch
 
 === Case Studies ===
 
-Details of the experimental results reported in [http://berkeley.intel-research.net/mnaik/research/pldi06.pdf our PLDI'06 paper] are available [http://berkeley.intel-research.net/mnaik/research/pldi06_results.html here].
+Details of the experimental results reported in [http://www.cc.gatech.edu/computing/pag/pubs/pldi06.pdf our PLDI'06 paper] are available [http://www.cc.gatech.edu/computing/pag/pubs/pldi06_results.html here].
