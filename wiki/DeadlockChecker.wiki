@@ -11,4 +11,4 @@ Read the section titled ``Static Deadlock Analysis" in the chapter on [http://ch
 
 === Case Studies ===
 
-Details of the experimental results reported in [http://berkeley.intel-research.net/mnaik/research/icse09.pdf our ICSE'09 paper] are available [http://berkeley.intel-research.net/mnaik/research/icse09_results.html here].
+Details of the experimental results reported in [http://www.cc.gatech.edu/computing/pag/pubs/icse09.pdf our ICSE'09 paper] are available [http://www.cc.gatech.edu/computing/pag/pubs/icse09_results.html here].
