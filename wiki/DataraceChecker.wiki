@@ -3,13 +3,13 @@
 
 === Getting Started ===
 
-Run the datarace checker on the example Java program in directory `main/examples/datarace_test/` of the Chord 2.0 distribution by following the instructions in the `README` file in that directory.  Upon successful completion, the checker should produce files
-[http://chord.stanford.edu/examples/datarace_test/dataraces_by_fld.html dataraces_by_fld.html] and [http://chord.stanford.edu/examples/datarace_test/dataraces_by_obj.html dataraces_by_obj.html].
+Run the datarace checker on the example Java program in directory `main/examples/datarace_test/` of the Chord 2.1 distribution by following the instructions in the `README` file in that directory.  Upon successful completion, the checker should produce files
+[http://pag.cc.gatech.edu/chord/examples/datarace_test/dataraces_by_fld.html dataraces_by_fld.html] and [http://pag.cc.gatech.edu/chord/examples/datarace_test/dataraces_by_obj.html dataraces_by_obj.html].
 
 === Configuration Options ===
 
-Read the section titled ``Static Datarace Analysis" in the chapter on [http://chord.stanford.edu/user_guide/predefined.html Predefined Analyses] in Chord's user guide for how to configure aspects of the datarace checker that affect its performance, precision, and soundness.
+Read the section titled ``Static Datarace Analysis" in the chapter on [http://pag.cc.gatech.edu/chord/user_guide/predefined.html Predefined Analyses] in Chord's user guide for how to configure aspects of the datarace checker that affect its performance, precision, and soundness.
 
 === Case Studies ===
 
-Details of the experimental results reported in [http://www.cc.gatech.edu/computing/pag/pubs/pldi06.pdf our PLDI'06 paper] are available [http://www.cc.gatech.edu/computing/pag/pubs/pldi06_results.html here].
+Details of the experimental results reported in [http://pag.cc.gatech.edu/pubs/pldi06.pdf our PLDI'06 paper] are available [http://pag.cc.gatech.edu/pubs/pldi06_results.html here].
